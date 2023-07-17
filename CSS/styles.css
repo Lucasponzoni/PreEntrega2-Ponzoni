@@ -24,7 +24,7 @@
 }
 
 body{
-    background: #D8E9CB url("../img/fondo.png");
+    background: #D8E9CB url("../img/fondo-desktop.svg");
     background-size: cover; 
     background-repeat: no-repeat;
     position: relative;
