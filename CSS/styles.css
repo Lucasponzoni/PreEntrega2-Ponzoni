@@ -398,9 +398,9 @@ footer div{
         background-color: #ff990000;
         background-image: url(../img/packaging.png);
         background-size: contain;
+        width: 100%;
         background-repeat: no-repeat;
         position: relative;
-        width: 100vw;
         margin-top: -250px;
     } 
 
