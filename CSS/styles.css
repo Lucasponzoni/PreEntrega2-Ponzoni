@@ -280,7 +280,7 @@ footer div{
 @media screen and (max-width: 1100px) {
 
     body{
-        background: #D8E9CB url("../img/mobile-back.png");
+        background: #D8E9CB url("../img/fondo-mobile.svg");
         background-size: cover;
         background-repeat: no-repeat;
     }
