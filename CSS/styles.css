@@ -193,6 +193,7 @@ h1{
 /* --- Boton Servicios --- */
 #button_conocenos{
     background-color: #ffffff;
+    box-shadow: 0px 0px 25px 8px #46bed960;
     width: max-content;
     text-align: center;
     font-family: 'Belanosima', sans-serif;
@@ -414,7 +415,7 @@ footer div{
    
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
 
     header{
         display:flex;
