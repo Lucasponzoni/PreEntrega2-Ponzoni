@@ -298,6 +298,7 @@ footer{
 
 .media-footer{
     width: 2rem;
+    margin-left: .5rem;
     filter: invert(100%);
 }
 
