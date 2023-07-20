@@ -1,4 +1,3 @@
-
 /* --- Fonts --- */
 @font-face {
     font-family: 'spirit';
@@ -74,8 +73,19 @@ nav{
     filter: invert(100%);
 }
 
-.media:hover{
-    filter: invert(80%) sepia(95%) saturate(275%) hue-rotate(347deg) brightness(97%) contrast(104%);
+.social_media i{
+    padding-inline: 0.1rem;
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.social_media{
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+
+.social_media i:hover{
+    color: #fce96b;
     transition: .2s;
 }
 
@@ -106,11 +116,6 @@ nav{
     padding: .2rem;
     padding-inline: 0.5rem;
     gap: 0.2rem;
-}
-
-.social_media{
-    margin-left: 2rem;
-    margin-right: 1rem;
 }
 
 #com-id{
@@ -315,6 +320,10 @@ footer div{
 /* --- Adapacion para pantallas hasta 1100px --- */
 @media screen and (max-width: 1100px) {
 
+    .img_main{
+        margin: 0;
+    }
+
     .logo {
         margin-left: 0rem;
         max-width: 4rem;
@@ -389,14 +398,14 @@ footer div{
         color: #ffffff;
     }
 
-    div.social_media{
-        margin: 0;
-    }
-
     .social_media{
         padding-top: 3rem;
         display: flex;
         justify-content: center;
+    }
+
+    div.solcial_media, i{
+        margin-inline: .3rem;
     }
 
     .abrir-menu i, .cerrar-menu i {
@@ -416,15 +425,6 @@ footer div{
 }
 
 @media screen and (max-width: 800px) {
-
-    header{
-        display:flex;
-        flex-direction: column;
-    }
-
-    .img_main{
-        margin: 0;
-    }
     
     .button-menu{
         display: block;
@@ -434,16 +434,6 @@ footer div{
         background: #D8E9CB url("../img/fondo-mobile.svg");
         background-size: cover;
         background-repeat: no-repeat;
-    }
-
-    div.food_pack{
-        justify-content: center;
-        align-items: center;
-    }
-    
-    div.food_pack{
-        justify-content: center;
-        align-items: center;
     }
 
     .food_pack{
@@ -501,32 +491,9 @@ footer div{
         padding: 1rem;
         padding-inline: 1rem;
     }
-    
-    #button_conocenos a{
-        text-decoration: none;
-        color: #0065C3;
-    }
-    
-    #button_conocenos:hover{
-        background-color: #FCE86B;
-        transition: .3s;
-    }
 
     .cardholder__card{
         width: auto;
-    }
-
-    footer{
-        text-align: left;
-        background-color: #0065C3;
-        color: #FFF;
-        font-family: 'Raleway', sans-serif;
-        font-size: .8rem;
-        padding: 1rem;
-        display: flex;
-        position: absolute;
-        align-items: center;
-        width: 100%;
     }
     
   }
