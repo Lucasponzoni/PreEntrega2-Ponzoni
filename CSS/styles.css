@@ -53,6 +53,7 @@ header {
     display: flex;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
     padding-top: 2.2rem;
     background-color: #0065C3;
     color: #FFF;
@@ -61,6 +62,7 @@ header {
 }
 
 nav{
+    max-width: 1200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -122,6 +124,10 @@ nav{
     font-family: 'Belanosima', sans-serif;
     font-weight: 900;
     font-size:1rem;
+}
+
+#active{
+    text-decoration: underline 3px #fce96b;
 }
 
 /* --- Animacion * del NavBar --- */
@@ -523,7 +529,7 @@ input, textarea, select{
 .form_main {
     background-color: #ffffff;
     width: auto;
-    min-width: min-content;
+    max-width: 100%;
     border-radius: 25px 25px 25px 25px;
     position: relative;
     margin-left: 25px;
@@ -536,6 +542,7 @@ input, textarea, select{
     color: #0065C3;
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     text-align: center;
@@ -589,6 +596,7 @@ input, textarea, select{
 
   .know_us{
     display: flex;
+    margin-bottom: 5rem;
   }
 
   .us{
@@ -610,7 +618,7 @@ input, textarea, select{
     color: #FFF; 
     position: relative;
     left: -32px;
-    top: -100px;
+    top: -115px;
     width: 300px;
     padding: 0.5rem;
     text-align: center;
@@ -625,16 +633,21 @@ input, textarea, select{
 }
 
 .descripcion_pablo, p{
+    text-align: justify;
     margin-bottom: 1rem;
+    max-width: 800px;
 }
 
 .university{
-    list-style-type: none;
+    list-style-type: circle;
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #0065C3;
     padding-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+    z-index: -1;
 }
 
 .us p, .text_testimonio{
