@@ -28,7 +28,7 @@
 /* --- Background --- */
 body{
     background: #D8E9CB url("../img/fondo-desktop.svg");
-    background-size: cover; 
+    background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     min-height: 100vh;
@@ -597,7 +597,10 @@ input, textarea, select{
   .know_us{
     display: flex;
     margin-bottom: 5rem;
-  }
+    /*
+    justify-content: center;
+    align-items: center;*/
+  }dfsdf
 
   .us{
     flex-shrink: 1;
