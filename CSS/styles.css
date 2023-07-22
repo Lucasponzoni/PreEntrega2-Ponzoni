@@ -69,13 +69,19 @@ nav{
     flex: 1;
 }
 
+.contenedor_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .media{
     width: 2rem;
     margin-left: 0.5rem;
     filter: invert(100%);
 }
 
-.social_media i{
+.social_media i, footer i{
     padding-inline: 0.1rem;
     color: #ffffff;
     font-size: 2rem;
@@ -86,7 +92,7 @@ nav{
     margin-right: 1rem;
 }
 
-.social_media i:hover{
+.social_media i:hover, footer i:hover, nav img:hover{
     color: #fce96b;
     transition: .2s;
 }
@@ -321,10 +327,296 @@ footer{
 
 footer div{
     margin-inline-end: auto;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* --- Adapacion para pantallas hasta 1100px --- */
-@media screen and (max-width: 1100px) {
+#tac{
+    margin: 0;
+}
+
+.form{
+    color: #0065C3;
+    font-size: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+input, textarea, select{
+    border-radius: 8px;
+    width: 300px;
+    padding: 1rem;
+    padding-left: 1rem;
+    margin-right: 2rem;
+    border: #0065C3 solid 1px;
+    color:#0065C3;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.form_main {
+    background-color: #ffffff;
+    width: auto;
+    max-width: 100%;
+    border-radius: 25px 25px 25px 25px;
+    position: relative;
+    margin-left: 25px;
+    margin-bottom: 50px;
+    margin-right: 25px;
+    top: 50px;
+  }
+  
+  .form_main h2{
+    color: #0065C3;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .formulario{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .separador{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin-bottom: 2rem;
+    padding-right: 1rem;
+  }
+
+  #comentarios{
+    min-width: 550px;
+  }
+
+  .submit{
+    font-size: 1rem;
+    padding: 0.7rem;
+    width: 200px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #0065C3;
+    color: #FFF;
+  }
+
+  .submit:hover{
+    background-color: #ffffff;
+    color: #0065C3;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  #comentarios{
+    margin-bottom: 1rem;
+  }
+
+  .map{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 25px;
+  }
+
+  .know_us{
+    display: flex;
+    margin-bottom: 5rem;
+    /*
+    justify-content: center;
+    align-items: center;*/
+  }
+
+  .us{
+    flex-shrink: 1;
+    } 
+
+  .pablo_face ,.pablo_face_mobile{
+    width: 300px;
+    position: relative;
+    left: -32px;
+    top: -95px;
+    overflow: hidden;
+  }
+  
+  .pablo_face_mobile_div{
+    display: none;
+  }
+    
+  .fig-caption{
+    background-color: #0065C3;
+    font-family: 'Belanosima', sans-serif;   
+    font-weight: 600;
+    color: #FFF; 
+    position: relative;
+    left: -32px;
+    top: -115px;
+    width: 300px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  #Pablo_Scalise_Conocenos{
+    font-family: 'Andalucia';
+    color: #353535;
+    font-size: 3rem;
+    text-align: left;
+    margin-bottom: 0;
+    line-height: 1.8;
+    align-items: center; /* Esta propiedad no tiene efecto aquí, a menos que el elemento sea un contenedor flex */
+}
+
+.descripcion_pablo, p{
+    text-align: justify;
+    margin-bottom: 1rem;
+    max-width: 800px;
+}
+
+.university{
+    list-style-type: circle;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #0065C3;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+    z-index: -1;
+}
+
+.us p, .text_testimonio{
+    font-family: 'Raleway', sans-serif;
+    color: #353535;
+    line-height : 25px;
+}
+
+.span_us{
+    font-weight: 600;
+}
+
+.background_img{
+    background-color: #fce96b;
+    width: 300px;
+    height: 410px;
+    border-radius: 25px 0 0 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.services, .services_description{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    line-height : 25px;
+    background-color: #0065C3;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    flex: 1;
+    min-width: 300px;
+    border-radius: 25px;
+
+}
+
+h2.services_title{
+    color: #FFF;
+    font-size: 1,5rem;
+    text-align: center;
+}
+
+.services_span, .aclaracion{
+    color: #FF9900;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+#factory, #money, #laboratory{
+    width: 125px;
+}
+
+.service_description{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    color: #000000;
+    line-height : 25px;
+    border: #FF9900 solid 2px;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    flex: 1;
+    min-width: 300px;
+    border-radius: 25px;
+}
+
+.services_text{
+    list-style-type: circle;
+    padding-left: 1rem;
+    text-align: left;
+}
+
+#information{
+    width: 100px;
+    filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
+}
+
+.testimonios_a{
+    min-width: 800px;
+    background-color: #fce96b6c;
+    display: flex;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.foto-testimonio{
+    margin-right: 1rem;
+    width: 150px;
+}
+
+#testimonio_title{
+    font-family: 'Andalucia';
+    color: #353535;
+    font-size: 3rem;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.img_test_ext{
+    width: 25px;
+    margin-right: .5rem;
+    filter: invert(19%) sepia(5%) saturate(19%) hue-rotate(354deg) brightness(93%) contrast(90%);
+}
+
+.t-d{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.logo_trabajo_test{
+    width: 150px;
+    filter: invert(19%) sepia(5%) saturate(19%) hue-rotate(354deg) brightness(93%) contrast(90%);
+}
+
+.img_test_ext:hover{
+    filter: invert(22%) sepia(86%) saturate(2714%) hue-rotate(195deg) brightness(90%) contrast(104%);    
+    transition: .2s;
+}
+
+/* --- Adapacion para pantallas hasta 1050px --- */
+@media screen and (max-width: 1050px) {
 
     .img_main{
         margin: 0;
@@ -508,276 +800,90 @@ footer div{
     
   }
 
-.form{
-    color: #0065C3;
-    font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    padding-top: 1rem;
-    text-align: center;
-}
-
-input, textarea, select{
-    border-radius: 8px;
-    width: 300px;
-    padding: 1rem;
-    padding-left: 1rem;
-    margin-right: 2rem;
-    border: #0065C3 solid 1px;
-    color:#0065C3;
-    font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.form_main {
-    background-color: #ffffff;
-    width: auto;
-    max-width: 100%;
-    border-radius: 25px 25px 25px 25px;
-    position: relative;
-    margin-left: 25px;
-    margin-bottom: 50px;
-    margin-right: 25px;
-    top: 50px;
-  }
-  
-  .form_main h2{
-    color: #0065C3;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    text-align: center;
-  }
-
-  .formulario{
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .separador{
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    margin-bottom: 2rem;
-    padding-right: 1rem;
-  }
-
-  #comentarios{
-    min-width: 550px;
-  }
-
-  .submit{
-    font-size: 1rem;
-    padding: 0.7rem;
-    width: 200px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    background-color: #0065C3;
-    color: #FFF;
-  }
-
-  .submit:hover{
-    background-color: #ffffff;
-    color: #0065C3;
-    cursor: pointer;
-    transition: .3s;
-  }
-
-  #comentarios{
-    margin-bottom: 1rem;
-  }
-
-  .map{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-radius: 25px;
-  }
-
-  .know_us{
-    display: flex;
-    margin-bottom: 5rem;
-    /*
-    justify-content: center;
-    align-items: center;*/
-  }
-
-  .us{
-    flex-shrink: 1;
-    } 
-
-  .pablo_face {
-    width: 300px;
-    position: relative;
-    left: -32px;
-    top: -95px;
-    overflow: hidden;
-  }
+  @media screen and (max-width: 800px){
+    .know_us{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+      }
     
-  .fig-caption{
-    background-color: #0065C3;
-    font-family: 'Belanosima', sans-serif;   
-    font-weight: 600;
-    color: #FFF; 
-    position: relative;
-    left: -32px;
-    top: -115px;
-    width: 300px;
-    padding: 0.5rem;
-    text-align: center;
+      .us{
+        flex-shrink: 1;
+        } 
+    
+      .pablo_face {
+        display: none;
+      }
+
+      .pablo_face_mobile {
+        max-width: 300px;
+        background-size: contain;
+        display: flex;
+        margin-left: 1rem;
+        padding: 0;
+      }
+        
+      .fig-caption{
+        margin-left: 1rem;
+        margin-right: -3rem;
+        top: -48px;
+        width: auto;
+      }
+    
+      #Pablo_Scalise_Conocenos{
+        display: none;
+    }
+    
+    .university{
+       margin-top: -1rem;
+
+    }
+    
+    .background_img{
+        display: none;
+    }
+    
+    .background_img_mobile{
+        background-color: #ff000000;
+        background-image: url("../img/pablo_pcalise_conocenos_mobile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        overflow: visible;
+        width: 100%;
+        height: 200px;
+        border-radius: 25px 25px 0 0;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+
+    .pablo_face_mobile_div{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        background-color: #fce96b;
+        padding: 0;
+        margin: 0;
+        top: -32px;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 25px 25px 0 0;
+        align-items: center;
+    }
+
+    .pablo_mobile{
+        width: 40vw;
+    }
+
+    #Pablo_Scalise_Conocenos_mobile {
+        padding: 1rem;
+        line-height: 1.4;
+        font-family: 'Andalucia';
+        color: #353535;
+        font-size: 6vw;
+        white-space: nowrap;
+        position: absolute;
+        left: 25vw;
+      }
+      
   }
-
-  #Pablo_Scalise_Conocenos{
-    font-family: 'Andalucia';
-    color: #353535;
-    font-size: 3rem;
-    text-align: left;
-    margin-bottom: 0;
-}
-
-.descripcion_pablo, p{
-    text-align: justify;
-    margin-bottom: 1rem;
-    max-width: 800px;
-}
-
-.university{
-    list-style-type: circle;
-    font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #0065C3;
-    padding-bottom: 1rem;
-    margin-top: 1rem;
-    text-align: left;
-    z-index: -1;
-}
-
-.us p, .text_testimonio{
-    font-family: 'Raleway', sans-serif;
-    color: #353535;
-    line-height : 25px;
-}
-
-.span_us{
-    font-weight: 600;
-}
-
-.background_img{
-    background-color: #fce96b;
-    width: 300px;
-    height: 410px;
-    border-radius: 25px 0 0 0;
-    top: 0;
-    left: 0;
-    position: absolute;
-}
-
-.services, .services_description{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.service{
-    font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
-    color: #ffffff;
-    line-height : 25px;
-    background-color: #0065C3;
-    padding: 1rem;
-    margin: 1rem;
-    text-align: center;
-    flex: 1;
-    min-width: 300px;
-    border-radius: 25px;
-
-}
-
-h2.services_title{
-    color: #FFF;
-    font-size: 1,5rem;
-    text-align: center;
-}
-
-.services_span, .aclaracion{
-    color: #FF9900;
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-}
-
-#factory, #money, #laboratory{
-    width: 125px;
-}
-
-.service_description{
-    font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
-    color: #000000;
-    line-height : 25px;
-    border: #FF9900 solid 2px;
-    padding: 1rem;
-    margin: 1rem;
-    text-align: center;
-    flex: 1;
-    min-width: 300px;
-    border-radius: 25px;
-}
-
-.services_text{
-    list-style-type: circle;
-    padding-left: 1rem;
-    text-align: left;
-}
-
-#information{
-    width: 100px;
-    filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
-}
-
-.testimonios_a{
-    min-width: 800px;
-    background-color: #fce96b6c;
-    display: flex;
-    border-radius: 25px;
-    margin-bottom: 1rem;
-    padding: 1rem;
-}
-
-.foto-testimonio{
-    margin-right: 1rem;
-    width: 150px;
-}
-
-#testimonio_title{
-    font-family: 'Andalucia';
-    color: #353535;
-    font-size: 3rem;
-    text-align: left;
-    margin-bottom: 0;
-}
-
-.img_test_ext{
-    width: 25px;
-    margin-right: .5rem;
-    filter: invert(19%) sepia(5%) saturate(19%) hue-rotate(354deg) brightness(93%) contrast(90%);
-}
-
-.t-d{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.logo_trabajo_test{
-    width: 150px;
-    filter: invert(19%) sepia(5%) saturate(19%) hue-rotate(354deg) brightness(93%) contrast(90%);
-}
-
-.img_test_ext:hover{
-    filter: invert(22%) sepia(86%) saturate(2714%) hue-rotate(195deg) brightness(90%) contrast(104%);    
-    transition: .2s;
-}
