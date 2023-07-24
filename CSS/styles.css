@@ -330,6 +330,7 @@ footer div{
     margin: 0;
 }
 
+/* --- Formulario contactanos --- */
 .form{
     color: #0065C3;
     font-size: 1rem;
@@ -343,7 +344,7 @@ input, textarea, select{
     width: 100%;
     height: 60px;
     padding: 1rem;
-    border: #0065C3 solid 3px;
+    border: #0065C3 solid 2px;
     color:#0065C3;
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
@@ -355,7 +356,7 @@ textarea{
 }
 
 input:enabled:focus, textarea:enabled:focus {
-    border: #0065c37d solid 10px;
+    border: #0065c37d solid 8px;
 }
 
 .form_main {
@@ -379,6 +380,18 @@ input:enabled:focus, textarea:enabled:focus {
     font-weight: 400;
     text-align: center;
   }
+
+h6{
+    text-align: justify;
+    align-items: center;
+  }
+
+.form_coment{
+    text-align: center;
+    color: #0065C3;
+    align-items: center;
+    align-content: center;
+}
 
 .submit{
     width: 25vw;
@@ -408,11 +421,20 @@ input:enabled:focus, textarea:enabled:focus {
     width: 100%;
 }
 
+.row{
+    margin: 0;
+}
+
+/* --- Conocenos --- */
+
+.p_formcontact{
+    margin: 0;
+}
+
 .know_us{
     display: flex;
     margin-bottom: 5rem;
-    /*
-    justify-content: center;
+    /*justify-content: center;
     align-items: center;*/
   }
 
@@ -452,7 +474,6 @@ input:enabled:focus, textarea:enabled:focus {
     text-align: left;
     margin-bottom: 0;
     line-height: 1.8;
-    align-items: center; /* Esta propiedad no tiene efecto aquí, a menos que el elemento sea un contenedor flex */
 }
 
 .descripcion_pablo, p{
@@ -872,9 +893,9 @@ h2.services_title{
     
   }
 
-  /* --- Know us adaptado a mobile --- */
   @media screen and (max-width: 576px){
-    
+    /* --- Know us adaptado a mobile --- */
+
     .form_main {
         background-color: #ffffff;
         width: auto;
@@ -927,4 +948,9 @@ h2.services_title{
         font-size: 7vw;
       }
 
+    /* --- Titulo contactanos mobile --- */
+
+    .form_main{
+        padding-top: 1rem;
+    }
   }
