@@ -7,119 +7,142 @@
     <meta name="author" content="Lucas Ponzoni">
     <meta name="description" content="Ayudamos a las empresas a mejorar la calidad alimenticia de sus productos y servicios, mediante la implementación de estrategias y prácticas innovadoras en materia de seguridad alimentaria, para garantizar la satisfacción y fidelización de sus clientes.">
     <link rel="shortcut icon" href="../img/abr_favicon_qube.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/styles.css">
     <title>ABR | Contactanos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+
 </head>
 
 <body>
 
     <header>
+        <a href="../index.html" id="logo-link"><img class="logo" src="../img/abr_main.svg" alt="Logo"></a>
+        <button id="abrir" class="abrir-menu"><i class="bi bi-arrow-down-short"></i></button>
+        <nav class="nav" id="nav">
+            
+                <ul class="nav-list">
+                    <li><a class="nav" href="../index.html">INICIO</a></li>
+                    <li><a class="nav" href="./sobre_nosotros.html">SOBRE NOSOTROS</a></li>
+                    <li><a class="nav" href="./nuestros_servicios.html">NUESTROS SERVICIOS</a></li>
+                    <li><a class="nav" href="./testimonios.html">TESTIMONIOS</a></li>
+                    <li><a class="nav nav_c" id="active" href="#">CONTACTANOS <span id="com-id"><i class="bi bi-asterisk"></i></span></a></li>
+                </ul> 
 
-        <div>
-            <a href="../index.html"><img class="img_main" src="../img/abr_main.svg" alt="ABR"></a>
-        </div>
+            <div class="social_media" >
+                <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.instagram.com/asesoriabromatologicarosario/?igshid=MjEwN2IyYWYwYw%3D%3D" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55?trk=public_profile_samename-profile" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
 
-        <nav>
-            <a class="nav" href="../index.html">INICIO</a>
-            <a class="nav" href="./sobre_nosotros.html">SOBRE NOSOTROS</a>
-            <a class="nav" href="./nuestros_servicios.html">NUESTROS SERVICIOS</a>
-            <a class="nav" href="./testimonios.html">TESTIMONIOS</a>
-            <a class="nav nav_c" href="./contactanos.html">CONTACTANOS <span id="com-id">></span></a>
+            <button class="cerrar-menu" id="cerrar"><i class="bi bi-arrow-up"></i></button>         
         </nav>
 
-        <div class="social_media" >
-            <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank"><img class="media" src="../img/whatsapp.png" alt="Asesoria Bromatologica Rosario WhatsApp"></a>
-            <a href="#"><img class="media" src="../img/facebook.png" alt="Asesoria Bromatologica Rosario Facebook"></a>
-            <a href="https://www.instagram.com/asesoriabromatologicarosario/?igshid=MjEwN2IyYWYwYw%3D%3D" target="_blank"><img class="media" src="../img/instagram.png" alt="Asesoria Bromatologica Rosario Instagram"></a>
-            <a href="https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55?trk=public_profile_samename-profile" target="_blank"><img class="media" src="../img/linkedin.png" alt="Asesoria Bromatologica Rosario linkedin"></a>
-        </div>
     </header>
 
     <main class="form_main">
 
         <h2>Formulario de contacto</h2>
 
-        <div class="formulario">
+        <form class="form container-lg text-center form_bs" autocomplete="on" action="procesar_formulario.php" method="POST">
+            
+            <div class="row">
 
-                <form class="form" autocomplete="on" action="procesar_formulario.php" method="POST">
-
-                    <div class="separador">
-                        <label for="nombre"></label><br>
-                        <input type="text" id="nombre" name="nombre" autofocus maxlength="30" required placeholder="Nombre *"><br><br>
-    
-                        <label for="apellido"></label><br>
-                        <input type="text" id="apellido" name="apellido" maxlength="30" required placeholder="Apellido *"><br><br>
-                    </div>
-
-                    <div class="separador">
-                    <label for="email"></label><br>
-                    <input type="email" id="email" name="email" maxlength="30" required placeholder="E-mail *"><br><br>
-    
-                        <label for="telefono"></label><br>
-                        <input type="tel" id="telefono" name="telefono" minlength="8" maxlength="15" required placeholder="Telefono *"><br><br>
-                    </div>
-
-                    <div class="separador">
-                        <label for="provincia"></label><br>
-                        <select id="provincia" name="provincia" required aria-placeholder="Provincia *">
-                            <option value="Buenos Aires">Buenos Aires</option>
-                            <option value="Catamarca">Catamarca</option>
-                            <option value="Chaco">Chaco</option>
-                            <option value="Chubut">Chubut</option>
-                            <option value="Córdoba">Córdoba</option>
-                            <option value="Corrientes">Corrientes</option>
-                            <option value="Entre Ríos">Entre Ríos</option>
-                            <option value="Formosa">Formosa</option>
-                            <option value="Jujuy">Jujuy</option>
-                            <option value="La Pampa">La Pampa</option>
-                            <option value="La Rioja">La Rioja</option>
-                            <option value="Mendoza">Mendoza</option>
-                            <option value="Misiones">Misiones</option>
-                            <option value="Neuquén">Neuquén</option>
-                            <option value="Río Negro">Río Negro</option>
-                            <option value="Salta">Salta</option>
-                            <option value="San Juan">San Juan</option>
-                            <option value="San Luis">San Luis</option>
-                            <option value="Santa Cruz">Santa Cruz</option>
-                            <option value="Santa Fe" selected>Santa Fe</option>
-                            <option value="Santiago del Estero">Santiago del Estero</option>
-                            <option disabled>Tierra del Fuego -no disponible-</option>
-                            <option value="Tucumán">Tucumán</option>
-                        </select><br><br>
-    
-                         <label for="ciudad"></label><br>
-                        <input type="text" id="ciudad" name="ciudad" maxlength="30" required placeholder="Ciudad *"><br>
+                <div class="col-lg-6">
+                <label for="nombre"></label>
+                <input type="text" id="nombre" name="nombre" autofocus maxlength="30" required placeholder="Nombre *">
                 </div>
-    
-                        <label for="comentarios"></label>
-                        <textarea id="comentarios" name="comentarios" maxlength="600" rows="4" cols="30" placeholder="Contanos sobre tu proyecto"></textarea><br>
 
-                        <P form_p>* Los campos son obligatorios para enviar el formulario</P>
-    
+                <div class="col-lg-6">
+                <label for="apellido"></label>
+                <input type="text" id="apellido" name="apellido" maxlength="30" required placeholder="Apellido *">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" maxlength="30" required placeholder="E-mail *">
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="telefono"></label>
+                    <input type="tel" id="telefono" name="telefono" minlength="8" maxlength="15" required placeholder="Telefono *">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="provincia"></label>
+                    <select id="provincia" name="provincia" required aria-placeholder="Provincia *">
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="Catamarca">Catamarca</option>
+                        <option value="Chaco">Chaco</option>
+                        <option value="Chubut">Chubut</option>
+                        <option value="Córdoba">Córdoba</option>
+                        <option value="Corrientes">Corrientes</option>
+                        <option value="Entre Ríos">Entre Ríos</option>
+                        <option value="Formosa">Formosa</option>
+                        <option value="Jujuy">Jujuy</option>
+                        <option value="La Pampa">La Pampa</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="Mendoza">Mendoza</option>
+                        <option value="Misiones">Misiones</option>
+                        <option value="Neuquén">Neuquén</option>
+                        <option value="Río Negro">Río Negro</option>
+                        <option value="Salta">Salta</option>
+                        <option value="San Juan">San Juan</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Santa Fe" selected>Santa Fe</option>
+                        <option value="Santiago del Estero">Santiago del Estero</option>
+                        <option disabled>Tierra del Fuego -no disponible-</option>
+                        <option value="Tucumán">Tucumán</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="ciudad"></label>
+                    <input type="text" id="ciudad" name="ciudad" maxlength="30" required placeholder="Ciudad *">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <label for="comentarios"></label>
+                    <textarea id="comentarios" name="comentarios" maxlength="600" rows="4" cols="30" placeholder="Contanos sobre tu proyecto"></textarea>
+            </div>
+            
+            <p class="form-p" >* Los campos son obligatorios para enviar el formulario</P>
+
+            <div class="row">
+                <div class="col-lg-12">
                     <input class="submit" type="submit" value="Enviar"><br>
+            </div>
 
+        </form>
 
-                </form>
-
-                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5014236197967!2d-60.66806862462521!3d-32.93776857359681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab504fc39b97%3A0x462158759168e7ce!2sKDT%2C%20Urquiza%203164%2C%20S2002%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1688437632781!5m2!1ses!2sar" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                    </div>
-
-                
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5014236197967!2d-60.66806862462521!3d-32.93776857359681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab504fc39b97%3A0x462158759168e7ce!2sKDT%2C%20Urquiza%203164%2C%20S2002%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1688437632781!5m2!1ses!2sar" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              
     </main>
     
 
     <footer>
-        <div>
-            <p class="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
-            <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
-            <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
-            </p>
-        </div>
-        </div class="img.tac">
-        <a href="mailto:pablomanuelscalise@gmail.com"><img class="media-footer" src="../img/email.png" alt="Email"></a>
+        <div class="contenedor_footer container">
+                <p id="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
+                <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
+                <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
+                </p>
+           <a class="icon-foot" href="mailto:pablomanuelscalise@gmail.com"><i class="bi bi-envelope-fill"></i></a>
         </div>
     </footer>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
     
 </body>
 </html>

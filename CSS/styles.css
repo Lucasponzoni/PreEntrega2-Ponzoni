@@ -335,28 +335,34 @@ footer div{
     font-size: 1rem;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
-    padding-top: 1rem;
     text-align: center;
 }
 
 input, textarea, select{
-    border-radius: 8px;
-    width: 300px;
+    border-radius: 25px;
+    width: 100%;
+    height: 60px;
     padding: 1rem;
-    padding-left: 1rem;
-    margin-right: 2rem;
-    border: #0065C3 solid 1px;
+    border: #0065C3 solid 3px;
     color:#0065C3;
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     font-weight: 600;
 }
 
+textarea{
+    min-height: 200px;
+}
+
+input:enabled:focus, textarea:enabled:focus {
+    border: #0065c37d solid 10px;
+}
+
 .form_main {
     background-color: #ffffff;
     width: auto;
     max-width: 100%;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 25px;
     position: relative;
     margin-left: 25px;
     margin-bottom: 50px;
@@ -364,7 +370,7 @@ input, textarea, select{
     top: 50px;
   }
   
-  .form_main h2{
+.form_main h2{
     color: #0065C3;
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -374,53 +380,35 @@ input, textarea, select{
     text-align: center;
   }
 
-  .formulario{
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .separador{
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    margin-bottom: 2rem;
-    padding-right: 1rem;
-  }
-
-  #comentarios{
-    min-width: 550px;
-  }
-
-  .submit{
+.submit{
+    width: 25vw;
     font-size: 1rem;
     padding: 0.7rem;
-    width: 200px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     background-color: #0065C3;
     color: #FFF;
+    align-items: center;
+    justify-content: center;
   }
 
-  .submit:hover{
+.submit:hover{
     background-color: #ffffff;
     color: #0065C3;
     cursor: pointer;
     transition: .3s;
   }
 
-  #comentarios{
-    margin-bottom: 1rem;
+.form-p {
+    text-align: center;
   }
 
-  .map{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.map{
     border-radius: 25px;
-  }
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
 
-  .know_us{
+.know_us{
     display: flex;
     margin-bottom: 5rem;
     /*
@@ -428,11 +416,11 @@ input, textarea, select{
     align-items: center;*/
   }
 
-  .us{
+.us{
     flex-shrink: 1;
     } 
 
-  .pablo_face ,.pablo_face_mobile{
+.pablo_face ,.pablo_face_mobile{
     width: 300px;
     position: relative;
     left: -32px;
@@ -440,11 +428,11 @@ input, textarea, select{
     overflow: hidden;
   }
   
-  .pablo_face_mobile_div{
+.pablo_face_mobile_div{
     display: none;
   }
     
-  .fig-caption{
+.fig-caption{
     background-color: #0065C3;
     font-family: 'Belanosima', sans-serif;   
     font-weight: 600;
@@ -457,7 +445,7 @@ input, textarea, select{
     text-align: center;
   }
 
-  #Pablo_Scalise_Conocenos{
+#Pablo_Scalise_Conocenos{
     font-family: 'Andalucia';
     color: #353535;
     font-size: 3rem;
