@@ -9,6 +9,11 @@
     src: url(./andalucia.ttf);
 }
 
+@font-face {
+    font-family: 'Loucos';
+    src: url(./Loucos\ Lyne.otf);
+}
+
 @import url('https://fonts.googleapis.com/css2? family= Raleway:wght@300;400;500;600;800;900 & display=swap');
 @import url('https://fonts.googleapis.com/css2? family= Belanosima:wght@400;600;700 & display=swap');
 
@@ -108,7 +113,6 @@ nav{
     align-items: center;
     gap: 1rem;
     font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
     font-weight: 600;
     margin: 0;
 }
@@ -196,13 +200,19 @@ h1{
     font-weight: 600;
 }
 
+.line_title{
+    width: 518px;
+    height: 6px;
+    background: #FCE86B;
+    border-radius: 0 0 8px 8px;
+}
+
 /* --- Comentario principal Index --- */
 .Web_comment{
     width: 700px;
     color: #FFF;
     text-shadow: 2px 1px 20px #272727b8;
     font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
     font-weight: 400;
     padding-top: 1rem;
 }
@@ -242,7 +252,6 @@ h1{
     width: 700px;
     color: #FFF;
     font-size: 1rem;
-    font-family: 'Belanosima', sans-serif;
     background-color: #0065c3be;
     border-radius: 25px;
     padding: 1rem;
@@ -276,13 +285,6 @@ h2{
     background: #FCE86B;
     border-radius: 4px;
     margin: 10px 0 20px 0
-}
-
-.line_title{
-    width: 523px;
-    height: 6px;
-    background: #FCE86B;
-    border-radius: 0 0 8px 8px;
 }
 
 /* --- Img CardHolder --- */
