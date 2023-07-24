@@ -7,32 +7,36 @@
     <meta name="author" content="Lucas Ponzoni">
     <meta name="description" content="Ayudamos a las empresas a mejorar la calidad alimenticia de sus productos y servicios, mediante la implementación de estrategias y prácticas innovadoras en materia de seguridad alimentaria, para garantizar la satisfacción y fidelización de sus clientes.">
     <link rel="shortcut icon" href="../img/abr_favicon_qube.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/styles.css">
     <title>ABR | Nuestros Clientes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 
 <body>
 
     <header>
+        <a href="../index.html" id="logo-link"><img class="logo" src="../img/abr_main.svg" alt="Logo"></a>
+        <button id="abrir" class="abrir-menu"><i class="bi bi-arrow-down-short"></i></button>
+        <nav class="nav" id="nav">
+            
+                <ul class="nav-list">
+                    <li><a class="nav" href="../index.html">INICIO</a></li>
+                    <li><a class="nav" href="../Pages/sobre_nosotros.html">SOBRE NOSOTROS</a></li>
+                    <li><a class="nav" href="../Pages/nuestros_servicios.html">NUESTROS SERVICIOS</a></li>
+                    <li><a class="nav" id="active" href="#">TESTIMONIOS</a></li>
+                    <li><a class="nav nav_c" href="../Pages/contactanos.html">CONTACTANOS <span id="com-id"><i class="bi bi-asterisk"></i></span></a></li>
+                </ul> 
 
-        <div>
-            <a href="../index.html"><img class="img_main" src="../img/abr_main.svg" alt="ABR"></a>
-        </div>
+            <div class="social_media" >
+                <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.instagram.com/asesoriabromatologicarosario/?igshid=MjEwN2IyYWYwYw%3D%3D" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55?trk=public_profile_samename-profile" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
 
-        <nav>
-            <a class="nav" href="../index.html">INICIO</a>
-            <a class="nav" href="./sobre_nosotros.html">SOBRE NOSOTROS</a>
-            <a class="nav" href="./nuestros_servicios.html">NUESTROS SERVICIOS</a>
-            <a class="nav" href="./testimonios.html">TESTIMONIOS</a>
-            <a class="nav nav_c" href="./contactanos.html">CONTACTANOS <span id="com-id">></span></a>
+            <button class="cerrar-menu" id="cerrar"><i class="bi bi-arrow-up"></i></button>         
         </nav>
 
-        <div class="social_media" >
-            <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank"><img class="media" src="../img/whatsapp.png" alt="Asesoria Bromatologica Rosario WhatsApp"></a>
-            <a href="#"><img class="media" src="../img/facebook.png" alt="Asesoria Bromatologica Rosario Facebook"></a>
-            <a href="https://www.instagram.com/asesoriabromatologicarosario/?igshid=MjEwN2IyYWYwYw%3D%3D" target="_blank"><img class="media" src="../img/instagram.png" alt="Asesoria Bromatologica Rosario Instagram"></a>
-            <a href="https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55?trk=public_profile_samename-profile" target="_blank"><img class="media" src="../img/linkedin.png" alt="Asesoria Bromatologica Rosario linkedin"></a>
-        </div>
     </header>
     
 <main class="form_main" >
@@ -124,16 +128,17 @@
 </main>
 
 <footer>
-    <div>
-        <p class="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
-        <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
-        <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
-        </p>
-    </div>
-    </div class="img.tac">
-    <a href="mailto:pablomanuelscalise@gmail.com"><img class="media-footer" src="../img/email.png" alt="Email"></a>
+    <div class="contenedor_footer container">
+            <p id="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
+            <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
+            <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
+            </p>
+       <a class="icon-foot" href="mailto:pablomanuelscalise@gmail.com"><i class="bi bi-envelope-fill"></i></a>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="../js/main.js"></script>
 
 </body>
 </html>

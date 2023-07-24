@@ -922,9 +922,10 @@ body.menu-open {
     
   }
 
+  /* --- Adapacion para pantallas hasta 576px --- */
   @media screen and (max-width: 576px){
-    /* --- Know us adaptado a mobile --- */
 
+    /* --- Know us adaptado a mobile --- */
     .form_main {
         background-color: #ffffff;
         width: auto;
