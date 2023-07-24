@@ -7,110 +7,144 @@
     <meta name="author" content="Lucas Ponzoni">
     <meta name="description" content="Ayudamos a las empresas a mejorar la calidad alimenticia de sus productos y servicios, mediante la implementación de estrategias y prácticas innovadoras en materia de seguridad alimentaria, para garantizar la satisfacción y fidelización de sus clientes.">
     <link rel="shortcut icon" href="../img/abr_favicon_qube.png" type="image/x-icon">
-    <link rel="stylesheet" href="../CSS/styles.css">
     <title>ABR | Nuestros Servicios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 
 <body>
 
     <header>
+        <a href="../index.html" id="logo-link"><img class="logo" src="../img/abr_main.svg" alt="Logo"></a>
+        <button id="abrir" class="abrir-menu"><i class="bi bi-arrow-down-short"></i></button>
+        <nav class="nav" id="nav">
+            
+                <ul class="nav-list">
+                    <li><a class="nav" href="../index.html">INICIO</a></li>
+                    <li><a class="nav" id="active" href="../Pages/sobre_nosotros.html">SOBRE NOSOTROS</a></li>
+                    <li><a class="nav" href="#">NUESTROS SERVICIOS</a></li>
+                    <li><a class="nav" href="../Pages/testimonios.html">TESTIMONIOS</a></li>
+                    <li><a class="nav nav_c" href="../Pages/contactanos.html">CONTACTANOS <span id="com-id"><i class="bi bi-asterisk"></i></span></a></li>
+                </ul> 
 
-        <div>
-            <a href="../index.html"><img class="img_main" src="../img/abr_main.svg" alt="ABR"></a>
-        </div>
+            <div class="social_media" >
+                <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.instagram.com/asesoriabromatologicarosario/?igshid=MjEwN2IyYWYwYw%3D%3D" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55?trk=public_profile_samename-profile" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
 
-        <nav>
-            <a class="nav" href="../index.html">INICIO</a>
-            <a class="nav" href="./sobre_nosotros.html">SOBRE NOSOTROS</a>
-            <a class="nav" href="./nuestros_servicios.html">NUESTROS SERVICIOS</a>
-            <a class="nav" href="./testimonios.html">TESTIMONIOS</a>
-            <a class="nav nav_c" href="./contactanos.html">CONTACTANOS <span id="com-id">></span></a>
+            <button class="cerrar-menu" id="cerrar"><i class="bi bi-arrow-up"></i></button>         
         </nav>
 
-        <div class="social_media" >
-            <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank"><img class="media" src="../img/whatsapp.png" alt="Asesoria Bromatologica Rosario WhatsApp"></a>
-            <a href="#"><img class="media" src="../img/facebook.png" alt="Asesoria Bromatologica Rosario Facebook"></a>
-            <a href="https://www.instagram.com/asesoriabromatologicarosario/?igshid=MjEwN2IyYWYwYw%3D%3D" target="_blank"><img class="media" src="../img/instagram.png" alt="Asesoria Bromatologica Rosario Instagram"></a>
-            <a href="https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55?trk=public_profile_samename-profile" target="_blank"><img class="media" src="../img/linkedin.png" alt="Asesoria Bromatologica Rosario linkedin"></a>
-        </div>
     </header>
 
 <main class="form_main" >
 
-    <section class="services">
+    <section class="services container">
         <article class="service uno" >
             <img id="factory" src="../img/factory.png" alt="Fabrica">        
             <h2 class="services_title">Estructura edilicia<span class="services_span">¹</span></h2>
             <p class="services_text" >Contamos con un equipo altamente capacitado en asesoría bromatológica paga garantizar el cumplimiento las normativas y estándares de calidad en su establecimiento. Realizamos un análisis exhaustivo de tu estructura edilicia, identificando áreas de mejora y brindando recomendaciones para optimizar los procesos de producción y asegurar la seguridad alimentaria.</p>
+
+            <p>
+                <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_1" aria-expanded="false" aria-controls="collapseExample_1">
+                    Ver Servicios
+                    <i class="bi bi-arrow-bar-down"></i>
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample_1">
+
+                <div class="card card-body">
+                    <article class="service_description box1" >
+                        <img id="information" src="../img/information.png" alt="informacion">       
+                        <h2 class="services_title_destription" ><span class="services_span">¹ </span>Servicios Estructura edilicia:</h2>
+                        <ul class="services_text" >
+                            <li>Evaluación de la distribución de espacios y diseño de flujos de trabajo eficientes.</li>
+                            <li>Asesoramiento en la selección de materiales y equipamiento adecuado.</li>
+                            <li>Implementación de medidas de higiene y saneamiento para prevenir </li>
+                            <li>Optimización de la manipulación y almacenamiento de materias primas y productos terminados.</li>
+                            <li>Capacitación del personal en buenas prácticas de fabricación y normativas vigentes.</li>
+                        </ul>
+                    </article>
+                </div>
+              </div>
+
         </article>
 
         <article class="service dos" >        
                 <img id="money" src="../img/money.png" alt="Dinero">  
                 <h2 class="services_title">Genera ganancias y clientes fieles<span class="services_span">²</span></h2>
                 <p class="services_text">En Asesoría Bromatológica Rosario, sabemos que la rentabilidad y el crecimiento de tu negocio son fundamentales. Nuestros servicios están diseñados para ayudar a generar ganancias y atraer a más clientes, ofreciendo productos seguros, de calidad y cumpliendo con todas las regulaciones sanitarias.</p>
+
+                <p>
+                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_2">
+                        Ver Servicios
+                        <i class="bi bi-arrow-bar-down"></i>
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample_2">
+                    <div class="card card-body">
+                        <article class="service_description box2" >
+                            <img id="information" src="../img/information.png" alt="informacion">       
+                            <h2 class="services_title_destription" ><span class="services_span">² </span>Servicos Genera ganancias:</h2>
+                            <ul class="services_text" >
+                                <li>Asesoramiento en el registro nacional de establecimiento (RNE) y registro nacional de producto alimenticio (RNPA).</li>
+                                <li>Elaboración de manuales de buenas prácticas de fabricación (BPM) y sistemas de control de calidad.</li>
+                                <li>Implementación de sistemas de análisis de peligros y puntos críticos de control (HACCP).</li>
+                                <li>Capacitación y formación del personal en normativas y estándares de calidad.</li>
+                                <li>Asistencia técnica en la resolución de problemas y desafíos relacionados con la producción y la seguridad alimentaria.</li>
+                            </ul>
+                        </article>
+                    </div>
+                  </div>
         </article>
 
         <article class="service tres" >  
             <img id="laboratory" src="../img/laboratory.png" alt="Laboratorio">       
             <h2 class="services_title">Mejora la elaboración de tu producto<span class="services_span">³</span></h2>
             <p class="services_text">Entendemos la importancia de ofrecer productos alimentarios de alta calidad que cumplan con las expectativas de sus clientes. Nuestro equipo de expertos te brinda un enfoque integral para mejorar la elaboración de tus productos, desde el análisis de ingredientes y procesos hasta la optimización de la cadena de suministro.</p>
+
+            <p>
+                <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_3" aria-expanded="false" aria-controls="collapseExample_3">
+                    Ver Servicios
+                    <i class="bi bi-arrow-bar-down"></i>
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample_3">
+                <div class="card card-body">
+                    <article class="service_description box3" >
+                        <img id="information" src="../img/information.png" alt="informacion">       
+                        <h2 class="services_title_destription" ><span class="services_span">³ </span>Servicios elaboración de producto</h2>
+                        <ul class="services_text" >
+                            <li>Análisis y selección de ingredientes de calidad.</li>
+                            <li>Evaluación y mejora de las fórmulas de sus productos.</li>
+                            <li>Desarrollo de nuevos productos y formulaciones adaptadas a las demandas del mercado.</li>
+                            <li>Asesoramiento en la implementación de tecnologías y métodos de producción más eficientes.</li>
+                            <li>Análisis sensorial y evaluación de la aceptabilidad del producto.</li>
+                        </ul>
+                    </article>
+                </div>
+              </div>
          </article>
-    </section>
-
-    <section class="services_description">
-        <article class="service_description" >
-            <img id="information" src="../img/information.png" alt="informacion">       
-            <h2 class="services_title_destription" ><span class="services_span">¹ </span>Servicios Estructura edilicia:</h2>
-            <ul class="services_text" >
-                <li>Evaluación de la distribución de espacios y diseño de flujos de trabajo eficientes.</li>
-                <li>Asesoramiento en la selección de materiales y equipamiento adecuado.</li>
-                <li>Implementación de medidas de higiene y saneamiento para prevenir </li>
-                <li>Optimización de la manipulación y almacenamiento de materias primas y productos terminados.</li>
-                <li>Capacitación del personal en buenas prácticas de fabricación y normativas vigentes.</li>
-            </ul>
-        </article>
-
-        <article class="service_description" >
-            <img id="information" src="../img/information.png" alt="informacion">       
-            <h2 class="services_title_destription" ><span class="services_span">² </span>Servicos Genera ganancias:</h2>
-            <ul class="services_text" >
-                <li>Asesoramiento en el registro nacional de establecimiento (RNE) y registro nacional de producto alimenticio (RNPA).</li>
-                <li>Elaboración de manuales de buenas prácticas de fabricación (BPM) y sistemas de control de calidad.</li>
-                <li>Implementación de sistemas de análisis de peligros y puntos críticos de control (HACCP).</li>
-                <li>Capacitación y formación del personal en normativas y estándares de calidad.</li>
-                <li>Asistencia técnica en la resolución de problemas y desafíos relacionados con la producción y la seguridad alimentaria.</li>
-            </ul>
-        </article>
-
-        <article class="service_description" >
-            <img id="information" src="../img/information.png" alt="informacion">       
-            <h2 class="services_title_destription" ><span class="services_span">³ </span>Servicios elaboración de producto</h2>
-            <ul class="services_text" >
-                <li>Análisis y selección de ingredientes de calidad.</li>
-                <li>Evaluación y mejora de las fórmulas de sus productos.</li>
-                <li>Desarrollo de nuevos productos y formulaciones adaptadas a las demandas del mercado.</li>
-                <li>Asesoramiento en la implementación de tecnologías y métodos de producción más eficientes.</li>
-                <li>Análisis sensorial y evaluación de la aceptabilidad del producto.</li>
-            </ul>
-        </article>
-
     </section>
 
     <div class="aclaracion"><p>*Todos los servicios son combinables y adaptados a las necesidadades del cliente</p></div>
 
     </main>
 
-<footer>
-    <div>
-        <p class="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
-        <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
-        <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
-        </p>
-    </div>
-    </div class="img.tac">
-    <a href="mailto:pablomanuelscalise@gmail.com"><img class="media-footer" src="../img/email.png" alt="Email"></a>
-    </div>
-</footer>
+    <footer>
+        <div class="contenedor_footer container">
+                <p id="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
+                <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
+                <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
+                </p>
+           <a class="icon-foot" href="mailto:pablomanuelscalise@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="../js/main.js"></script>
 
 </body>
 </html>
