@@ -306,7 +306,7 @@ footer{
     padding: 1rem;
     display: flex;
     position: absolute;
-    bottom: -20vh;
+    bottom: -100px;
     align-items: center;
     width: 100%;
 }
@@ -369,6 +369,7 @@ input:enabled:focus, textarea:enabled:focus {
     margin-bottom: 50px;
     margin-right: 25px;
     top: 50px;
+    bottom: -100px;
   }
   
 .form_main h2{
@@ -421,7 +422,7 @@ h6{
 .map{
     border-radius: 25px;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
     width: 100%;
 }
 
