@@ -22,8 +22,8 @@
             
                 <ul class="nav-list">
                     <li><a class="nav" href="../index.html">INICIO</a></li>
-                    <li><a class="nav" id="active" href="../Pages/sobre_nosotros.html">SOBRE NOSOTROS</a></li>
-                    <li><a class="nav" href="#">NUESTROS SERVICIOS</a></li>
+                    <li><a class="nav" href="../Pages/sobre_nosotros.html">SOBRE NOSOTROS</a></li>
+                    <li><a class="nav" id="active" href="#">NUESTROS SERVICIOS</a></li>
                     <li><a class="nav" href="../Pages/testimonios.html">TESTIMONIOS</a></li>
                     <li><a class="nav nav_c" href="../Pages/contactanos.html">CONTACTANOS <span id="com-id"><i class="bi bi-asterisk"></i></span></a></li>
                 </ul> 
@@ -39,16 +39,21 @@
 
     </header>
 
-<main class="form_main" >
+<main class="form_main container" >
 
-    <section class="services container">
+    <section class="services">
+
         <article class="service uno" >
+
+            <!-- Articulo de servicio 1 -->
+
             <img id="factory" src="../img/factory.png" alt="Fabrica">        
             <h2 class="services_title">Estructura edilicia<span class="services_span">¹</span></h2>
             <p class="services_text" >Contamos con un equipo altamente capacitado en asesoría bromatológica paga garantizar el cumplimiento las normativas y estándares de calidad en su establecimiento. Realizamos un análisis exhaustivo de tu estructura edilicia, identificando áreas de mejora y brindando recomendaciones para optimizar los procesos de producción y asegurar la seguridad alimentaria.</p>
 
+            <!-- collapse mobile -->
             <p>
-                <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_1" aria-expanded="false" aria-controls="collapseExample_1">
+                <button class="btn col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_1" aria-expanded="false" aria-controls="collapseExample_1">
                     Ver Servicios
                     <i class="bi bi-arrow-bar-down"></i>
                 </button>
@@ -66,23 +71,29 @@
                             <li>Optimización de la manipulación y almacenamiento de materias primas y productos terminados.</li>
                             <li>Capacitación del personal en buenas prácticas de fabricación y normativas vigentes.</li>
                         </ul>
+
                     </article>
                 </div>
               </div>
 
         </article>
 
-        <article class="service dos" >        
-                <img id="money" src="../img/money.png" alt="Dinero">  
-                <h2 class="services_title">Genera ganancias y clientes fieles<span class="services_span">²</span></h2>
-                <p class="services_text">En Asesoría Bromatológica Rosario, sabemos que la rentabilidad y el crecimiento de tu negocio son fundamentales. Nuestros servicios están diseñados para ayudar a generar ganancias y atraer a más clientes, ofreciendo productos seguros, de calidad y cumpliendo con todas las regulaciones sanitarias.</p>
+        <article class="service dos" >
+            
+            <!-- Articulo de servicio 2 -->
 
-                <p>
-                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_2">
+            <img id="money" src="../img/money.png" alt="Dinero">  
+            <h2 class="services_title">Genera ganancias y clientes fieles<span class="services_span">²</span></h2>
+            <p class="services_text">En Asesoría Bromatológica Rosario, sabemos que la rentabilidad y el crecimiento de tu negocio son fundamentales. Nuestros servicios están diseñados para ayudar a generar ganancias y atraer a más clientes, ofreciendo productos seguros, de calidad y cumpliendo con todas las regulaciones sanitarias.</p>
+
+            <!-- collapse mobile -->
+
+            <p>
+                <button class="btn col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_2">
                         Ver Servicios
                         <i class="bi bi-arrow-bar-down"></i>
-                    </button>
-                </p>
+                </button>
+            </p>
                 <div class="collapse" id="collapseExample_2">
                     <div class="card card-body">
                         <article class="service_description box2" >
@@ -100,13 +111,18 @@
                   </div>
         </article>
 
-        <article class="service tres" >  
+        <article class="service tres" >
+            
+            <!-- Articulo de servicio 3 -->
+
             <img id="laboratory" src="../img/laboratory.png" alt="Laboratorio">       
             <h2 class="services_title">Mejora la elaboración de tu producto<span class="services_span">³</span></h2>
             <p class="services_text">Entendemos la importancia de ofrecer productos alimentarios de alta calidad que cumplan con las expectativas de sus clientes. Nuestro equipo de expertos te brinda un enfoque integral para mejorar la elaboración de tus productos, desde el análisis de ingredientes y procesos hasta la optimización de la cadena de suministro.</p>
 
+            <!-- collapse mobile -->
+
             <p>
-                <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_3" aria-expanded="false" aria-controls="collapseExample_3">
+                <button class="btn col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample_3" aria-expanded="false" aria-controls="collapseExample_3">
                     Ver Servicios
                     <i class="bi bi-arrow-bar-down"></i>
                 </button>
@@ -127,6 +143,46 @@
                 </div>
               </div>
          </article>
+    </section>
+
+    <!-- Servicios  Desktop -->
+    <section class="services_description">
+        <article class="service_description" >
+            <img id="information" src="../img/information.png" alt="informacion">       
+            <h2 class="services_title_destription" ><span class="services_span">¹ </span>Servicios Estructura edilicia:</h2>
+            <ul class="services_text" >
+                <li>Evaluación de la distribución de espacios y diseño de flujos de trabajo eficientes.</li>
+                <li>Asesoramiento en la selección de materiales y equipamiento adecuado.</li>
+                <li>Implementación de medidas de higiene y saneamiento para prevenir </li>
+                <li>Optimización de la manipulación y almacenamiento de materias primas y productos terminados.</li>
+                <li>Capacitación del personal en buenas prácticas de fabricación y normativas vigentes.</li>
+            </ul>
+        </article>
+
+        <article class="service_description" >
+            <img id="information" src="../img/information.png" alt="informacion">       
+            <h2 class="services_title_destription" ><span class="services_span">² </span>Servicos Genera ganancias:</h2>
+            <ul class="services_text" >
+                <li>Asesoramiento en el registro nacional de establecimiento (RNE) y registro nacional de producto alimenticio (RNPA).</li>
+                <li>Elaboración de manuales de buenas prácticas de fabricación (BPM) y sistemas de control de calidad.</li>
+                <li>Implementación de sistemas de análisis de peligros y puntos críticos de control (HACCP).</li>
+                <li>Capacitación y formación del personal en normativas y estándares de calidad.</li>
+                <li>Asistencia técnica en la resolución de problemas y desafíos relacionados con la producción y la seguridad alimentaria.</li>
+            </ul>
+        </article>
+
+        <article class="service_description" >
+            <img id="information" src="../img/information.png" alt="informacion">       
+            <h2 class="services_title_destription" ><span class="services_span">³ </span>Servicios elaboración de producto</h2>
+            <ul class="services_text" >
+                <li>Análisis y selección de ingredientes de calidad.</li>
+                <li>Evaluación y mejora de las fórmulas de sus productos.</li>
+                <li>Desarrollo de nuevos productos y formulaciones adaptadas a las demandas del mercado.</li>
+                <li>Asesoramiento en la implementación de tecnologías y métodos de producción más eficientes.</li>
+                <li>Análisis sensorial y evaluación de la aceptabilidad del producto.</li>
+            </ul>
+        </article>
+
     </section>
 
     <div class="aclaracion"><p>*Todos los servicios son combinables y adaptados a las necesidadades del cliente</p></div>
