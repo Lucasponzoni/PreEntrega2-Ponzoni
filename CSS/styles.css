@@ -618,6 +618,7 @@ h2.services_title{
 /* --- Adapacion para pantallas hasta 1050px --- */
 @media screen and (max-width: 1050px) {
 
+    /* --- Adapacion de navbar --- */
     .img_main{
         margin: 0;
     }
@@ -726,8 +727,10 @@ h2.services_title{
    
 }
 
+/* --- Adapacion para pantallas hasta 800px --- */
 @media screen and (max-width: 800px) {
     
+    /* --- Index adaptado a tablet y mobile --- */
     .button-menu{
         display: block;
     }
@@ -797,11 +800,9 @@ h2.services_title{
     .cardholder__card{
         width: auto;
     }
-    
-  }
 
-  @media screen and (max-width: 800px){
-    .know_us{
+    /* --- Know us adaptado a tablet --- */
+     .know_us{
         display: flex;
         flex-direction: column;
         margin-bottom: 5rem;
@@ -885,5 +886,53 @@ h2.services_title{
         position: absolute;
         left: 25vw;
       }
-      
+    
+  }
+
+  @media screen and (max-width: 576px){
+    
+    .form_main {
+        background-color: #ffffff;
+        width: auto;
+        max-width: 100%;
+        border-radius: 0;
+        position: relative;
+        margin-left: 0px;
+        margin-bottom: 50px;
+        margin-right: 0px;
+        top: 50px;
+      }
+
+      main{
+        padding: 0;
+      }
+
+      .us p{
+        padding: 1rem;
+        margin: 0;
+      }
+   
+      p.descripcion_pablo{
+        padding-top: 0;
+        margin-top: 0;
+      }
+
+      ul.university{
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .fig-caption{
+        margin-left: 1rem;
+        margin-right: -2rem;
+        top: -48px;
+        width: auto;
+      }
+
+      .pablo_face_mobile_div {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+    }
+
   }
