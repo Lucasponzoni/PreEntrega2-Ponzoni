@@ -9,11 +9,6 @@
     src: url(./andalucia.ttf);
 }
 
-@font-face {
-    font-family: 'Loucos';
-    src: url(./Loucos\ Lyne.otf);
-}
-
 @import url('https://fonts.googleapis.com/css2? family= Raleway:wght@300;400;500;600;800;900 & display=swap');
 @import url('https://fonts.googleapis.com/css2? family= Belanosima:wght@400;600;700 & display=swap');
 
@@ -889,6 +884,7 @@ h2.services_title{
     
   }
 
+  /* --- Know us adaptado a mobile --- */
   @media screen and (max-width: 576px){
     
     .form_main {
