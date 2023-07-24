@@ -1,3 +1,5 @@
+/* --- Abrir y cerrar menu hamburguesa --- */
+
 const nav = document.querySelector("#nav");
 const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
@@ -22,4 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     abrirMenuBtn.addEventListener("click", startAnimation);
     abrirMenuBtn.querySelector("i").addEventListener("animationend", startAnimation);
   });
+
+  /* --- Evita Scroll al abrir NavBar en mobile --- */
   
+  abrir.addEventListener("click", () => {
+    nav.classList.add("visible");
+    document.body.classList.add("menu-open");
+})
+
+cerrar.addEventListener("click", () => {
+    nav.classList.remove("visible");
+    document.body.classList.remove("menu-open");
+})

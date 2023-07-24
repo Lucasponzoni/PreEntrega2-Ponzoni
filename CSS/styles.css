@@ -733,6 +733,10 @@ h2.services_title{
   #active{
     text-decoration: underline 3px #fce96b;
 }
+
+body.menu-open {
+    overflow: hidden;
+}
    
 }
 
