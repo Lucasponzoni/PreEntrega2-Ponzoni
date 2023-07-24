@@ -314,10 +314,8 @@ footer{
     width: 100%;
 }
 
-.media-footer{
-    width: 2rem;
-    margin-left: .5rem;
-    filter: invert(100%);
+.icon-foot{
+    margin-left: 1rem;
 }
 
 .media-footer:hover{
@@ -479,7 +477,7 @@ input, textarea, select{
 }
 
 .university{
-    list-style-type: circle;
+    list-style-type: square;
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     font-weight: 400;
@@ -911,22 +909,21 @@ h2.services_title{
         padding: 1rem;
         margin: 0;
       }
-   
+
       p.descripcion_pablo{
         padding-top: 0;
         margin-top: 0;
+
       }
 
       ul.university{
         margin-bottom: 0;
         padding-bottom: 0;
+        list-style-type: square;
       }
 
       .fig-caption{
-        margin-left: 1rem;
         margin-right: -2rem;
-        top: -48px;
-        width: auto;
       }
 
       .pablo_face_mobile_div {
@@ -934,5 +931,14 @@ h2.services_title{
         margin-right: 0;
         border-radius: 0;
     }
+
+    footer{
+        position: relative;
+        margin-top: -150px;
+    }
+
+    #Pablo_Scalise_Conocenos_mobile {
+        font-size: 7vw;
+      }
 
   }
