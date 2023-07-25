@@ -1057,5 +1057,13 @@ body.menu-open {
         
     }
 
+    .university-test{
+        max-width: 70%;
+    }
+
+    #testimonio_title_h5{
+        max-width: 60%;
+    }
+
 }
   
