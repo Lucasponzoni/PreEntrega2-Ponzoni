@@ -946,6 +946,13 @@ body.menu-open {
         position: absolute;
         left: 25vw;
       }
+
+      .img-fluid{
+        width: 130px;
+        margin-left: 60vw;
+        position: absolute;
+        
+    }
     
   }
 
@@ -1040,6 +1047,14 @@ body.menu-open {
 
     .col-12{
         margin-top: 1rem;
+    }
+
+    .img-fluid{
+        width: 100px;
+        margin-left: 70vw;
+        margin-top: 20px;
+        position: absolute;
+        
     }
 
 }
