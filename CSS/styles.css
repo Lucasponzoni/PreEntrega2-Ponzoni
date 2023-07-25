@@ -9,14 +9,16 @@
     src: url(./andalucia.ttf);
 }
 
-@import url('https://fonts.googleapis.com/css2? family= Raleway:wght@300;400;500;600;800;900 & display=swap');
-@import url('https://fonts.googleapis.com/css2? family= Belanosima:wght@400;600;700 & display=swap');
+@font-face {
+    font-family: 'sf_pro';
+    src: url(./sf_pro_light.OTF);
+}
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Belanosima', sans-serif;
+    font-family: 'sf_pro';
 }
 
 /* --- Seleccion de texto --- */
@@ -301,7 +303,6 @@ footer{
     text-align: left;
     background-color: #0065C3;
     color: #FFF;
-    font-family: 'Raleway', sans-serif;
     font-size: .8rem;
     padding: 1rem;
     display: flex;
@@ -334,7 +335,6 @@ footer div{
 .form{
     color: #0065C3;
     font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
     font-weight: 400;
     text-align: center;
 }
@@ -346,7 +346,6 @@ input, textarea, select{
     padding: 1rem;
     border: #0065C3 solid 2px;
     color:#0065C3;
-    font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     font-weight: 600;
 }
@@ -377,7 +376,6 @@ input:enabled:focus, textarea:enabled:focus {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     margin-top: 1rem;
-    font-family: 'Raleway', sans-serif;
     font-weight: 400;
     text-align: center;
   }
@@ -432,6 +430,11 @@ h6{
 
 /* --- Conocenos --- */
 
+.know-main{
+    justify-content: center;
+    display: flex;
+}
+
 .p_formcontact{
     margin: 0;
 }
@@ -439,8 +442,6 @@ h6{
 .know_us{
     display: flex;
     margin-bottom: 5rem;
-    /*justify-content: center;
-    align-items: center;*/
   }
 
 .us{
@@ -489,7 +490,6 @@ h6{
 
 .university{
     list-style-type: square;
-    font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #0065C3;
@@ -501,7 +501,6 @@ h6{
 
 .university-test{
     list-style-type: none;
-    font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #0065C3;
@@ -512,7 +511,6 @@ h6{
 }
 
 .us p, .text_testimonio{
-    font-family: 'Raleway', sans-serif;
     color: #353535;
     line-height : 25px;
 }
@@ -521,13 +519,14 @@ h6{
     font-weight: 600;
 }
 
+
 .background_img{
-    background-color: #fce96b;
-    width: 300px;
-    height: 410px;
-    border-radius: 25px 0 0 0;
+    background-color: #fce96b00;
+    width: 30%;
+    height: 417px;
+    border-radius: 25px 25px 0 0;
     top: 0;
-    left: 0;
+    left: 0px;
     position: absolute;
 }
 
@@ -543,7 +542,6 @@ h6{
 }
 
 .service{
-    font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     color: #ffffff;
     line-height : 25px;
@@ -564,7 +562,6 @@ h2.services_title{
 
 .services_span, .aclaracion{
     color: #FF9900;
-    font-family: 'Raleway', sans-serif;
     text-align: center;
     margin-bottom: 100px;
 }
@@ -578,9 +575,9 @@ h2.services_title{
 }
 
 .service_description{
-    font-family: 'Raleway', sans-serif;
     font-size: 1rem;
-    color: #000000;
+    font-weight: 100;
+    color: #4e4e4e;
     line-height : 25px;
     border: #FF9900 solid 2px;
     padding: 1rem;
@@ -589,6 +586,12 @@ h2.services_title{
     flex: 1;
     min-width: 300px;
     border-radius: 25px;
+}
+
+.services_text{
+    margin: 0;
+    padding: 0;
+    text-align: justify;
 }
 
 .services_text{
@@ -634,9 +637,31 @@ h2.services_title{
     margin-bottom: 0;
 }
 
+.card{
+    border-radius: 25px;
+    border: none;
+}
+
+.social_test{
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.section2{
+    margin-bottom: 100px;
+    justify-content: center;
+    display: flex;
+}
+
+.section1{
+    justify-content: center;
+    display: flex;
+}
+
 h5{
-    padding: 1rem 1rem 0rem 0;
-    font-family: 'Andalucia';
+    padding: 0;
+    font-family: 'sf_pro';
     color: #353535;
     font-size: 2rem;
     text-align: left;
@@ -646,28 +671,6 @@ h5{
 .bi-star-fill{
     color: #ffdd00;
     font-size: large;
-}
-
-.img_test_ext{
-    width: 25px;
-    margin-right: .5rem;
-    filter: invert(19%) sepia(5%) saturate(19%) hue-rotate(354deg) brightness(93%) contrast(90%);
-}
-
-.t-d{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.logo_trabajo_test{
-    width: 150px;
-    filter: invert(19%) sepia(5%) saturate(19%) hue-rotate(354deg) brightness(93%) contrast(90%);
-}
-
-.img_test_ext:hover{
-    filter: invert(22%) sepia(86%) saturate(2714%) hue-rotate(195deg) brightness(90%) contrast(104%);    
-    transition: .2s;
 }
 
 /* --- Adapacion para pantallas hasta 1050px --- */
@@ -827,7 +830,6 @@ body.menu-open {
     
     h1{
         margin-top: 2rem;
-        font-family: 'spirit';
         background-color: #0065c353;
         border-radius: 8px 8px 0 0;
         width: 100%;
@@ -846,7 +848,6 @@ body.menu-open {
         color: #FFF;
         text-shadow: 2px 1px 20px #272727b8;
         font-size: 1rem;
-        font-family: 'Raleway', sans-serif;
         font-weight: 400;
         padding-top: 1rem;
     }
@@ -1020,7 +1021,6 @@ body.menu-open {
     }
 
     .service_description{
-        font-family: 'Raleway', sans-serif;
         font-size: 1rem;
         color: #000000;
         line-height : 25px;
@@ -1036,6 +1036,10 @@ body.menu-open {
     .card-body{
         border-radius: 25px;
         border: none;
+    }
+
+    .col-12{
+        margin-top: 1rem;
     }
 
 }
