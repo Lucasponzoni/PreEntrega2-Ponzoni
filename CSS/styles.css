@@ -499,6 +499,18 @@ h6{
     z-index: -1;
 }
 
+.university-test{
+    list-style-type: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #0065C3;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 0;
+    padding-left: 0;
+}
+
 .us p, .text_testimonio{
     font-family: 'Raleway', sans-serif;
     color: #353535;
@@ -620,6 +632,20 @@ h2.services_title{
     font-size: 3rem;
     text-align: left;
     margin-bottom: 0;
+}
+
+h5{
+    padding: 1rem 1rem 0rem 0;
+    font-family: 'Andalucia';
+    color: #353535;
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.bi-star-fill{
+    color: #ffdd00;
+    font-size: large;
 }
 
 .img_test_ext{
