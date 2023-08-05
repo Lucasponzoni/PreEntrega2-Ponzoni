@@ -332,6 +332,123 @@ main {
   }
 }
 
+/* --- Testimonios --- */
+
+.section2 {
+  margin-bottom: 100px;
+}
+
+.section1, .section2 {
+  justify-content: center;
+  display: flex;
+
+  h5 {
+    font-family: 'Andalucia';
+    padding: 1rem;
+    color: #353535;
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .university-test {
+    list-style-type: none;
+    padding: 0;
+    color: $maincolor;
+    font-size: 1rem;
+  }
+
+  p {
+    text-align: justify;
+    margin-bottom: 1rem;
+    max-width: 800px;
+
+    .span_test {
+      font-family: $tertiaryfont;
+    }
+  }
+
+  .bi-star-fill {
+    color: $secondarycolor;
+    font-size: large;
+  }
+
+  .social_test {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+
+    i {
+      color: #353535;
+
+      &:hover {
+        color: $maincolor;
+      }
+    }
+  }
+}
+
+/* --- Formulario contactanos --- */
+
+.formulario {
+  h2 {
+    text-align: center;
+  }
+
+  h6 {
+    width: 100%;
+    text-align: justify;
+  }
+
+  .map {
+    border-radius: 25px;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .form {
+    width: 100%;
+
+    input, textarea, select {
+      border-radius: 25px;
+      width: 100%;
+      height: 60px;
+      padding: 1rem;
+      border: #0065C3 solid 2px;
+      color: #0065C3;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    input:enabled:focus, textarea:enabled:focus {
+      border: #0065c37d solid 8px;
+    }
+
+    textarea {
+      min-height: 200px;
+    }
+  }
+
+  #submit {
+    width: 50%;
+    font-size: 1rem;
+    padding: 0.7rem;
+    background-color: $maincolor;
+    color: #fff;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 100px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #0065C3;
+      cursor: pointer;
+      transition: .3s;
+    }
+  }
+}
+
 
 @mixin text-focus-keyframes {
     @-webkit-keyframes text-focus-in {
