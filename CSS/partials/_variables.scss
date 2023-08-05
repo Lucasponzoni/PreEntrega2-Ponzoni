@@ -1,0 +1,20 @@
+$font-faces: (
+  'spirit': './NatureSpirit.otf',
+  'Andalucia': './andalucia.ttf',
+  'sf_pro': './sf_pro_light.OTF',
+);
+
+@each $font-name, $font-src in $font-faces {
+  @font-face {
+    font-family: #{$font-name};
+    src: url(#{$font-src});
+  }
+}
+
+$mainfont: 'sf_pro';
+$titlefont: 'spirit';
+$secondaryfont: 'Andalucia';
+
+$maincolor: #0065C3;
+$secondarycolor: #fce96b;
+$tertiarycolor: #D8E9CB;

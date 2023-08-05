@@ -1,0 +1,1 @@
+Creé una variable llamada $font-faces. Luego, utilicé un bucle @each para iterar a través de esta y generar las reglas @font-face para cada fuente.

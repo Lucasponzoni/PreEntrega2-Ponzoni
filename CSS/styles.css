@@ -77,12 +77,6 @@ nav{
     align-items: center;
 }
 
-.media{
-    width: 2rem;
-    margin-left: 0.5rem;
-    filter: invert(100%);
-}
-
 .social_media i, footer i{
     padding-inline: 0.1rem;
     color: #ffffff;

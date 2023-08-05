@@ -1,0 +1,111 @@
+header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2.2rem;
+    background-color: $maincolor;
+    color: #FFF;
+    margin-bottom: 3rem;
+    box-shadow:0px 15px 20px 15px $maincolor;
+
+    .abrir-menu, .cerrar-menu {
+        display: none;
+    }
+
+    .logo {
+        margin-left: 2rem;
+        max-width: 4rem;
+    }
+
+    nav{
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+
+        #active{
+            text-decoration: underline 3px $secondarycolor;
+        }
+
+        .social_media{
+            margin-left: 2rem;
+            margin-right: 1rem;
+
+            i{
+                padding-inline: 0.1rem;
+                color: #ffffff;
+                font-size: 2rem;
+
+                &:hover{
+                    color: $secondarycolor;
+                    transition: .2s;
+                }
+            }
+        }
+
+        .nav-list {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+
+            a {
+                text-decoration: none;
+                color: #ffffff;
+
+                &:hover{
+                    color: $secondarycolor;
+                    transition: .2s;
+                }
+            }
+
+        }
+        
+        .nav_c{
+            border: #FFF 2px solid;
+            border-radius: 25px;
+            padding: .2rem;
+            padding-inline: 0.5rem;
+            gap: 0.2rem;
+
+            &:hover{
+                color: $secondarycolor;
+                transition: .2s;
+            } 
+
+            .bi-asterisk {
+                display: inline-block;
+                animation: spin 10s linear infinite, colorBlink 2s linear infinite;
+                transform-origin: center;
+              }
+            
+        }
+
+    }
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes colorBlink {
+    0% {
+      color: $secondarycolor;
+    }
+    50% {
+      color: #ffffff; 
+    }
+    100% {
+      color: $secondarycolor;
+    }
+  }
