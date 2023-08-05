@@ -120,6 +120,219 @@ main {
   }
 }
 
+/* --- Conocenos --- */
+
+.know-main {
+  justify-content: center;
+  display: flex;
+
+  .know_us {
+    display: flex;
+    margin-bottom: 5rem;
+
+    .us {
+      flex-shrink: 1;
+
+      .pablo_face,
+      .pablo_face_mobile {
+        width: 300px;
+        position: relative;
+        left: -32px;
+        top: -95px;
+        overflow: hidden;
+      }
+
+      .pablo_face_mobile_div {
+        display: none;
+      }
+
+      .fig-caption {
+        background-color: $maincolor;
+        font-family: $tertiaryfont;
+        font-weight: 600;
+        color: #FFF;
+        position: relative;
+        left: -32px;
+        top: -115px;
+        width: 300px;
+        padding: 0.5rem;
+        text-align: center;
+      }
+
+      h2 {
+        font-family: $secondaryfont;
+        color: #353535;
+        font-size: 3rem;
+        text-align: left;
+        margin-bottom: 0;
+        line-height: 1.8;
+      }
+
+      .descripcion_pablo,
+      p {
+        text-align: justify;
+        margin-bottom: 1rem;
+        max-width: 800px;
+      }
+
+      .university {
+        list-style-type: square;
+        font-size: 1rem;
+        font-weight: 400;
+        color: $maincolor;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        text-align: left;
+        z-index: -1;
+      }
+
+      .university-test {
+        list-style-type: none;
+        font-size: 1rem;
+        font-weight: 400;
+        color: $maincolor;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      .us p {
+        color: #353535;
+        line-height: 25px;
+      }
+
+      .span_us {
+        font-weight: 600;
+      }
+
+      .background_img {
+        background-color: #fce96b00;
+        width: 30%;
+        height: 417px;
+        border-radius: 25px 25px 0 0;
+        top: 0;
+        left: 0px;
+        position: absolute;
+      }
+    }
+  }
+}
+
+.form_main {
+  background-color: #ffffff;
+  width: auto;
+  max-width: 100%;
+  border-radius: 25px;
+  position: relative;
+  margin-left: 25px;
+  margin-bottom: 50px;
+  margin-right: 25px;
+  top: 50px;
+  bottom: -100px;
+}
+
+/* --- Servicios --- */
+
+.form_main {
+  .btn {
+    display: none;
+    background-color: $secondarycolor;
+
+    &:hover {
+      background-color: $quaternarycolor;
+      color: #ffffff;
+    }
+  }
+
+  .aclaracion {
+    color: $quaternarycolor;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .services,
+  .services_description {
+    display: flex;
+    flex-wrap: wrap;
+
+    .services_text {
+      font-family: $quaternaryfont;
+      margin: 0;
+      padding: 0;
+      text-align: justify;
+      list-style-type: circle;
+      padding-left: 1rem;
+      text-align: left;
+
+      li {
+        font-family: $quaternaryfont;
+      }
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .service_description {
+      font-size: 1rem;
+      color: #4e4e4e;
+      line-height: 25px;
+      border: $quaternarycolor solid 2px;
+      padding: 1rem;
+      margin: 1rem;
+      text-align: center;
+      flex: 1;
+      min-width: 300px;
+      border-radius: 25px;
+
+      #information {
+        width: 100px;
+        filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
+      }
+
+      .services_span {
+        color: $quaternarycolor;
+        text-align: center;
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  .service {
+    font-size: 1rem;
+    color: #ffffff;
+    line-height: 25px;
+    background-color: $maincolor;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    flex: 1;
+    min-width: 300px;
+    border-radius: 25px;
+
+    #factory,
+    #money,
+    #laboratory {
+      width: 125px;
+    }
+
+    h2 {
+      color: #FFF;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    .services_span {
+      color: $quaternarycolor;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+  }
+}
+
+
 @mixin text-focus-keyframes {
     @-webkit-keyframes text-focus-in {
       0% {

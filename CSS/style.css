@@ -14,6 +14,10 @@
   font-family: sf_pro_bold;
   src: url(./sf_pro_bold.OTF);
 }
+@font-face {
+  font-family: sf_pro_light;
+  src: url(./sf_pro_ultra_light.OTF);
+}
 * {
   padding: 0;
   margin: 0;
@@ -258,6 +262,195 @@ main .cardholder__card .line {
 main .cardholder__card .row_span {
   font-weight: 900;
   text-decoration-line: underline;
+}
+
+/* --- Conocenos --- */
+.know-main {
+  justify-content: center;
+  display: flex;
+}
+.know-main .know_us {
+  display: flex;
+  margin-bottom: 5rem;
+}
+.know-main .know_us .us {
+  flex-shrink: 1;
+}
+.know-main .know_us .us .pablo_face,
+.know-main .know_us .us .pablo_face_mobile {
+  width: 300px;
+  position: relative;
+  left: -32px;
+  top: -95px;
+  overflow: hidden;
+}
+.know-main .know_us .us .pablo_face_mobile_div {
+  display: none;
+}
+.know-main .know_us .us .fig-caption {
+  background-color: #0065C3;
+  font-family: "sf_pro_bold";
+  font-weight: 600;
+  color: #FFF;
+  position: relative;
+  left: -32px;
+  top: -115px;
+  width: 300px;
+  padding: 0.5rem;
+  text-align: center;
+}
+.know-main .know_us .us h2 {
+  font-family: "Andalucia";
+  color: #353535;
+  font-size: 3rem;
+  text-align: left;
+  margin-bottom: 0;
+  line-height: 1.8;
+}
+.know-main .know_us .us .descripcion_pablo,
+.know-main .know_us .us p {
+  text-align: justify;
+  margin-bottom: 1rem;
+  max-width: 800px;
+}
+.know-main .know_us .us .university {
+  list-style-type: square;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #0065C3;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: left;
+  z-index: -1;
+}
+.know-main .know_us .us .university-test {
+  list-style-type: none;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #0065C3;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 0;
+  padding-left: 0;
+}
+.know-main .know_us .us .us p {
+  color: #353535;
+  line-height: 25px;
+}
+.know-main .know_us .us .span_us {
+  font-weight: 600;
+}
+.know-main .know_us .us .background_img {
+  background-color: rgba(252, 233, 107, 0);
+  width: 30%;
+  height: 417px;
+  border-radius: 25px 25px 0 0;
+  top: 0;
+  left: 0px;
+  position: absolute;
+}
+
+.form_main {
+  background-color: #ffffff;
+  width: auto;
+  max-width: 100%;
+  border-radius: 25px;
+  position: relative;
+  margin-left: 25px;
+  margin-bottom: 50px;
+  margin-right: 25px;
+  top: 50px;
+  bottom: -100px;
+}
+
+/* --- Servicios --- */
+.form_main .btn {
+  display: none;
+  background-color: #fce96b;
+}
+.form_main .btn:hover {
+  background-color: #FF9900;
+  color: #ffffff;
+}
+.form_main .aclaracion {
+  color: #FF9900;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.form_main .services,
+.form_main .services_description {
+  display: flex;
+  flex-wrap: wrap;
+}
+.form_main .services .services_text,
+.form_main .services_description .services_text {
+  font-family: "sf_pro_light";
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  list-style-type: circle;
+  padding-left: 1rem;
+  text-align: left;
+}
+.form_main .services .services_text li,
+.form_main .services_description .services_text li {
+  font-family: "sf_pro_light";
+}
+.form_main .services h2,
+.form_main .services_description h2 {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+.form_main .services .service_description,
+.form_main .services_description .service_description {
+  font-size: 1rem;
+  color: #4e4e4e;
+  line-height: 25px;
+  border: #FF9900 solid 2px;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+  border-radius: 25px;
+}
+.form_main .services .service_description #information,
+.form_main .services_description .service_description #information {
+  width: 100px;
+  filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
+}
+.form_main .services .service_description .services_span,
+.form_main .services_description .service_description .services_span {
+  color: #FF9900;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.form_main .service {
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 25px;
+  background-color: #0065C3;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+  border-radius: 25px;
+}
+.form_main .service #factory,
+.form_main .service #money,
+.form_main .service #laboratory {
+  width: 125px;
+}
+.form_main .service h2 {
+  color: #FFF;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.form_main .service .services_span {
+  color: #FF9900;
+  text-align: center;
+  margin-bottom: 100px;
 }
 @keyframes text-focus-in {
   0% {
