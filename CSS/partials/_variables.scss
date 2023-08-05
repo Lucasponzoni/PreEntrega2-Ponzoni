@@ -2,6 +2,7 @@ $font-faces: (
   'spirit': './NatureSpirit.otf',
   'Andalucia': './andalucia.ttf',
   'sf_pro': './sf_pro_light.OTF',
+  'sf_pro_bold': './sf_pro_bold.OTF',
 );
 
 @each $font-name, $font-src in $font-faces {
@@ -14,6 +15,7 @@ $font-faces: (
 $mainfont: 'sf_pro';
 $titlefont: 'spirit';
 $secondaryfont: 'Andalucia';
+$tertiaryfont: 'sf_pro_bold';
 
 $maincolor: #0065C3;
 $secondarycolor: #fce96b;

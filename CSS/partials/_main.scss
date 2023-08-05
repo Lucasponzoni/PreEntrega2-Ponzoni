@@ -1,126 +1,123 @@
-main{
-    padding: 2rem 2rem 2rem 2rem;
+main {
+  padding: 2rem;
 
-    h1{
-        text-align: center;
-        min-width: 5px;
-        font-family: $titlefont;
-        background-color: #0065c353;
-        border-radius: 8px 8px 0 0;
-        padding-inline: 1rem;
-        margin: 0;
-        width: max-content;
-        color: #FFF;
-        font-size: 3rem;
-        font-weight: 600;
+  .text-focus-in {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  }
+
+  .titulo {
+    h1 {
+      text-align: center;
+      min-width: 5px;
+      font-family: $titlefont;
+      background-color: #0065c353;
+      border-radius: 8px 8px 0 0;
+      padding-inline: 1rem;
+      margin: 0;
+      width: max-content;
+      color: #FFF;
+      font-size: 3rem;
+      font-weight: 600;
     }
 
-    .text-focus-in {
-        -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-                animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    .line_title {
+      width: 518px;
+      height: 6px;
+      background: $secondarycolor;
+      border-radius: 0 0 8px 8px;
     }
 
-    .text-focus-in-2 {
-        -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
-                animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+    .Web_comment {
+      width: 700px;
+      color: #FFF;
+      text-shadow: 2px 1px 20px #272727b8;
+      font-size: 1rem;
+      font-weight: 400;
+      padding-top: 1rem;
     }
 
-    .line_title{
-        width: 518px;
+    #button_conocenos {
+      background-color: #ffffff;
+      box-shadow: 0px 0px 25px 8px #46bed934;
+      width: max-content;
+      text-align: center;
+      font-size: larger;
+      font-weight: 900;
+      padding: 1rem 2rem;
+      margin-top: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondarycolor;
+        transition: .3s;
+      }
+
+      a {
+        font-family: $tertiaryfont;
+        text-decoration: none;
+        color: $maincolor;
+      }
+    }
+  }
+
+  .text-focus-in-2 {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+  }
+
+  .cardholder {
+    padding: 4rem 0;
+
+    &__card {
+      width: 700px;
+      color: #FFF;
+      font-size: 1rem;
+      background-color: #0065c3be;
+      border-radius: 25px;
+      padding: 1rem;
+      margin-top: 1rem;
+
+      &--title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        .img_row {
+          width: 20px;
+          z-index: 1;
+          filter: invert(7%) sepia(46%) saturate(5355%) hue-rotate(197deg) brightness(101%) contrast(101%);
+          transition: 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            filter: invert(100%);
+            transition: 0.1s;
+          }
+        }
+      }
+
+      .line {
+        width: 208px;
         height: 6px;
         background: $secondarycolor;
-        border-radius: 0 0 8px 8px;
-    }
+        border-radius: 4px;
+        margin: 10px 0 20px 0;
+      }
 
-    .Web_comment{
-        width: 700px;
-        color: #FFF;
-        text-shadow: 2px 1px 20px #272727b8;
-        font-size: 1rem;
-        font-weight: 400;
-        padding-top: 1rem;
-    }
-
-    #button_conocenos{
-        background-color: #ffffff;
-        box-shadow: 0px 0px 25px 8px #46bed934;
-        width: max-content;
-        text-align: center;
-        font-size: larger;
+      .row_span {
         font-weight: 900;
-        padding: 1rem;
-        padding-inline: 2rem;
-        margin-top: 1rem;
-        border-radius: 25px;
-        cursor: pointer;
-
-        &:hover{
-            background-color: $secondarycolor;
-            transition: .3s;
-        }
-
-        a{
-            text-decoration: none;
-            color: $maincolor;
-        }
+        text-decoration-line: underline;
+      }
     }
-
-    .cardholder{
-        padding: 4rem 0 4rem 0;
-
-        h2{
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-        
-        }
-
-        .row_span{
-            font-weight: 900px;
-            text-decoration-line: underline;
-            font-weight: 900;
-        }
-
-        .line{
-            width: 208px;
-            height: 6px;
-            background: $secondarycolor;
-            border-radius: 4px;
-            margin: 10px 0 20px 0
-        }
-
-        .img_row{
-            width:20px;
-            z-index: 1;
-            filter: invert(7%) sepia(46%) saturate(5355%) hue-rotate(197deg) brightness(101%) contrast(101%);
-            transition: .3s;
-            cursor: pointer;
-
-            &:hover{
-                filter: invert(100%);
-                transition: .1s;
-            }
-        }
-
-        .cardholder__card{
-            width: 700px;
-            color: #FFF;
-            font-size: 1rem;
-            background-color: #0065c3be;
-            border-radius: 25px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .cardholder__card--title{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-    }
-
-
+  }
 }
 
 @mixin text-focus-keyframes {

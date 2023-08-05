@@ -10,6 +10,10 @@
   font-family: sf_pro;
   src: url(./sf_pro_light.OTF);
 }
+@font-face {
+  font-family: sf_pro_bold;
+  src: url(./sf_pro_bold.OTF);
+}
 * {
   padding: 0;
   margin: 0;
@@ -33,7 +37,6 @@ body {
   min-height: 100vh;
 }
 body .food_pack {
-  background-color: rgba(255, 153, 0, 0);
   background-image: url(../img/packaging.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -68,7 +71,8 @@ header {
   margin-bottom: 3rem;
   box-shadow: 0px 15px 20px 15px #0065C3;
 }
-header .abrir-menu, header .cerrar-menu {
+header .abrir-menu,
+header .cerrar-menu {
   display: none;
 }
 header .logo {
@@ -153,9 +157,12 @@ header nav .nav_c .bi-asterisk {
   }
 }
 main {
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem;
 }
-main h1 {
+main .text-focus-in {
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+main .titulo h1 {
   text-align: center;
   min-width: 5px;
   font-family: "spirit";
@@ -169,19 +176,13 @@ main h1 {
   font-size: 3rem;
   font-weight: 600;
 }
-main .text-focus-in {
-  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-}
-main .text-focus-in-2 {
-  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) 1s both;
-}
-main .line_title {
+main .titulo .line_title {
   width: 518px;
   height: 6px;
   background: #fce96b;
   border-radius: 0 0 8px 8px;
 }
-main .Web_comment {
+main .titulo .Web_comment {
   width: 700px;
   color: #FFF;
   text-shadow: 2px 1px 20px rgba(39, 39, 39, 0.7215686275);
@@ -189,7 +190,7 @@ main .Web_comment {
   font-weight: 400;
   padding-top: 1rem;
 }
-main #button_conocenos {
+main .titulo #button_conocenos {
   background-color: #ffffff;
   box-shadow: 0px 0px 25px 8px rgba(70, 190, 217, 0.2039215686);
   width: -moz-max-content;
@@ -197,52 +198,27 @@ main #button_conocenos {
   text-align: center;
   font-size: larger;
   font-weight: 900;
-  padding: 1rem;
-  padding-inline: 2rem;
+  padding: 1rem 2rem;
   margin-top: 1rem;
   border-radius: 25px;
   cursor: pointer;
 }
-main #button_conocenos:hover {
+main .titulo #button_conocenos:hover {
   background-color: #fce96b;
   transition: 0.3s;
 }
-main #button_conocenos a {
+main .titulo #button_conocenos a {
+  font-family: "sf_pro_bold";
   text-decoration: none;
   color: #0065C3;
 }
+main .text-focus-in-2 {
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) 1s both;
+}
 main .cardholder {
-  padding: 4rem 0 4rem 0;
+  padding: 4rem 0;
 }
-main .cardholder h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-main .cardholder .row_span {
-  font-weight: 900px;
-  text-decoration-line: underline;
-  font-weight: 900;
-}
-main .cardholder .line {
-  width: 208px;
-  height: 6px;
-  background: #fce96b;
-  border-radius: 4px;
-  margin: 10px 0 20px 0;
-}
-main .cardholder .img_row {
-  width: 20px;
-  z-index: 1;
-  filter: invert(7%) sepia(46%) saturate(5355%) hue-rotate(197deg) brightness(101%) contrast(101%);
-  transition: 0.3s;
-  cursor: pointer;
-}
-main .cardholder .img_row:hover {
-  filter: invert(100%);
-  transition: 0.1s;
-}
-main .cardholder .cardholder__card {
+main .cardholder__card {
   width: 700px;
   color: #FFF;
   font-size: 1rem;
@@ -251,10 +227,37 @@ main .cardholder .cardholder__card {
   padding: 1rem;
   margin-top: 1rem;
 }
-main .cardholder .cardholder__card--title {
+main .cardholder__card--title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+main .cardholder__card--title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+main .cardholder__card--title .img_row {
+  width: 20px;
+  z-index: 1;
+  filter: invert(7%) sepia(46%) saturate(5355%) hue-rotate(197deg) brightness(101%) contrast(101%);
+  transition: 0.3s;
+  cursor: pointer;
+}
+main .cardholder__card--title .img_row:hover {
+  filter: invert(100%);
+  transition: 0.1s;
+}
+main .cardholder__card .line {
+  width: 208px;
+  height: 6px;
+  background: #fce96b;
+  border-radius: 4px;
+  margin: 10px 0 20px 0;
+}
+main .cardholder__card .row_span {
+  font-weight: 900;
+  text-decoration-line: underline;
 }
 @keyframes text-focus-in {
   0% {

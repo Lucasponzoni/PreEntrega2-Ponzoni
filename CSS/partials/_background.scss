@@ -1,28 +1,26 @@
-body{
-    background: $tertiarycolor url("../img/fondo-desktop.svg");
+body {
+  background: $tertiarycolor url("../img/fondo-desktop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 100vh;
+
+  .food_pack {
+    background-image: url(../img/packaging.png);
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
-    min-height: 100vh;
+    position: absolute;
+    width: 50vw;
+    right: 0;
+    bottom: -100px;
+    height: 120vh;
+    z-index: -1;
+  }
 
-    .food_pack {
-        background-color: #ff990000;
-        background-image: url(../img/packaging.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        position: absolute;
-        width: 50vw;
-        right: 0;
-        bottom: -100px;
-        height: 120vh;
-        z-index: -1;
-      }
-
-      .slide-in-bottom {
-        -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
-                animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
-      }
-      
+  .slide-in-bottom {
+    -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
+    animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s both;
+  }
 }
 
 @-webkit-keyframes slide-in-bottom {
