@@ -33,10 +33,18 @@
   background-color: #0065C3;
 }
 
+body {
+  background: #D8E9CB url("../img/fondo-desktop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 100vh;
+}
 body #loader-abr {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 body .loader {
   width: 48px;
@@ -48,24 +56,11 @@ body .loader {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
-body body {
-  background-color: #D8E9CB;
-  position: relative;
-  min-height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 @media screen and (max-width: 768px) {
-  body body {
-    background-color: #D8E9CB;
-  }
-}
-body body.loaded {
-  background: #D8E9CB url("../img/fondo-desktop.svg");
-}
-@media screen and (max-width: 768px) {
-  body body.loaded body.loaded {
+  body {
     background: #D8E9CB url("../img/fondo-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 body .food_pack {

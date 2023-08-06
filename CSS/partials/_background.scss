@@ -4,6 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
   }
 
   .loader {
@@ -17,26 +18,16 @@ body {
     animation: rotation 1s linear infinite;
   }
 
-body {
-  background-color: #D8E9CB;
-  position: relative;
-  min-height: 100vh;
+  background: $tertiarycolor url("../img/fondo-desktop.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  min-height: 100vh;
 
-  @include tablet {
-    background-color: #D8E9CB;
-  }
-}
-
-body.loaded {
-  background: $tertiarycolor url("../img/fondo-desktop.svg");
-
-  @include tablet {
-    body.loaded {
-      background: #D8E9CB url("../img/fondo-mobile.svg");
-    }
-  }
+  @include tablet{
+    background: #D8E9CB url("../img/fondo-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
   .food_pack {
