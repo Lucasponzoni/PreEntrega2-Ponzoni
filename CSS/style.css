@@ -40,12 +40,14 @@ body {
   position: relative;
   min-height: 100vh;
 }
+body.disable-scroll {
+  overflow: hidden;
+}
 body #loader-abr {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
 }
 body .loader {
   width: 48px;

@@ -37,12 +37,13 @@ cerrar.addEventListener("click", () => {
     document.body.classList.remove("menu-open");
 })
 
-  /* --- Loading --- */
+ /* --- Loading --- */
 
 document.onreadystatechange = function () {
   if (document.readyState !== "complete") {
     document.querySelector("body").style.visibility = "hidden";
     document.querySelector("#loader-abr").style.visibility = "visible";
+    document.querySelector("body").classList.add("disable-scroll");
   } else {
     setTimeout(() => {
       document.querySelector("body").classList.add("loaded");
@@ -50,7 +51,9 @@ document.onreadystatechange = function () {
       document.querySelector("#loader-abr").style.visibility = "hidden";
       document.querySelector("#loader-abr").style.opacity = "0";
       document.querySelector("#loader-abr").style.transform = "translateY(100%)";
+      document.querySelector("body").classList.remove("disable-scroll");
     }, 400);
+
     setTimeout(() => {
       document.querySelector("#loader-abr").style.display = "none";
     }, 2000);
