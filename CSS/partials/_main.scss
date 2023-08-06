@@ -12,6 +12,10 @@ main {
     margin: 0;
 }
 
+@include mobile{
+  margin: 0;
+}
+
   .text-focus-in {
     -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -183,9 +187,14 @@ main {
     display: flex;
     margin-bottom: 5rem;
 
-    .us {
-      flex-shrink: 1;
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 5rem;
+    }
 
+    .us {
+      
       .pablo_face,
       .pablo_face_mobile {
         width: 300px;
@@ -193,10 +202,51 @@ main {
         left: -32px;
         top: -95px;
         overflow: hidden;
+
+        @include tablet {
+          display: none;
+        }
       }
 
       .pablo_face_mobile_div {
         display: none;
+
+        @include tablet {
+          display: flex;
+          justify-content: space-between;
+          position: relative;
+          background-color: $secondarycolor;
+          padding: 0;
+          margin: 0;
+          top: -32px;
+          margin-left: -1rem;
+          margin-right: -1rem;
+          border-radius: 25px 25px 0 0;
+          align-items: center;
+
+        @include mobile{
+          border-radius: 0;
+        }
+
+          .pablo_face_mobile {
+            max-width: 300px;
+            background-size: contain;
+            display: flex;
+            margin-left: 1rem;
+            padding: 0;
+          }
+
+          #Pablo_Scalise_Conocenos_mobile {
+            padding: 1rem;
+            line-height: 1.4;
+            font-family: 'Andalucia';
+            color: #353535;
+            font-size: 6vw;
+            white-space: nowrap;
+            position: absolute;
+            left: 25vw;
+          }
+        }
       }
 
       .fig-caption {
@@ -210,15 +260,26 @@ main {
         width: 300px;
         padding: 0.5rem;
         text-align: center;
+
+        @include tablet {
+          margin-left: 1rem;
+          margin-right: -3rem;
+          top: -48px;
+          width: auto;
+        }
       }
 
-      h2 {
+      #Pablo_Scalise_Conocenos{
         font-family: $secondaryfont;
         color: #353535;
         font-size: 3rem;
         text-align: left;
         margin-bottom: 0;
         line-height: 1.8;
+
+        @include tablet{
+          display: none;
+        }
       }
 
       .descripcion_pablo,
@@ -237,6 +298,10 @@ main {
         margin-top: 1rem;
         text-align: left;
         z-index: -1;
+
+        @include tablet {
+          margin-top: -1rem;
+        }
       }
 
       .university-test {
@@ -258,16 +323,6 @@ main {
       .span_us {
         font-weight: 600;
       }
-
-      .background_img {
-        background-color: #fce96b00;
-        width: 30%;
-        height: 417px;
-        border-radius: 25px 25px 0 0;
-        top: 0;
-        left: 0px;
-        position: absolute;
-      }
     }
   }
 }
@@ -283,7 +338,57 @@ main {
   margin-right: 25px;
   top: 50px;
   bottom: -100px;
+
+  @include mobile {
+    background-color: #ffffff;
+    width: auto;
+    max-width: 100%;
+    border-radius: 0;
+    position: relative;
+    margin-left: 0px;
+    margin-bottom: 50px;
+    margin-right: 0px;
+    top: 50px;
+  }
+
+  @include tablet {
+    .background_img_mobile {
+      background-color: #ff000000;
+      background-image: url("../img/pablo_pcalise_conocenos_mobile.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      overflow: visible;
+      width: 100%;
+      height: 200px;
+      border-radius: 25px 25px 0 0;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+
+    .pablo_mobile {
+      width: 40vw;
+    }
+
+    #Pablo_Scalise_Conocenos_mobile {
+      padding: 1rem;
+      line-height: 1.4;
+      font-family: 'Andalucia';
+      color: #353535;
+      font-size: 6vw;
+      white-space: nowrap;
+      position: absolute;
+      left: 25vw;
+    }
+
+    .img-fluid {
+      width: 130px;
+      margin-left: 60vw;
+      position: absolute;
+    }
+  }
 }
+
 
 /* --- Servicios --- */
 

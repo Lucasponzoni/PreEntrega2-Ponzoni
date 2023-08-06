@@ -277,6 +277,11 @@ main {
     margin: 0;
   }
 }
+@media screen and (max-width: 576px) {
+  main {
+    margin: 0;
+  }
+}
 main .text-focus-in {
   animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
@@ -435,8 +440,12 @@ main .cardholder__card .row_span {
   display: flex;
   margin-bottom: 5rem;
 }
-.know-main .know_us .us {
-  flex-shrink: 1;
+@media screen and (max-width: 768px) {
+  .know-main .know_us {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
 }
 .know-main .know_us .us .pablo_face,
 .know-main .know_us .us .pablo_face_mobile {
@@ -446,8 +455,53 @@ main .cardholder__card .row_span {
   top: -95px;
   overflow: hidden;
 }
+@media screen and (max-width: 768px) {
+  .know-main .know_us .us .pablo_face,
+  .know-main .know_us .us .pablo_face_mobile {
+    display: none;
+  }
+}
 .know-main .know_us .us .pablo_face_mobile_div {
   display: none;
+}
+@media screen and (max-width: 768px) {
+  .know-main .know_us .us .pablo_face_mobile_div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: #fce96b;
+    padding: 0;
+    margin: 0;
+    top: -32px;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 25px 25px 0 0;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 768px) and (max-width: 576px) {
+  .know-main .know_us .us .pablo_face_mobile_div {
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .know-main .know_us .us .pablo_face_mobile_div .pablo_face_mobile {
+    max-width: 300px;
+    background-size: contain;
+    display: flex;
+    margin-left: 1rem;
+    padding: 0;
+  }
+  .know-main .know_us .us .pablo_face_mobile_div #Pablo_Scalise_Conocenos_mobile {
+    padding: 1rem;
+    line-height: 1.4;
+    font-family: "Andalucia";
+    color: #353535;
+    font-size: 6vw;
+    white-space: nowrap;
+    position: absolute;
+    left: 25vw;
+  }
 }
 .know-main .know_us .us .fig-caption {
   background-color: #0065C3;
@@ -461,13 +515,26 @@ main .cardholder__card .row_span {
   padding: 0.5rem;
   text-align: center;
 }
-.know-main .know_us .us h2 {
+@media screen and (max-width: 768px) {
+  .know-main .know_us .us .fig-caption {
+    margin-left: 1rem;
+    margin-right: -3rem;
+    top: -48px;
+    width: auto;
+  }
+}
+.know-main .know_us .us #Pablo_Scalise_Conocenos {
   font-family: "Andalucia";
   color: #353535;
   font-size: 3rem;
   text-align: left;
   margin-bottom: 0;
   line-height: 1.8;
+}
+@media screen and (max-width: 768px) {
+  .know-main .know_us .us #Pablo_Scalise_Conocenos {
+    display: none;
+  }
 }
 .know-main .know_us .us .descripcion_pablo,
 .know-main .know_us .us p {
@@ -484,6 +551,11 @@ main .cardholder__card .row_span {
   margin-top: 1rem;
   text-align: left;
   z-index: -1;
+}
+@media screen and (max-width: 768px) {
+  .know-main .know_us .us .university {
+    margin-top: -1rem;
+  }
 }
 .know-main .know_us .us .university-test {
   list-style-type: none;
@@ -502,15 +574,6 @@ main .cardholder__card .row_span {
 .know-main .know_us .us .span_us {
   font-weight: 600;
 }
-.know-main .know_us .us .background_img {
-  background-color: rgba(252, 233, 107, 0);
-  width: 30%;
-  height: 417px;
-  border-radius: 25px 25px 0 0;
-  top: 0;
-  left: 0px;
-  position: absolute;
-}
 
 .form_main {
   background-color: #ffffff;
@@ -523,6 +586,52 @@ main .cardholder__card .row_span {
   margin-right: 25px;
   top: 50px;
   bottom: -100px;
+}
+@media screen and (max-width: 576px) {
+  .form_main {
+    background-color: #ffffff;
+    width: auto;
+    max-width: 100%;
+    border-radius: 0;
+    position: relative;
+    margin-left: 0px;
+    margin-bottom: 50px;
+    margin-right: 0px;
+    top: 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .form_main .background_img_mobile {
+    background-color: rgba(255, 0, 0, 0);
+    background-image: url("../img/pablo_pcalise_conocenos_mobile.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: visible;
+    width: 100%;
+    height: 200px;
+    border-radius: 25px 25px 0 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  .form_main .pablo_mobile {
+    width: 40vw;
+  }
+  .form_main #Pablo_Scalise_Conocenos_mobile {
+    padding: 1rem;
+    line-height: 1.4;
+    font-family: "Andalucia";
+    color: #353535;
+    font-size: 6vw;
+    white-space: nowrap;
+    position: absolute;
+    left: 25vw;
+  }
+  .form_main .img-fluid {
+    width: 130px;
+    margin-left: 60vw;
+    position: absolute;
+  }
 }
 
 /* --- Servicios --- */

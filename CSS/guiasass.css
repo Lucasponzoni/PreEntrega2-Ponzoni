@@ -1,46 +1,7 @@
 
     /* --- Know us adaptado a tablet --- */
-     .know_us{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5rem;
-      }
-    
-      .us{
-        flex-shrink: 1;
-        } 
-    
-      .pablo_face {
-        display: none;
-      }
 
-      .pablo_face_mobile {
-        max-width: 300px;
-        background-size: contain;
-        display: flex;
-        margin-left: 1rem;
-        padding: 0;
-      }
-        
-      .fig-caption{
-        margin-left: 1rem;
-        margin-right: -3rem;
-        top: -48px;
-        width: auto;
-      }
     
-      #Pablo_Scalise_Conocenos{
-        display: none;
-    }
-    
-    .university{
-       margin-top: -1rem;
-
-    }
-    
-    .background_img{
-        display: none;
-    }
     
     .background_img_mobile{
         background-color: #ff000000;
