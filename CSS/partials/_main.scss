@@ -136,25 +136,14 @@ main {
     .hand {
       width: 80px;
       position: relative;
-      right: 237px;
-      bottom: 28px;
+      right: 236px;
+      bottom: 39px;
       z-index: -1;
       animation: saludo 2s infinite linear;
-      transform-origin: bottom center; // Establecemos el punto de rotación en la parte inferior de la mano.
-    }
-  
-    @keyframes saludo {
-      0%, 100% {
-        transform: rotate(8); // La mano se encuentra en la posición inicial y final, no rota.
-      }
-      50% {
-        transform: rotate(20deg); // En el 50% de la animación, la mano rota 30 grados hacia la derecha.
-      }
+      transform-origin: bottom center;
     }
   }
   
-  
-
   .cardholder {
     padding: 0rem 0;
 
@@ -766,6 +755,15 @@ main {
         filter: blur(0px);
         opacity: 1;
       }
+    }
+  }
+
+  @keyframes saludo {
+    0%, 100% {
+      transform: rotate(8);
+    }
+    50% {
+      transform: rotate(18deg);
     }
   }
   

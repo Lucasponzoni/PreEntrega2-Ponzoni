@@ -396,19 +396,11 @@ main .pablo-saluda .handless {
 main .pablo-saluda .hand {
   width: 80px;
   position: relative;
-  right: 237px;
-  bottom: 28px;
+  right: 236px;
+  bottom: 39px;
   z-index: -1;
   animation: saludo 2s infinite linear;
   transform-origin: bottom center;
-}
-@keyframes saludo {
-  0%, 100% {
-    transform: rotate(8);
-  }
-  50% {
-    transform: rotate(20deg);
-  }
 }
 main .cardholder {
   padding: 0rem 0;
@@ -928,6 +920,15 @@ main .cardholder__card .row_span {
   color: #0065C3;
   cursor: pointer;
   transition: 0.3s;
+}
+
+@keyframes saludo {
+  0%, 100% {
+    transform: rotate(8);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
 }
 @keyframes text-focus-in {
   0% {
