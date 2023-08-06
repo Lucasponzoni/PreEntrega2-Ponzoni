@@ -70,16 +70,16 @@ body .food_pack {
     margin-top: -250px;
   }
 }
-body .slide-in-bottom {
-  animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s both;
+body .slide-in-right {
+  animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s both;
 }
-@keyframes slide-in-bottom {
+@keyframes slide-in-right {
   0% {
-    transform: translateY(1000px);
+    transform: translateX(1000px);
     opacity: 0;
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
