@@ -39,11 +39,10 @@ cerrar.addEventListener("click", () => {
 
  /* --- Loading --- */
 
-document.onreadystatechange = function () {
+ document.onreadystatechange = function () {
   if (document.readyState !== "complete") {
     document.querySelector("body").style.visibility = "hidden";
     document.querySelector("#loader-abr").style.visibility = "visible";
-    document.querySelector("body").classList.add("disable-scroll");
   } else {
     setTimeout(() => {
       document.querySelector("body").classList.add("loaded");
