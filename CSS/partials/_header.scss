@@ -9,14 +9,42 @@ header {
   margin-bottom: 3rem;
   box-shadow: 0px 15px 20px 15px $maincolor;
 
+  @include desktop {
+    flex-direction: column;
+    gap: 0;
+  }
+
   .abrir-menu,
   .cerrar-menu {
     display: none;
+    color: #FFF;
+
+    > i{
+      position: relative;
+      animation: bounce 2s infinite; 
+
+      &:hover{
+        color: $secondarycolor;
+      }
+    }
+
+    @include desktop {
+      display: block;
+      border: 0;
+      font-size: 2rem;
+      background-color: transparent;
+      cursor: pointer;
+    }
   }
 
   .logo {
     margin-left: 2rem;
     max-width: 4rem;
+
+    @include desktop {
+      margin-left: 0rem;
+      max-width: 4rem;
+    }
   }
 
   nav {
@@ -26,16 +54,45 @@ header {
     justify-content: space-between;
     flex: 1;
 
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include desktop {
+      opacity: 0;
+      visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      bottom: 0;
+      background-color: #0065C3;
+      padding: 0rem;
+      justify-content: flex-start;
+      z-index: 2;
+      transition: opacity .5s;
+    }
+
     #active {
       text-decoration: underline 3px $secondarycolor;
     }
 
     .social_media {
-      margin-left: 2rem;
-      margin-right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      margin-right: 2rem;
+
+      @include desktop {
+        padding-top: 3rem;
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+      }
 
       i {
-        padding-inline: 0.1rem;
         color: #ffffff;
         font-size: 2rem;
 
@@ -54,6 +111,14 @@ header {
       font-size: 1rem;
       font-weight: 600;
       margin: 0;
+
+      @include desktop {
+        margin-top: 5rem;
+        gap: 2rem;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+      }
 
       a {
         text-decoration: none;
@@ -87,23 +152,36 @@ header {
   }
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes colorBlink {
-    0% {
-      color: $secondarycolor;
-    }
-    50% {
-      color: #ffffff; 
-    }
-    100% {
-      color: $secondarycolor;
-    }
+  to {
+    transform: rotate(360deg);
   }
+}
+
+@keyframes colorBlink {
+  0% {
+    color: $secondarycolor;
+  }
+  50% {
+    color: #ffffff; 
+  }
+  100% {
+    color: $secondarycolor;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    top: 0;
+  }
+  50% {
+    top: 1rem;
+  }
+}

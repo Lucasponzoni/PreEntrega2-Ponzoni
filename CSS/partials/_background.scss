@@ -5,6 +5,12 @@ body {
   position: relative;
   min-height: 100vh;
 
+  @include tablet{
+    background: #D8E9CB url("../img/fondo-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
   .food_pack {
     background-image: url(../img/packaging.png);
     background-size: cover;
@@ -15,6 +21,17 @@ body {
     bottom: -100px;
     height: 120vh;
     z-index: -1;
+
+    @include tablet{
+      background-color: #ff990000;
+      background-image: url(../img/packaging.png);
+      background-size: contain;
+      width: 100%;
+      background-repeat: no-repeat;
+      position: relative;
+      background-position: top center;
+      margin-top: -250px;
+  } 
   }
 
   .slide-in-bottom {

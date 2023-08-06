@@ -1,12 +1,32 @@
 main {
   padding: 2rem;
 
+  &.container{
+    @include tablet{
+      max-width: max-content;
+    }
+  }
+
+  @include tablet{
+    padding-inline: 1rem;
+    margin: 0;
+}
+
   .text-focus-in {
     -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   }
 
   .titulo {
+
+    @include tablet{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+    }
     h1 {
       text-align: center;
       min-width: 5px;
@@ -19,6 +39,16 @@ main {
       color: #FFF;
       font-size: 3rem;
       font-weight: 600;
+
+      @include tablet{
+        margin-top: 2rem;
+        background-color: #0065c353;
+        border-radius: 8px 8px 0 0;
+        width: 100%;
+        color: #FFF;
+        font-size: 3rem;  
+        font-weight: 600;
+    }
     }
 
     .line_title {
@@ -26,6 +56,10 @@ main {
       height: 6px;
       background: $secondarycolor;
       border-radius: 0 0 8px 8px;
+
+      @include tablet{
+        width: 100%;
+    }
     }
 
     .Web_comment {
@@ -35,6 +69,16 @@ main {
       font-size: 1rem;
       font-weight: 400;
       padding-top: 1rem;
+
+      @include tablet{
+        width: auto;
+        text-align: center;
+        color: #FFF;
+        text-shadow: 2px 1px 20px #272727b8;
+        font-size: 1rem;
+        font-weight: 400;
+        padding-top: 1rem;
+    }
     }
 
     #button_conocenos {
@@ -48,6 +92,11 @@ main {
       margin-top: 1rem;
       border-radius: 25px;
       cursor: pointer;
+
+      @include tablet{ 
+        padding: 1rem;
+        padding-inline: 1rem;
+    }
 
       &:hover {
         background-color: $secondarycolor;
@@ -78,6 +127,10 @@ main {
       border-radius: 25px;
       padding: 1rem;
       margin-top: 1rem;
+
+      @include tablet{
+        width: auto;
+    }
 
       &--title {
         display: flex;
