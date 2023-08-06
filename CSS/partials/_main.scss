@@ -10,6 +10,7 @@ main {
   @include tablet{
     padding-inline: 1rem;
     margin: 0;
+    padding-top: 0;
 }
 
 @include mobile{
@@ -30,6 +31,7 @@ main {
       justify-content: center;
       align-items: center;
       margin: 1rem;
+      margin-bottom: 0;
     }
     h1 {
       text-align: center;
@@ -45,7 +47,8 @@ main {
       font-weight: 600;
 
       @include tablet{
-        margin-top: 2rem;
+        margin-top: 0;
+        padding-top: 1rem;
         background-color: #0065c353;
         border-radius: 8px 8px 0 0;
         width: 100%;
@@ -120,8 +123,40 @@ main {
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
   }
 
+  .pablo-saluda {
+    margin: 0;
+  
+    .handless {
+      width: 300px;
+      position: relative;
+      right: -50px;
+      bottom: -20px;
+    }
+  
+    .hand {
+      width: 80px;
+      position: relative;
+      right: 237px;
+      bottom: 28px;
+      z-index: -1;
+      animation: saludo 2s infinite linear;
+      transform-origin: bottom center; // Establecemos el punto de rotación en la parte inferior de la mano.
+    }
+  
+    @keyframes saludo {
+      0%, 100% {
+        transform: rotate(8); // La mano se encuentra en la posición inicial y final, no rota.
+      }
+      50% {
+        transform: rotate(20deg); // En el 50% de la animación, la mano rota 30 grados hacia la derecha.
+      }
+    }
+  }
+  
+  
+
   .cardholder {
-    padding: 4rem 0;
+    padding: 0rem 0;
 
     &__card {
       width: 700px;
