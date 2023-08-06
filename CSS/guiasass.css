@@ -52,8 +52,6 @@
         position: absolute;
         
     }
-    
-  }
 
   /* --- Adapacion para pantallas hasta 576px --- */
   @media screen and (max-width: 576px){

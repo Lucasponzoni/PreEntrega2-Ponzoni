@@ -224,9 +224,9 @@ main {
           border-radius: 25px 25px 0 0;
           align-items: center;
 
-        @include mobile{
-          border-radius: 0;
-        }
+          @include mobile {
+            border-radius: 0;
+          }
 
           .pablo_face_mobile {
             max-width: 300px;
@@ -269,7 +269,7 @@ main {
         }
       }
 
-      #Pablo_Scalise_Conocenos{
+      #Pablo_Scalise_Conocenos {
         font-family: $secondaryfont;
         color: #353535;
         font-size: 3rem;
@@ -277,7 +277,7 @@ main {
         margin-bottom: 0;
         line-height: 1.8;
 
-        @include tablet{
+        @include tablet {
           display: none;
         }
       }
@@ -287,6 +287,12 @@ main {
         text-align: justify;
         margin-bottom: 1rem;
         max-width: 800px;
+
+        &:nth-last-child(1){
+          @include tablet{
+            margin-bottom: 100px;
+          }
+        }
       }
 
       .university {
@@ -388,7 +394,6 @@ main {
     }
   }
 }
-
 
 /* --- Servicios --- */
 
