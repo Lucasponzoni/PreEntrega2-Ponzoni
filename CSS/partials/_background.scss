@@ -1,27 +1,5 @@
 body {
 
-  &.disable-scroll {
-    overflow: hidden;
-  }
-
-  #loader-abr{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid;
-    border-color: $maincolor transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-  }
-
   background: $tertiarycolor url("../img/fondo-desktop.svg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -29,7 +7,7 @@ body {
   min-height: 100vh;
 
   @include tablet{
-    background: #D8E9CB url("../img/fondo-mobile.svg");
+    background: #D8E9CB url("../img/back-mobile.svg");
     background-size: cover;
     background-repeat: no-repeat;
 }

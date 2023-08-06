@@ -40,28 +40,9 @@ body {
   position: relative;
   min-height: 100vh;
 }
-body.disable-scroll {
-  overflow: hidden;
-}
-body #loader-abr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-body .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid;
-  border-color: #0065C3 transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
 @media screen and (max-width: 768px) {
   body {
-    background: #D8E9CB url("../img/fondo-mobile.svg");
+    background: #D8E9CB url("../img/back-mobile.svg");
     background-size: cover;
     background-repeat: no-repeat;
   }
