@@ -774,22 +774,38 @@ main .cardholder__card .row_span {
   margin-bottom: 100px;
 }
 
-.section1, .section2 {
+.section1,
+.section2 {
   justify-content: center;
   display: flex;
 }
-.section1 .card, .section2 .card {
+.section1 .card,
+.section2 .card {
   border: none;
 }
+.section1 .img-fluid-v,
+.section2 .img-fluid-v {
+  width: 100%;
+}
 @media screen and (max-width: 768px) {
-  .section1 .img-fluid, .section2 .img-fluid {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
+  .section1 .img-fluid-v,
+  .section2 .img-fluid-v {
+    display: none;
   }
 }
-.section1 h5, .section2 h5 {
+.section1 .img-fluid-h,
+.section2 .img-fluid-h {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .section1 .img-fluid-h,
+  .section2 .img-fluid-h {
+    display: block;
+    width: 100%;
+  }
+}
+.section1 h5,
+.section2 h5 {
   font-family: "Andalucia";
   padding: 1rem;
   color: #353535;
@@ -797,32 +813,39 @@ main .cardholder__card .row_span {
   text-align: left;
   margin-bottom: 0;
 }
-.section1 .university-test, .section2 .university-test {
+.section1 .university-test,
+.section2 .university-test {
   list-style-type: none;
   padding: 0;
   color: #0065C3;
   font-size: 1rem;
 }
-.section1 p, .section2 p {
+.section1 p,
+.section2 p {
   text-align: justify;
   margin-bottom: 1rem;
   max-width: 800px;
 }
-.section1 p .span_test, .section2 p .span_test {
+.section1 p .span_test,
+.section2 p .span_test {
   font-family: "sf_pro_bold";
 }
-.section1 .bi-star-fill, .section2 .bi-star-fill {
+.section1 .bi-star-fill,
+.section2 .bi-star-fill {
   color: #fce96b;
   font-size: large;
 }
-.section1 .social_test, .section2 .social_test {
+.section1 .social_test,
+.section2 .social_test {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
-.section1 .social_test i, .section2 .social_test i {
+.section1 .social_test i,
+.section2 .social_test i {
   color: #353535;
 }
-.section1 .social_test i:hover, .section2 .social_test i:hover {
+.section1 .social_test i:hover,
+.section2 .social_test i:hover {
   color: #0065C3;
 }
 

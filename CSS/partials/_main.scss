@@ -546,20 +546,29 @@ main {
   margin-bottom: 100px;
 }
 
-.section1, .section2 {
+.section1,
+.section2 {
   justify-content: center;
   display: flex;
 
-  .card{
+  .card {
     border: none;
   }
 
-  .img-fluid{
-    @include tablet{
-      position: relative;
+  .img-fluid-v {
+    width: 100%;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .img-fluid-h {
+    display: none;
+
+    @include tablet {
+      display: block;
       width: 100%;
-      margin: 0;
-      overflow: hidden;
     }
   }
 
