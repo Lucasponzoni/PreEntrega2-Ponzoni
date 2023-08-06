@@ -33,6 +33,11 @@
   background-color: #0065C3;
 }
 
+body #loader-abr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 body .loader {
   width: 48px;
   height: 48px;
