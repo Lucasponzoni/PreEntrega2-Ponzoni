@@ -744,6 +744,12 @@ main .cardholder__card .row_span {
   min-width: 300px;
   border-radius: 25px;
 }
+@media screen and (max-width: 576px) {
+  .service {
+    width: 100%;
+    margin-inline: 0;
+  }
+}
 .service #factory,
 .service #money,
 .service #laboratory {
