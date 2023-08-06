@@ -645,6 +645,12 @@ main .cardholder__card .row_span {
   display: none;
   background-color: #fce96b;
 }
+@media screen and (max-width: 576px) {
+  .form_main .btn {
+    margin-top: 1rem;
+    display: block;
+  }
+}
 .form_main .btn:hover {
   background-color: #FF9900;
   color: #ffffff;
@@ -659,8 +665,7 @@ main .cardholder__card .row_span {
   display: flex;
   flex-wrap: wrap;
 }
-.form_main .services .services_text,
-.form_main .services_description .services_text {
+.form_main .services_text {
   font-family: "sf_pro_light";
   margin: 0;
   padding: 0;
@@ -669,17 +674,38 @@ main .cardholder__card .row_span {
   padding-left: 1rem;
   text-align: left;
 }
-.form_main .services .services_text li,
-.form_main .services_description .services_text li {
+.form_main .services_text li {
   font-family: "sf_pro_light";
 }
-.form_main .services h2,
-.form_main .services_description h2 {
+.form_main h2 {
   font-size: 1.4rem;
   margin-top: 1rem;
 }
-.form_main .services .service_description,
-.form_main .services_description .service_description {
+.form_main .service_description {
+  font-size: 1rem;
+  color: #000000;
+  line-height: 25px;
+  border: none;
+  padding: 0rem;
+  margin: 0rem;
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+  border-radius: 25px;
+}
+.form_main .service_description h2 {
+  color: #4e4e4e;
+}
+.form_main .service_description #information {
+  width: 100px;
+  filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
+}
+.form_main .service_description .services_span {
+  color: #FF9900;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.form_main .service_description__d {
   font-size: 1rem;
   color: #4e4e4e;
   line-height: 25px;
@@ -691,18 +717,22 @@ main .cardholder__card .row_span {
   min-width: 300px;
   border-radius: 25px;
 }
-.form_main .services .service_description #information,
-.form_main .services_description .service_description #information {
+@media screen and (max-width: 576px) {
+  .form_main .service_description__d {
+    display: none;
+  }
+}
+.form_main .service_description__d #information {
   width: 100px;
   filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
 }
-.form_main .services .service_description .services_span,
-.form_main .services_description .service_description .services_span {
+.form_main .service_description__d .services_span {
   color: #FF9900;
   text-align: center;
   margin-bottom: 100px;
 }
-.form_main .service {
+
+.service {
   font-size: 1rem;
   color: #ffffff;
   line-height: 25px;
@@ -714,20 +744,23 @@ main .cardholder__card .row_span {
   min-width: 300px;
   border-radius: 25px;
 }
-.form_main .service #factory,
-.form_main .service #money,
-.form_main .service #laboratory {
+.service #factory,
+.service #money,
+.service #laboratory {
   width: 125px;
 }
-.form_main .service h2 {
+.service h2 {
   color: #FFF;
   font-size: 1.4rem;
   text-align: center;
 }
-.form_main .service .services_span {
+.service .services_span {
   color: #FF9900;
   text-align: center;
   margin-bottom: 100px;
+}
+.service .card-body {
+  border-radius: 15px;
 }
 
 /* --- Testimonios --- */
@@ -738,6 +771,17 @@ main .cardholder__card .row_span {
 .section1, .section2 {
   justify-content: center;
   display: flex;
+}
+.section1 .card, .section2 .card {
+  border: none;
+}
+@media screen and (max-width: 768px) {
+  .section1 .img-fluid, .section2 .img-fluid {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
 }
 .section1 h5, .section2 h5 {
   font-family: "Andalucia";

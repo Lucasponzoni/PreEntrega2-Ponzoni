@@ -194,7 +194,6 @@ main {
     }
 
     .us {
-      
       .pablo_face,
       .pablo_face_mobile {
         width: 300px;
@@ -402,6 +401,11 @@ main {
     display: none;
     background-color: $secondarycolor;
 
+    @include mobile{
+        margin-top: 1rem;
+        display: block;
+    }
+    
     &:hover {
       background-color: $quaternarycolor;
       color: #ffffff;
@@ -418,6 +422,7 @@ main {
   .services_description {
     display: flex;
     flex-wrap: wrap;
+    }
 
     .services_text {
       font-family: $quaternaryfont;
@@ -438,7 +443,35 @@ main {
       margin-top: 1rem;
     }
 
-    .service_description {
+    .service_description{
+      font-size: 1rem;
+      color: #000000;
+      line-height : 25px;
+      border: none;
+      padding: 0rem;
+      margin: 0rem;
+      text-align: center;
+      flex: 1;
+      min-width: 300px;
+      border-radius: 25px;
+
+      h2{
+        color: #4e4e4e;
+      }
+
+      #information {
+        width: 100px;
+        filter: invert(51%) sepia(86%) saturate(659%) hue-rotate(360deg) brightness(105%) contrast(106%);
+      }
+
+      .services_span {
+        color: $quaternarycolor;
+        text-align: center;
+        margin-bottom: 100px;
+      }
+    }
+
+    .service_description__d {
       font-size: 1rem;
       color: #4e4e4e;
       line-height: 25px;
@@ -449,6 +482,10 @@ main {
       flex: 1;
       min-width: 300px;
       border-radius: 25px;
+
+      @include mobile{
+        display: none;
+      }
 
       #information {
         width: 100px;
@@ -492,8 +529,11 @@ main {
       text-align: center;
       margin-bottom: 100px;
     }
+
+    .card-body{
+      border-radius: 15px;
   }
-}
+  }
 
 /* --- Testimonios --- */
 
@@ -504,6 +544,19 @@ main {
 .section1, .section2 {
   justify-content: center;
   display: flex;
+
+  .card{
+    border: none;
+  }
+
+  .img-fluid{
+    @include tablet{
+      position: relative;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
 
   h5 {
     font-family: 'Andalucia';
