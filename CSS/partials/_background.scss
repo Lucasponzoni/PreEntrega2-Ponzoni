@@ -1,14 +1,36 @@
 body {
-  background: $tertiarycolor url("../img/fondo-desktop.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-color: $maincolor transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+body {
+  background-color: #D8E9CB;
   position: relative;
   min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  @include tablet{
-    background: #D8E9CB url("../img/fondo-mobile.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
+  @include tablet {
+    background-color: #D8E9CB;
+  }
+}
+
+body.loaded {
+  background: $tertiarycolor url("../img/fondo-desktop.svg");
+
+  @include tablet {
+    body.loaded {
+      background: #D8E9CB url("../img/fondo-mobile.svg");
+    }
+  }
 }
 
   .food_pack {
@@ -64,3 +86,12 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
