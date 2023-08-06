@@ -37,6 +37,8 @@ cerrar.addEventListener("click", () => {
     document.body.classList.remove("menu-open");
 })
 
+  /* --- Loading --- */
+
 document.onreadystatechange = function () {
   if (document.readyState !== "complete") {
     document.querySelector("body").style.visibility = "hidden";

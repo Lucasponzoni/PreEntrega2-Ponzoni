@@ -45,6 +45,7 @@ body #loader-abr {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 body .loader {
   width: 48px;
