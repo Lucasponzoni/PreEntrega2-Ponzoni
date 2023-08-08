@@ -7,13 +7,13 @@ body {
   min-height: 100vh;
 
   @include tablet{
-    background: #D8E9CB url("../img/back-mobile.svg");
+    background: #D8E9CB url("../img/back-mobile.webp");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
   .food_pack {
-    background-image: url(../img/packaging.png);
+    background-image: url(../img/packaging.webp);
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -24,8 +24,6 @@ body {
     z-index: -1;
 
     @include tablet{
-      background-color: #ff990000;
-      background-image: url(../img/packaging.png);
       background-size: contain;
       width: 100%;
       background-repeat: no-repeat;

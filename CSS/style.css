@@ -42,13 +42,13 @@ body {
 }
 @media screen and (max-width: 768px) {
   body {
-    background: #D8E9CB url("../img/back-mobile.svg");
+    background: #D8E9CB url("../img/back-mobile.webp");
     background-size: cover;
     background-repeat: no-repeat;
   }
 }
 body .food_pack {
-  background-image: url(../img/packaging.png);
+  background-image: url(../img/packaging.webp);
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -60,8 +60,6 @@ body .food_pack {
 }
 @media screen and (max-width: 768px) {
   body .food_pack {
-    background-color: rgba(255, 153, 0, 0);
-    background-image: url(../img/packaging.png);
     background-size: contain;
     width: 100%;
     background-repeat: no-repeat;
