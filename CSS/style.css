@@ -268,25 +268,6 @@ body.menu-open {
     top: 1rem;
   }
 }
-#spinner {
-  position: fixed;
-  inset: 0;
-  background-color: var(--clr-bg);
-  color: var(--clr-text);
-  z-index: 99999999;
-  font-size: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.4s;
-}
-
-#spinner ion-icon {
-  pointer-events: none;
-  animation: spin 1s ease-in-out both infinite;
-  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
 main {
   padding: 2rem;
 }
