@@ -1,2 +1,0 @@
-Creé una variable llamada $font-faces. Luego, utilicé un bucle @each para iterar a través de esta y generar las reglas @font-face para cada fuente.
-Se ulitizó mixins para reutilizar partes del codigo en las media qeries.
