@@ -810,26 +810,163 @@ main .cardholder__card .row_span {
 .section2 .card {
   border: none;
 }
-.section1 .img-fluid-v,
-.section2 .img-fluid-v {
+.section1 .card .fondo-1,
+.section2 .card .fondo-1 {
+  background: rgb(248, 248, 248);
+  background: linear-gradient(180deg, rgb(248, 248, 248) 31%, rgb(247, 183, 255) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f8f8f8", endColorstr="#f7b7ff", GradientType=1 );
+  padding-bottom: 1rem;
+  border-radius: 25px;
+}
+.section1 .card .fondo-2,
+.section2 .card .fondo-2 {
+  background: rgb(248, 248, 248);
+  background: linear-gradient(180deg, rgb(248, 248, 248) 31%, rgb(255, 174, 83) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f8f8f8", endColorstr="#ffae53", GradientType=1 );
+  padding-bottom: 1rem;
+  border-radius: 25px;
+}
+.section1 .card .container,
+.section2 .card .container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 400px;
+}
+.section1 .card .cs-message-emisor,
+.section1 .card .cs-message-receptor,
+.section2 .card .cs-message-emisor,
+.section2 .card .cs-message-receptor {
+  opacity: 0;
+}
+.section1 .card .cs-message-emisor.burbuja--1,
+.section1 .card .cs-message-receptor.burbuja--1,
+.section2 .card .cs-message-emisor.burbuja--1,
+.section2 .card .cs-message-receptor.burbuja--1 {
+  animation-delay: 2s;
+}
+.section1 .card .cs-message-emisor.burbuja--2,
+.section1 .card .cs-message-receptor.burbuja--2,
+.section2 .card .cs-message-emisor.burbuja--2,
+.section2 .card .cs-message-receptor.burbuja--2 {
+  animation-delay: 4s;
+}
+.section1 .card .cs-message-emisor.burbuja--3,
+.section1 .card .cs-message-receptor.burbuja--3,
+.section2 .card .cs-message-emisor.burbuja--3,
+.section2 .card .cs-message-receptor.burbuja--3 {
+  animation-delay: 6s;
+}
+.section1 .card .cs-message-emisor,
+.section2 .card .cs-message-emisor {
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.1921568627);
+  max-width: 90%;
+  width: auto;
+  height: auto;
+  background-color: lightgreen;
+  float: right;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  animation: appear 1s ease 2s both;
+}
+.section1 .card .cs-message-emisor::before,
+.section2 .card .cs-message-emisor::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: lightgreen;
+  transform: skew(0deg, 45deg);
+}
+.section1 .card .cs-message-emisor p,
+.section1 .card .cs-message-emisor span,
+.section2 .card .cs-message-emisor p,
+.section2 .card .cs-message-emisor span {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+.section1 .card .cs-message-emisor p,
+.section2 .card .cs-message-emisor p {
+  overflow-wrap: break-word;
+  display: inline;
+  font-size: 14px;
+  line-height: 1;
+  color: #505b66;
+}
+.section1 .card .cs-message-emisor strong,
+.section2 .card .cs-message-emisor strong {
+  font-family: "sf_pro_bold";
+  color: #404952;
+}
+.section1 .card .cs-message-emisor span,
+.section2 .card .cs-message-emisor span {
+  font-size: 12px;
+  float: right;
+  margin: 3px 0 0 10px;
+  color: #828282;
+}
+.section1 .card .cs-message-receptor,
+.section2 .card .cs-message-receptor {
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.1921568627);
+  max-width: 90%;
+  width: auto;
+  height: auto;
+  background-color: lightblue;
+  float: left;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  animation: appear 1s ease 2s both;
+}
+.section1 .card .cs-message-receptor::before,
+.section2 .card .cs-message-receptor::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: lightblue;
+  transform: skew(0deg, -45deg);
+}
+.section1 .card .cs-message-receptor p,
+.section1 .card .cs-message-receptor span,
+.section2 .card .cs-message-receptor p,
+.section2 .card .cs-message-receptor span {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+.section1 .card .cs-message-receptor p,
+.section2 .card .cs-message-receptor p {
+  overflow-wrap: break-word;
+  display: inline;
+  font-size: 14px;
+  line-height: 1;
+  color: #505b66;
+}
+.section1 .card .cs-message-receptor strong,
+.section2 .card .cs-message-receptor strong {
+  font-family: "sf_pro_bold";
+  color: #404952;
+}
+.section1 .card .cs-message-receptor span,
+.section2 .card .cs-message-receptor span {
+  font-size: 12px;
+  float: right;
+  margin: 3px 0 0 10px;
+  color: #828282;
+}
+.section1 .cell,
+.section2 .cell {
   width: 100%;
-}
-@media screen and (max-width: 768px) {
-  .section1 .img-fluid-v,
-  .section2 .img-fluid-v {
-    display: none;
-  }
-}
-.section1 .img-fluid-h,
-.section2 .img-fluid-h {
-  display: none;
-}
-@media screen and (max-width: 768px) {
-  .section1 .img-fluid-h,
-  .section2 .img-fluid-h {
-    display: block;
-    width: 100%;
-  }
 }
 .section1 h5,
 .section2 h5 {
@@ -958,6 +1095,24 @@ main .cardholder__card .row_span {
   }
   50% {
     transform: rotate(18deg);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 @keyframes text-focus-in {

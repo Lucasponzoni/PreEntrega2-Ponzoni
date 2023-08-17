@@ -578,27 +578,159 @@ main {
 
   .card {
     border: none;
+
+    .fondo-1 {
+      background: rgb(248, 248, 248);
+      background: -moz-linear-gradient(
+        180deg,
+        rgba(248, 248, 248, 1) 31%,
+        rgba(247, 183, 255, 1) 100%
+      );
+      background: -webkit-linear-gradient(
+        180deg,
+        rgba(248, 248, 248, 1) 31%,
+        rgba(247, 183, 255, 1) 100%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(248, 248, 248, 1) 31%,
+        rgba(247, 183, 255, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(
+          startColorstr="#f8f8f8",
+          endColorstr="#f7b7ff",
+          GradientType=1
+        );
+      padding-bottom: 1rem;
+      border-radius: 25px;
+    }
+
+    .fondo-2 {
+      background: rgb(248, 248, 248);
+      background: -moz-linear-gradient(
+        180deg,
+        rgba(248, 248, 248, 1) 31%,
+        rgba(255, 174, 83, 1) 100%
+      );
+      background: -webkit-linear-gradient(
+        180deg,
+        rgba(248, 248, 248, 1) 31%,
+        rgba(255, 174, 83, 1) 100%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(248, 248, 248, 1) 31%,
+        rgba(255, 174, 83, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(
+          startColorstr="#f8f8f8",
+          endColorstr="#ffae53",
+          GradientType=1
+        );
+      padding-bottom: 1rem;
+      border-radius: 25px;
+    }
+
+    $animation-delay-1: 2s;
+    $animation-delay-2: 4s;
+    $animation-delay-3: 6s;
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 400px;
+    }
+
+    @mixin mensaje($size, $color, $lado, $skewA, $skewB, $delay) {
+      max-width: 90%;
+      width: $size;
+      height: $size;
+      background-color: $color;
+      float: $lado;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px;
+      position: relative;
+      animation: appear 1s ease $delay both;
+
+      &::before {
+        content: '';
+        position: absolute;
+        @if $lado == right {
+          right: 0;
+        } @else {
+          left: 0;
+        }
+        bottom: -1px;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        background-color: $color;
+        transform: skew($skewA, $skewB);
+      }
+
+      p,
+      span {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+      }
+
+      p {
+        overflow-wrap: break-word;
+        display: inline;
+        font-size: 14px;
+        line-height: 1;
+        color: #505b66;
+      }
+
+      strong{
+        font-family: $tertiaryfont;
+        color: #404952;
+      }
+
+      span {
+        font-size: 12px;
+        float: right;
+        margin: 3px 0 0 10px;
+        color: #828282;
+      }
+    }
+
+    .cs-message-emisor,
+    .cs-message-receptor {
+      opacity: 0;
+
+      &.burbuja--1 {
+        animation-delay: $animation-delay-1;
+      }
+
+      &.burbuja--2 {
+        animation-delay: $animation-delay-2;
+      }
+
+      &.burbuja--3 {
+        animation-delay: $animation-delay-3;
+      }
+    }
+
+    .cs-message-emisor {
+      box-shadow: 2px 6px 8px #00000031;
+      @include mensaje(auto, lightgreen, right, 0deg, 45deg, $animation-delay-1);
+    }
+
+    .cs-message-receptor {
+      box-shadow: 2px 6px 8px #00000031;
+      @include mensaje(auto, lightblue, left, 0deg, -45deg, $animation-delay-1);
+    }
   }
 
-  .img-fluid-v {
+  .cell {
     width: 100%;
-
-    @include tablet {
-      display: none;
-    }
-  }
-
-  .img-fluid-h {
-    display: none;
-
-    @include tablet {
-      display: block;
-      width: 100%;
-    }
   }
 
   h5 {
-    font-family: 'Andalucia';
+    font-family: $secondaryfont;
     padding: 1rem;
     color: #353535;
     font-size: 2rem;
@@ -802,6 +934,26 @@ main {
   }
   50% {
     transform: rotate(18deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
