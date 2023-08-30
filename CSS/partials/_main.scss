@@ -255,7 +255,7 @@ main {
       line-height: 1rem;
 
       @include mobile{
-        font-size: 1rem;
+        font-size: .8rem;
       }
     }
     .bubble .loading b {

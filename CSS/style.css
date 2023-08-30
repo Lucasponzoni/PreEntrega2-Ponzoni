@@ -544,7 +544,7 @@ main .pablo-saluda .messages .bubble .loading {
 }
 @media screen and (max-width: 576px) {
   main .pablo-saluda .messages .bubble .loading {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 main .pablo-saluda .messages .bubble .loading b {
