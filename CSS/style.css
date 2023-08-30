@@ -542,6 +542,11 @@ main .pablo-saluda .messages .bubble .loading {
   font-size: 1.5rem;
   line-height: 1rem;
 }
+@media screen and (max-width: 576px) {
+  main .pablo-saluda .messages .bubble .loading {
+    font-size: 1rem;
+  }
+}
 main .pablo-saluda .messages .bubble .loading b {
   display: inline-block;
   color: white;
