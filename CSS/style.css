@@ -65,7 +65,7 @@ body .food_pack {
     background-repeat: no-repeat;
     position: relative;
     background-position: top center;
-    margin-top: -250px;
+    margin-top: -120px;
   }
 }
 body .slide-in-right {
@@ -106,26 +106,42 @@ header {
     gap: 0;
   }
 }
-header .abrir-menu,
+header .abrir-menu {
+  display: none;
+  color: #FFF;
+}
+header .abrir-menu > i {
+  position: relative;
+}
+header .abrir-menu > i:hover {
+  color: #fce96b;
+}
+@media screen and (max-width: 1050px) {
+  header .abrir-menu {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    border: 0;
+    font-size: 2.5rem;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
 header .cerrar-menu {
   display: none;
   color: #FFF;
 }
-header .abrir-menu > i,
 header .cerrar-menu > i {
   position: relative;
-  animation: bounce 2s infinite;
 }
-header .abrir-menu > i:hover,
 header .cerrar-menu > i:hover {
   color: #fce96b;
 }
 @media screen and (max-width: 1050px) {
-  header .abrir-menu,
   header .cerrar-menu {
     display: block;
     border: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
     background-color: transparent;
     cursor: pointer;
   }
@@ -190,6 +206,11 @@ header nav .social_media i {
   color: #ffffff;
   font-size: 2rem;
 }
+@media screen and (max-width: 576px) {
+  header nav .social_media i {
+    font-size: 2.5rem;
+  }
+}
 header nav .social_media i:hover {
   color: #fce96b;
   transition: 0.2s;
@@ -210,6 +231,7 @@ header nav .nav-list {
     padding: 0;
     flex-direction: column;
     align-items: center;
+    font-size: 1.5rem;
   }
 }
 header nav .nav-list a {
