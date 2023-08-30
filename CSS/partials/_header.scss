@@ -173,6 +173,10 @@ header {
         display: inline-block;
         animation: spin 10s linear infinite, colorBlink 2s linear infinite;
         transform-origin: center;
+
+        @include desktop {
+          display: none;
+        }
       }
     }
   }

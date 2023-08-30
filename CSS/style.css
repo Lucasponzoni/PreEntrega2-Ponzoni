@@ -258,6 +258,11 @@ header nav .nav_c .bi-asterisk {
   animation: spin 10s linear infinite, colorBlink 2s linear infinite;
   transform-origin: center;
 }
+@media screen and (max-width: 1050px) {
+  header nav .nav_c .bi-asterisk {
+    display: none;
+  }
+}
 
 body.menu-open {
   overflow: hidden;
