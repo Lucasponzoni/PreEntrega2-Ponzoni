@@ -163,18 +163,12 @@ window.onload = function() {
     var message = messages[messageIndex];
     if (!message) {
       clearInterval(sendInterval);
-      messagesEl.innerHTML = '';
-      setTimeout(function () {
-        messageIndex = 0;
-        sendInterval = setInterval(sendMessages, 2000);
-        sendMessages();
-      }, 800);
       return;
     }
     sendMessage(message);
     ++messageIndex;
   };
 
-  sendInterval = setInterval(sendMessages, 4000);
+  sendInterval = setInterval(sendMessages, 3000);
 
 };

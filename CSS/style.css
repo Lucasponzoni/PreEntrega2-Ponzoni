@@ -226,7 +226,7 @@ header nav .nav-list {
 }
 @media screen and (max-width: 1050px) {
   header nav .nav-list {
-    margin-top: 5rem;
+    margin-top: 3rem;
     gap: 2rem;
     padding: 0;
     flex-direction: column;
@@ -448,6 +448,7 @@ main .pablo-saluda {
   margin-top: 1rem;
   width: 700px;
   min-height: 220px;
+  overflow: hidden;
 }
 @media screen and (max-width: 768px) {
   main .pablo-saluda {
@@ -553,6 +554,12 @@ main .pablo-saluda .messages .bubble .loading b {
 }
 main .cardholder {
   padding: 0rem 0;
+}
+main .cardholder:nth-last-child(2) {
+  margin-bottom: 2rem;
+}
+main .cardholder i {
+  color: #fce96b;
 }
 main .cardholder__card {
   width: 700px;
