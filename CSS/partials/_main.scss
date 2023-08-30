@@ -124,7 +124,7 @@ main {
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
   }
 
-  .pablo-saluda {
+  /*.pablo-saluda {
     margin: 0;
 
     .handless {
@@ -142,6 +142,110 @@ main {
       z-index: -1;
       animation: saludo 2s infinite linear;
       transform-origin: bottom center;
+    }
+  }*/
+
+  .pablo-saluda{
+    display: flex;
+    background-color: #ffffff95;
+    border-radius: 25px;
+    padding: 1rem;
+    margin-top: 1rem;
+    width: 700px;
+    min-height: 200px;
+
+    @include tablet{
+      width: auto;
+  }
+
+    .head{
+      position: relative;
+      background-color: #ff00d4;
+      border-radius: 100px;
+      width: 8rem;
+      height: 8em;
+      padding: .5rem;
+    }
+
+    .messages{
+      flex-grow: 1;
+
+      .cuadradito{
+        background-color: brown;
+        color: aliceblue;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: max-content;
+      min-height: 100vh;
+      background: #FFF;
+    }
+    .messages {
+      margin-top: 2rem;
+      overflow: auto;
+      width: max-content;
+      flex-wrap: wrap;
+      max-height: 100vh;
+      padding: 1rem .9rem;
+    }
+    .bubble {
+      overflow: hidden;
+      display: inline-block;
+      font-size: 1.2rem;
+      margin: 0 0 .125rem 0;
+      padding: .5rem .85rem;
+      line-height: 1.25rem;
+      border-radius: 1rem;
+      transform-origin: 0 100%;
+      vertical-align: middle;
+      transition: border-radius .25s ease-out .075s;
+    }
+    .bubble.left.cornered {
+      border-bottom-left-radius: 0;
+    }
+    .bubble.left {
+      background: rgb(213, 67, 67);
+       color: #FFF;
+    }
+    .bubble:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: -.5rem;
+      width: .5rem;
+      height: .5rem;
+      background-size: .5rem .5rem;
+      background-position: .5rem 0;
+      background-repeat: no-repeat;
+      transition: background-position .15s ease-in;
+    }
+    .bubble.cornered:after {
+      background-position: 0 0;
+    }
+    .bubble span {
+      display: block;
+    }
+    .bubble span.message {
+      opacity: 0;
+    }
+    .bubble a {
+      color: #0076FF;
+    }
+    .bubble .loading {
+      position: absolute;
+      width: 2.25rem;
+      font-size: 1.5rem;
+      line-height: 1rem;
+    }
+    .bubble .loading b {
+      display: inline-block;
+      color: rgba(98, 0, 255, 0.5);
+    }
     }
   }
   

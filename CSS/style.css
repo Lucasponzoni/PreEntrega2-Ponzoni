@@ -297,6 +297,26 @@ body.menu-open {
 }
 main {
   padding: 2rem;
+  /*.pablo-saluda {
+    margin: 0;
+
+    .handless {
+      width: 300px;
+      position: relative;
+      right: -50px;
+      bottom: -20px;
+    }
+
+    .hand {
+      width: 80px;
+      position: relative;
+      right: 236px;
+      bottom: 39px;
+      z-index: -1;
+      animation: saludo 2s infinite linear;
+      transform-origin: bottom center;
+    }
+  }*/
 }
 @media screen and (max-width: 768px) {
   main.container {
@@ -418,22 +438,106 @@ main .text-focus-in-2 {
   animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) 1s both;
 }
 main .pablo-saluda {
-  margin: 0;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5843137255);
+  border-radius: 25px;
+  padding: 1rem;
+  margin-top: 1rem;
+  width: 700px;
+  min-height: 200px;
 }
-main .pablo-saluda .handless {
-  width: 300px;
-  position: relative;
-  right: -50px;
-  bottom: -20px;
+@media screen and (max-width: 768px) {
+  main .pablo-saluda {
+    width: auto;
+  }
 }
-main .pablo-saluda .hand {
-  width: 80px;
+main .pablo-saluda .head {
   position: relative;
-  right: 236px;
-  bottom: 39px;
-  z-index: -1;
-  animation: saludo 2s infinite linear;
-  transform-origin: bottom center;
+  background-color: #ff00d4;
+  border-radius: 100px;
+  width: 8rem;
+  height: 8em;
+  padding: 0.5rem;
+}
+main .pablo-saluda .messages {
+  flex-grow: 1;
+}
+main .pablo-saluda .messages .cuadradito {
+  background-color: brown;
+  color: aliceblue;
+  margin: 1rem;
+  padding: 1rem;
+}
+main .pablo-saluda .messages body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  min-height: 100vh;
+  background: #FFF;
+}
+main .pablo-saluda .messages .messages {
+  margin-top: 2rem;
+  overflow: auto;
+  width: -moz-max-content;
+  width: max-content;
+  flex-wrap: wrap;
+  max-height: 100vh;
+  padding: 1rem 0.9rem;
+}
+main .pablo-saluda .messages .bubble {
+  overflow: hidden;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 0 0 0.125rem 0;
+  padding: 0.5rem 0.85rem;
+  line-height: 1.25rem;
+  border-radius: 1rem;
+  transform-origin: 0 100%;
+  vertical-align: middle;
+  transition: border-radius 0.25s ease-out 0.075s;
+}
+main .pablo-saluda .messages .bubble.left.cornered {
+  border-bottom-left-radius: 0;
+}
+main .pablo-saluda .messages .bubble.left {
+  background: rgb(213, 67, 67);
+  color: #FFF;
+}
+main .pablo-saluda .messages .bubble:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-size: 0.5rem 0.5rem;
+  background-position: 0.5rem 0;
+  background-repeat: no-repeat;
+  transition: background-position 0.15s ease-in;
+}
+main .pablo-saluda .messages .bubble.cornered:after {
+  background-position: 0 0;
+}
+main .pablo-saluda .messages .bubble span {
+  display: block;
+}
+main .pablo-saluda .messages .bubble span.message {
+  opacity: 0;
+}
+main .pablo-saluda .messages .bubble a {
+  color: #0076FF;
+}
+main .pablo-saluda .messages .bubble .loading {
+  position: absolute;
+  width: 2.25rem;
+  font-size: 1.5rem;
+  line-height: 1rem;
+}
+main .pablo-saluda .messages .bubble .loading b {
+  display: inline-block;
+  color: rgba(98, 0, 255, 0.5);
 }
 main .cardholder {
   padding: 0rem 0;
