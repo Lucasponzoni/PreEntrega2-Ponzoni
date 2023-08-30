@@ -439,12 +439,15 @@ main .text-focus-in-2 {
 }
 main .pablo-saluda {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.5843137255);
+  align-items: center;
+  background: rgb(0, 101, 195);
+  background: linear-gradient(183deg, rgba(255, 255, 255, 0.4784313725) 31%, rgba(90, 153, 255, 0.1254901961) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0065c3",endColorstr="#ffffff",GradientType=1);
   border-radius: 25px;
   padding: 1rem;
   margin-top: 1rem;
   width: 700px;
-  min-height: 200px;
+  min-height: 220px;
 }
 @media screen and (max-width: 768px) {
   main .pablo-saluda {
@@ -453,11 +456,14 @@ main .pablo-saluda {
 }
 main .pablo-saluda .head {
   position: relative;
-  background-color: #ff00d4;
+  background: linear-gradient(12deg, #0073ff, #fa00a8, #ff9000, #aa00ff, #ffdf00);
+  background-size: 1000% 1000%;
+  animation: AnimationName 9s ease infinite;
   border-radius: 100px;
   width: 8rem;
   height: 8em;
-  padding: 0.5rem;
+  margin-left: 0.2rem;
+  padding: 0.4rem;
 }
 main .pablo-saluda .messages {
   flex-grow: 1;
@@ -502,8 +508,9 @@ main .pablo-saluda .messages .bubble.left.cornered {
   border-bottom-left-radius: 0;
 }
 main .pablo-saluda .messages .bubble.left {
-  background: rgb(213, 67, 67);
-  color: #FFF;
+  background: #1fb948;
+  color: #ffffff;
+  text-shadow: 0px 0px 5px rgba(44, 44, 44, 0);
 }
 main .pablo-saluda .messages .bubble:after {
   content: "";
@@ -537,7 +544,7 @@ main .pablo-saluda .messages .bubble .loading {
 }
 main .pablo-saluda .messages .bubble .loading b {
   display: inline-block;
-  color: rgba(98, 0, 255, 0.5);
+  color: white;
 }
 main .cardholder {
   padding: 0rem 0;
@@ -1244,6 +1251,17 @@ main .cardholder__card .row_span {
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 58% 0%;
+  }
+  50% {
+    background-position: 43% 100%;
+  }
+  100% {
+    background-position: 58% 0%;
   }
 }
 @keyframes text-focus-in {

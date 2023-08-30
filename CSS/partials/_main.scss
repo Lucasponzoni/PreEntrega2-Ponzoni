@@ -147,12 +147,17 @@ main {
 
   .pablo-saluda{
     display: flex;
-    background-color: #ffffff95;
+    align-items: center;
+    background: rgb(0,101,195);
+    background: -moz-linear-gradient(183deg, #ffffff7a 31%, #5a99ff20 100%);
+    background: -webkit-linear-gradient(183deg, #ffffff7a 31%, #5a99ff20 100%);
+    background: linear-gradient(183deg, #ffffff7a 31%, #5a99ff20 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0065c3",endColorstr="#ffffff",GradientType=1);
     border-radius: 25px;
     padding: 1rem;
     margin-top: 1rem;
     width: 700px;
-    min-height: 200px;
+    min-height: 220px;
 
     @include tablet{
       width: auto;
@@ -160,11 +165,17 @@ main {
 
     .head{
       position: relative;
-      background-color: #ff00d4;
+      background: linear-gradient(12deg, #0073ff, #fa00a8, #ff9000, #aa00ff, #ffdf00);
+      background-size: 1000% 1000%;
+      -webkit-animation: AnimationName 9s ease infinite;
+      -moz-animation: AnimationName 9s ease infinite;
+      -o-animation: AnimationName 9s ease infinite;
+      animation: AnimationName 9s ease infinite;
       border-radius: 100px;
       width: 8rem;
       height: 8em;
-      padding: .5rem;
+      margin-left: .2rem;
+      padding: .4rem;
     }
 
     .messages{
@@ -209,8 +220,9 @@ main {
       border-bottom-left-radius: 0;
     }
     .bubble.left {
-      background: rgb(213, 67, 67);
-       color: #FFF;
+      background: $fifthcolor;
+       color: #ffffff;
+       text-shadow: 0px 0px 5px #2c2c2c00;
     }
     .bubble:after {
       content: "";
@@ -244,7 +256,7 @@ main {
     }
     .bubble .loading b {
       display: inline-block;
-      color: rgba(98, 0, 255, 0.5);
+      color: white;
     }
     }
   }
@@ -1059,6 +1071,27 @@ main {
   100% {
     opacity: 0;
   }
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:58% 0%}
+  50%{background-position:43% 100%}
+  100%{background-position:58% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:58% 0%}
+  50%{background-position:43% 100%}
+  100%{background-position:58% 0%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:58% 0%}
+  50%{background-position:43% 100%}
+  100%{background-position:58% 0%}
+}
+@keyframes AnimationName {
+  0%{background-position:58% 0%}
+  50%{background-position:43% 100%}
+  100%{background-position:58% 0%}
 }
 
 @include text-focus-keyframes;

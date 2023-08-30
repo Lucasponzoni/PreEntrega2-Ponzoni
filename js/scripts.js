@@ -4,31 +4,32 @@ window.onload = function() {
   var typingSpeed = 20;
   var loadingText = '<b>•</b><b>•</b><b>•</b>';
   var messageIndex = 0;
+  var sendInterval;
 
   var getCurrentTime = function() {
     var date = new Date();
-    var hours =  date.getHours();
-    var minutes =  date.getMinutes();
-    var current = hours + (minutes * .01);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var current = hours + minutes * 0.01;
     if (current >= 5 && current < 13) return 'Buenos dias ☀️';
     if (current >= 13 && current < 19) return 'Buenas tardes 🤩';
     if (current >= 19 || current < 5) return 'Buenas noches 🌙';
-  }
+  };
 
   var messages = [
-    'Hola 👋',
-    'Gracias por visitarnos',
+    'Hola 👋, soy Pablo',
     getCurrentTime(),
-    'Bienvenido a Asesoria Bromatologica Rosario 👨🏻‍🔬',
-  ]
+    'Bienvenido a Asesoria Bromatologica Rosario',
+    'Gracias por visitarnos. ',
+  ];
 
   var getFontSize = function() {
     return parseInt(getComputedStyle(document.body).getPropertyValue('font-size'));
-  }
+  };
 
   var pxToRem = function(px) {
     return px / getFontSize() + 'rem';
-  }
+  };
 
   var createBubbleElements = function(message, position) {
     var bubbleEl = document.createElement('div');
@@ -48,33 +49,33 @@ window.onload = function() {
     return {
       bubble: bubbleEl,
       message: messageEl,
-      loading: loadingEl
-    }
-  }
+      loading: loadingEl,
+    };
+  };
 
-  var getDimentions = function(elements) {
-    return dimensions = {
+  var getDimensions = function(elements) {
+    return (dimensions = {
       loading: {
         w: '4rem',
-        h: '2.25rem'
+        h: '2.25rem',
       },
       bubble: {
         w: pxToRem(elements.bubble.offsetWidth + 4),
-        h: pxToRem(elements.bubble.offsetHeight)
+        h: pxToRem(elements.bubble.offsetHeight),
       },
       message: {
         w: pxToRem(elements.message.offsetWidth + 4),
-        h: pxToRem(elements.message.offsetHeight)
-      }
-    }
-  }
+        h: pxToRem(elements.message.offsetHeight),
+      },
+    });
+  };
 
   var sendMessage = function(message, position) {
-    var loadingDuration = (message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed) + 500;
+    var loadingDuration = message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed + 500;
     var elements = createBubbleElements(message, position);
     messagesEl.appendChild(elements.bubble);
     messagesEl.appendChild(document.createElement('br'));
-    var dimensions = getDimentions(elements);
+    var dimensions = getDimensions(elements);
     elements.bubble.style.width = '0rem';
     elements.bubble.style.height = dimensions.loading.h;
     elements.message.style.width = dimensions.message.w;
@@ -85,7 +86,7 @@ window.onload = function() {
       var scrollMessages = anime({
         targets: messagesEl,
         scrollTop: bubbleOffset,
-        duration: 750
+        duration: 750,
       });
     }
     var bubbleSize = anime({
@@ -94,20 +95,20 @@ window.onload = function() {
       marginTop: ['2.5rem', 0],
       marginLeft: ['-2.5rem', 0],
       duration: 800,
-      easing: 'easeOutElastic'
+      easing: 'easeOutElastic',
     });
     var loadingLoop = anime({
       targets: elements.bubble,
-      scale: [1.05, .95],
+      scale: [1.05, 0.95],
       duration: 1100,
       loop: true,
       direction: 'alternate',
-      easing: 'easeInOutQuad'
+      easing: 'easeInOutQuad',
     });
     var dotsStart = anime({
       targets: elements.loading,
       translateX: ['-2rem', '0rem'],
-      scale: [.5, 1],
+      scale: [0.5, 1],
       duration: 400,
       delay: 25,
       easing: 'easeOutElastic',
@@ -115,21 +116,26 @@ window.onload = function() {
     var dotsPulse = anime({
       targets: elements.bubble.querySelectorAll('b'),
       scale: [1, 1.25],
-      opacity: [.5, 1],
+      opacity: [0.5, 1],
       duration: 300,
       loop: true,
       direction: 'alternate',
-      delay: function(i) {return (i * 100) + 50}
+      delay: function (i) {
+        return i * 100 + 50;
+      },
     });
-    setTimeout(function() {
+    setTimeout(function () {
       loadingLoop.pause();
       dotsPulse.restart({
         opacity: 0,
         scale: 0,
         loop: false,
         direction: 'forwards',
-        update: function(a) {
-          if (a.progress >= 65 && elements.bubble.classList.contains('is-loading')) {
+        update: function (a) {
+          if (
+            a.progress >= 65 &&
+            elements.bubble.classList.contains('is-loading')
+          ) {
             elements.bubble.classList.remove('is-loading');
             anime({
               targets: elements.message,
@@ -137,29 +143,38 @@ window.onload = function() {
               duration: 300,
             });
           }
-        }
+        },
       });
       bubbleSize.restart({
         scale: 1,
-        width: [dimensions.loading.w, dimensions.bubble.w ],
-        height: [dimensions.loading.h, dimensions.bubble.h ],
+        width: [dimensions.loading.w, dimensions.bubble.w],
+        height: [dimensions.loading.h, dimensions.bubble.h],
         marginTop: 0,
         marginLeft: 0,
-        begin: function() {
-          if (messageIndex < messages.length) elements.bubble.classList.remove('cornered');
-        }
-      })
+        begin: function () {
+          if (messageIndex < messages.length)
+            elements.bubble.classList.remove('cornered');
+        },
+      });
     }, loadingDuration - 50);
-  }
+  };
 
-  var sendMessages = function() {
+  var sendMessages = function () {
     var message = messages[messageIndex];
-    if (!message) return;
+    if (!message) {
+      clearInterval(sendInterval);
+      messagesEl.innerHTML = '';
+      setTimeout(function () {
+        messageIndex = 0;
+        sendInterval = setInterval(sendMessages, 2000);
+        sendMessages();
+      }, 800);
+      return;
+    }
     sendMessage(message);
     ++messageIndex;
-    setTimeout(sendMessages, (message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed) + anime.random(900, 1200));
-  }
+  };
 
-  sendMessages();
+  sendInterval = setInterval(sendMessages, 4000);
 
-}
+};
