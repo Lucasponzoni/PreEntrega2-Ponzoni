@@ -54,7 +54,7 @@ body .food_pack {
   position: absolute;
   width: 50vw;
   right: 0;
-  bottom: -100px;
+  bottom: 1px;
   height: 120vh;
   z-index: -1;
 }
