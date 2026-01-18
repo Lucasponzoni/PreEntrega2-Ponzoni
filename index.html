@@ -1,20 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="asesoria bromatologica, seguridad alimentaria, calidad alimenticia, empresas alimenticias, estrategias de seguridad, satisfaccion del cliente, fidelizacion de clientes, capacitaciones alimentarias, auditorias de alimentos, manipulacion de alimentos, consultoria alimentaria, asesoramiento alimentario, mejora de productos alimenticios, servicios de seguridad alimentaria, innovacion en seguridad alimentaria, Rosario, salud alimentaria, higiene alimentaria, normativas alimentarias, registro de marcas, asesoria legal alimentaria, bienestar del consumidor, estrategias de calidad alimentaria, expertos en alimentos, prevencion de riesgos alimentarios">
-    <meta name="author" content="Lucas Ponzoni">
-    <meta name="description" content="Asesoría Bromatológica Rosario (ABR) - Ayudamos a las empresas a mejorar la calidad alimenticia de sus productos y servicios a través de estrategias innovadoras en seguridad alimentaria para la satisfacción y fidelización de clientes.">
-    <link rel="shortcut icon" href="./img/abr_favicon_qube.png" type="image/x-icon">
-    <title>Asesoría Bromatológica Rosario (ABR) | Mejora de Calidad Alimenticia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./CSS/style.css">
+  <!-- ✅ Básicos -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="language" content="es" />
+  <meta name="author" content="Lucas Ponzoni" />
+  <meta name="theme-color" content="#0065C3" />
+
+  <!-- ✅ SEO Principal -->
+  <title>Asesoría Bromatológica Rosario (ABR) | Seguridad Alimentaria, Habilitaciones y Calidad</title>
+
+  <meta
+    name="description"
+    content="Asesoría Bromatológica Rosario (ABR). Lic. en Tecnología de los Alimentos, Químico y Magíster en Alimentos. Ayudo a industrias, PyMEs y comercios a habilitar, ordenar procesos, cumplir normativa y vender con confianza: RNE/RNPA, BPM, POES, HACCP, rotulado y Sin TACC."
+  />
+
+  <!-- ✅ Keywords -->
+  <meta
+    name="keywords"
+    content="asesoría bromatológica rosario, bromatología rosario, seguridad alimentaria, habilitación alimentos, RNE, RNPA, BPM, POES, HACCP, auditorías alimentarias, consultoría alimentaria, rotulado nutricional, etiquetado de alimentos, sin tacc, celíacos, alérgenos, trazabilidad, capacitación manipulación de alimentos, carnet de manipulación, industria alimentaria, pymes alimentos, gastronomía, embutidos, cárnicos, panificados, lácteos, bebidas, congelados, conservas"
+  />
+
+  <!-- ✅ Robots / Indexación -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://asesoriabromatologicaros.com.ar/" />
+
+  <!-- ✅ Favicon + Iconos -->
+  <link rel="icon" href="./img/abr_favicon_qube.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./img/abr_favicon_qube.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- ✅ Open Graph (Facebook / WhatsApp / Instagram previews) -->
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Asesoría Bromatológica Rosario (ABR)" />
+  <meta property="og:title" content="Asesoría Bromatológica Rosario (ABR) | Seguridad Alimentaria y Habilitaciones" />
+  <meta
+    property="og:description"
+    content="Transformamos tu negocio alimentario en un proyecto seguro, habilitado y rentable. RNE/RNPA, BPM, POES, HACCP, rotulado legal y Sin TACC. Asesoría técnica real para industrias, PyMEs y comercios."
+  />
+  <meta property="og:url" content="https://asesoriabromatologicaros.com.ar/" />
+  <meta property="og:image" content="https://asesoriabromatologicaros.com.ar/img/og-cover.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Asesoría Bromatológica Rosario (ABR)" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Asesoría Bromatológica Rosario (ABR)" />
+  <meta
+    name="twitter:description"
+    content="RNE/RNPA, BPM, POES, HACCP, auditorías, rotulado y Sin TACC. Asesoría bromatológica profesional en Rosario y región."
+  />
+  <meta name="twitter:image" content="https://asesoriabromatologicaros.com.ar/img/og-cover.webp" />
+
+  <!-- ✅ Performance: Preconnect + Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ✅ CSS externos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+  <!-- ✅ CSS -->
+  <link rel="stylesheet" href="./CSS/style.css" />
+
+  <!-- ✅ JSON-LD (Schema.org) - pro para Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Asesoría Bromatológica Rosario (ABR)",
+    "url": "https://asesoriabromatologicaros.com.ar/",
+    "image": "https://asesoriabromatologicaros.com.ar/img/og-cover.webp",
+    "description": "Asesoría bromatológica profesional en Rosario. Habilitaciones RNE/RNPA, BPM, POES, HACCP, auditorías, rotulado legal y Sin TACC. Trabajo con industrias, PyMEs y comercios.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rosario",
+      "addressRegion": "Santa Fe",
+      "addressCountry": "AR"
+    },
+    "telephone": "+54 341 546 9309",
+    "areaServed": ["Rosario", "Santa Fe", "Argentina"],
+    "sameAs": [
+      "https://www.instagram.com/asesoriabromatologicarosario/",
+      "https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -344,7 +428,7 @@
 
     <!-- ✅ WhatsApp -->
     <a
-    href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+se+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web."
+    href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+de+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web."
     target="_blank"
     class="abr-wsp-float"
     aria-label="WhatsApp Asesoría Bromatológica Rosario"
