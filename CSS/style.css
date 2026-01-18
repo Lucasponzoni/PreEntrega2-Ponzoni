@@ -1654,8 +1654,7 @@ footer .contenedor_footer .icon-foot {
 }
 
 /* =========================================================
-   ✅ SWEETALERT2 - Liquid Glass ABR
-   (Pegalo tal cual, queda premium)
+   ✅ SWEETALERT2
 ========================================================= */
 .abr-swal-glass {
   border-radius: 28px !important;
@@ -1693,4 +1692,69 @@ footer .contenedor_footer .icon-foot {
 
 .abr-swal-close:hover {
   color: #fce96b !important;
+}
+
+/* ===========================
+   ✅ RESPONSIVE
+=========================== */
+@media screen and (max-width: 768px) {
+  .hero_intro {
+    width: auto;
+  }
+
+  .cardholder__card-body {
+    display: grid;
+    grid-template-columns: 1fr var(--abr-article-img-mobile);
+    align-items: start;
+    gap: 0.9rem;
+    width: 100%;
+  }
+
+  .cardholder__card-text {
+    min-width: 0;
+  }
+
+  .cardholder__card-image {
+    width: var(--abr-article-img-mobile);
+    flex: unset;
+    justify-content: flex-end;
+    align-self: start;
+  }
+
+  .cardholder__card-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover; 
+    border-radius: 18px;
+    padding: 0.5rem;
+  }
+
+  .cardholder__card-image::after {
+    right: 8px;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.98rem;
+  }
+
+  .service_row {
+    font-size: 1.01rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .cardholder__card-body {
+    grid-template-columns: 1fr;
+  }
+
+  .cardholder__card-image {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cardholder__card-image img {
+    width: min(220px, 78vw);
+    aspect-ratio: 1 / 1;
+  }
 }
