@@ -51,7 +51,7 @@ body {
   display: none;
 }
 body .food_pack {
-  background-image: url(../img/Foodie.webp);
+  background-image: url("../img/Foodie.webp");
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -61,17 +61,54 @@ body .food_pack {
   height: 300vh;
   z-index: -1;
 }
+
+/* ✅ MOBILE: otra imagen */
 @media screen and (max-width: 768px) {
   body .food_pack {
+    background-image: url("../img/Foodie_Frascos_mobile.webp"); 
     background-size: contain;
     width: 100%;
     background-repeat: no-repeat;
     position: relative;
-    background-position: top bottom;
-    margin-top: -120px;
-    height: 105vh;
+    background-position: center bottom; 
+    margin-top: -540px;
+    height: 80vh; 
+    margin-bottom: 120px;
   }
 }
+
+/* ===========================
+   ✅ HERO MOBILE IMAGE (SOLO EN CELU)
+=========================== */
+.hero_mobile_pack {
+  display: none;
+}
+
+.hero_mobile_pack img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ✅ SOLO MOBILE */
+@media screen and (max-width: 768px) {
+  .hero_mobile_pack {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .hero_mobile_pack img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+  }
+}
+
 body .slide-in-right {
   animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s both;
 }
@@ -421,6 +458,7 @@ main .titulo #button_conocenos {
   main .titulo #button_conocenos {
     padding: 1rem;
     padding-inline: 1rem;
+    margin-top: 0 !important;
   }
 }
 main .titulo #button_conocenos a {
