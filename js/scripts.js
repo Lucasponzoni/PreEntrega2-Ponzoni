@@ -20,7 +20,7 @@ window.onload = function() {
     'Hola 👋, soy Pablo',
     getCurrentTime(),
     'Bienvenido a Asesoria Bromatologica Rosario',
-    'Gracias por visitarnos. ',
+    'Contactanos a traves de WhatsApp para brindarte mas informacion sobre nuestros servicios.',
   ];
 
   var getFontSize = function() {

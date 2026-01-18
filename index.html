@@ -8,6 +8,10 @@
     <meta name="description" content="Asesoría Bromatológica Rosario (ABR) - Ayudamos a las empresas a mejorar la calidad alimenticia de sus productos y servicios a través de estrategias innovadoras en seguridad alimentaria para la satisfacción y fidelización de clientes.">
     <link rel="shortcut icon" href="./img/abr_favicon_qube.png" type="image/x-icon">
     <title>Asesoría Bromatológica Rosario (ABR) | Mejora de Calidad Alimenticia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/style.css">
@@ -40,70 +44,271 @@
     </header>
 
     <Main class="container">
-        <div class="titulo text-focus-in" >
-            <H1>Asesoria Bromatologica Rosario</H1>
-                <div class="line_title" ></div>
-                <H2 class="Web_comment">Ayudamos a las empresas a mejorar la calidad alimenticia de sus productos y servicios, mediante la implementación de estrategias y prácticas innovadoras en materia de seguridad alimentaria, para garantizar la satisfacción y fidelización de sus clientes.</H2>
-                <h3 id="button_conocenos">
-                <a href="./Pages/nuestros_servicios.html">CONOCÉ NUESTROS SERVICIOS</a>
-                </h3>
+    <div class="titulo text-focus-in">
+        <H1>Asesoría Bromatológica Rosario</H1>
+        <div class="line_title"></div>
+
+        <!-- ✅ TITULAR MARKETINERO + BADGES AMARILLOS -->
+        <H2 class="Web_comment hero_title">
+        Transformamos tu negocio de alimentos en un proyecto
+        <span class="abr-badge abr-badge--yellow">Seguro</span>
+        <span class="abr-badge abr-badge--yellow">Habilitado</span>
+        <span class="abr-badge abr-badge--yellow">Rentable</span>
+        </H2>
+
+        <!-- ✅ HERO MEJOR DISEÑADO (SIN HASHTAGS) -->
+        <div class="hero_intro">
+        <p class="hero_intro__text">
+            Te acompañamos con asesoría técnica real para que produzcas con confianza,
+            cumplas normativas sin dolores de cabeza y logres una calidad consistente que te
+            permita <span class="abr-highlight">vender más</span> y crecer.
+        </p>
+
+        <p class="hero_intro__text hero_intro__text--small">
+            Trabajo con industrias, PyMEs y comercios en todos los rubros: cárnicos, embutidos,
+            panificados, lácteos, bebidas, conservas, congelados, rotiserías y gastronomía.
+        </p>
+
+        <!-- ✅ DIVISOR -->
+        <div class="hero_divider"></div>
+
+        <!-- ✅ CREDENCIALES EN FORMATO LIMPIO -->
+        <div class="hero_credentials">
+            <div class="hero_credentials__title">Tu asesor técnico</div>
+
+            <div class="hero_credentials__chips">
+            <span class="abr-chip">Lic. en Tecnología de los Alimentos</span>
+            <span class="abr-chip">Químico</span>
+            <span class="abr-chip">Magíster en Alimentos</span>
+            </div>
+
+            <p class="hero_credentials__desc">
+            Enfoque práctico y orientado a resultados: mejoramos procesos, ordenamos la producción,
+            reducimos riesgos y dejamos todo listo para inspecciones, habilitaciones y comercialización.
+            </p>
         </div>
-        
-        <div class="pablo-saluda text-focus-in-2 center">
-            <!-- <img class="handless" src="./img/pablo-handless.gif" alt="Pablo Scalise Saludando">
-            <img class="hand" src="./img/hand.webp" alt="Pablo Scalise mano Saludando"> -->
-            <div class="messages"></div>
-            <img class="head" src="./img/Pablo-Head.gif" alt="Pablo Scalise Memoji">
+
+        <!-- ✅ BOTÓN -->
+        <div class="mt-4" id="button_conocenos">
+        <a href="./Pages/nuestros_servicios.html"
+            class="btn btn-light rounded-pill px-4 py-3 shadow-sm fw-semibold d-inline-flex align-items-center gap-2">
+            <i class="bi bi-stars"></i> NUESTROS SERVICIOS & CLIENTES
+        </a>
+        </div>
+        </div>
+    </div>
+
+    <section class="cardholder text-focus-in-2">
+
+        <div class="pablo-saluda text-focus-in-2 center hidden">
+        <div class="messages"></div>
+        <img class="head" src="./img/Pablo-Head.gif" alt="Pablo Scalise Memoji">
         </div>
 
-        <section class="cardholder text-focus-in-2">
+        <!-- ✅ 1) Capacitaciones -->
+        <article class="cardholder__card">
+        <div class="cardholder__card--title">
+            <H2>Charlas y Capacitaciones <i class="bi bi-chat-dots"></i></H2>
+            <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
+        </div>
 
-            <article class="cardholder__card">
-                <div class="cardholder__card--title">
-                    <H2>Charlas y Capacitaciones <i class="bi bi-chat-dots"></i></H2>
-                    <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
-                </div>
+        <div class="line"></div>
 
-                    <div class="line" ></div>
-                    <P class="service_row" >Capacitaciones y charlas personalizadas para satisfacer las necesidades de su empresa, además de la obtención y renovación de <span class="row_span">carnets de manipulación de alimentos para grupos de trabajo.</span></P>
-            </article>
+        <div class="cardholder__card-body">
+            <div class="cardholder__card-text">
+            <P class="service_row">
+                Capacitaciones claras, dinámicas y aplicables para equipos de trabajo.
+                Mejoramos prácticas reales para que tu empresa trabaje con más control, orden y seguridad.
+            </P>
 
-            <article class="cardholder__card">
-                <div class="cardholder__card--title">
-                    <H2>Auditorias <i class="bi bi-search"></i></H2>
-                    <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
-                </div>
+            <div class="hero_divider"></div>
 
-                    <div class="line" ></div>
-                    <P class="service_row" >Servicio personalizado para ayudar a su empresa a mejorar la calidad alimenticia de sus productos y servicios. Nuestro enfoque se centra en la implementación de estrategias y prácticas innovadoras en materia de seguridad alimentaria, con el objetivo de <span class="row_span">garantizar la satisfacción y fidelización de sus clientes.</span></P>
-            </article>
+            <div class="quick_tags">
+                <span class="abr-tag abr-tag--soft">#CarnetManipulación</span>
+                <span class="abr-tag abr-tag--soft">#InCompany</span>
+                <span class="abr-tag abr-tag--soft">#AMedida</span>
+            </div>
+            </div>
 
-            <article class="cardholder__card">
-                <div class="cardholder__card--title">
-                    <H2>Implementación de normas <i class="bi bi-book"></i></H2>
-                    <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
-                </div>
+            <div class="cardholder__card-image">
+            <img class="abr-zoomable" src="./img/CAPACITACIONES.webp" alt="Charlas y Capacitaciones">
+            </div>
+        </div>
+        </article>
 
-                    <div class="line" ></div>
-                    <P class="service_row" >Creamos y elaboramos los manuales y documentos requeridos para obtener las certificaciones y acreditaciones del <span class="row_span">Registro Nacional de Establecimientos (RNE) y el Registro Nacional de Productos Alimenticios (RNPA)</span>. Además, gestionamos la autorización sanitaria tanto para establecimientos que producen y venden alimentos como para los involucrados en el transporte de sustancias alimenticias.</P>
-            </article>
+        <!-- ✅ 2) Auditorías -->
+        <article class="cardholder__card">
+        <div class="cardholder__card--title">
+            <H2>Auditorías y Diagnóstico <i class="bi bi-search"></i></H2>
+            <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
+        </div>
 
-        </section>
+        <div class="line"></div>
 
-        <div class="food_pack"></div>
+        <div class="cardholder__card-body">
+            <div class="cardholder__card-text">
+            <P class="service_row">
+                Evaluamos tu empresa con criterio técnico y práctico: higiene, procesos, trazabilidad, registros y riesgos.
+                Te llevás un plan de mejoras claro para elevar la calidad y cumplir normativas.
+            </P>
+
+            <div class="hero_divider"></div>
+
+            <div class="quick_tags">
+                <span class="abr-tag abr-tag--soft">#BPM</span>
+                <span class="abr-tag abr-tag--soft">#POES</span>
+                <span class="abr-tag abr-tag--soft">#PlanDeAcción</span>
+            </div>
+            </div>
+
+            <div class="cardholder__card-image">
+            <img class="abr-zoomable" src="./img/AUDITORIAS.webp" alt="Auditorías y Diagnóstico">
+            </div>
+        </div>
+        </article>
+
+        <!-- ✅ 3) RNE / RNPA -->
+        <article class="cardholder__card">
+        <div class="cardholder__card--title">
+            <H2>RNE / RNPA y Habilitaciones <i class="bi bi-file-earmark-check"></i></H2>
+            <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="cardholder__card-body">
+            <div class="cardholder__card-text">
+            <P class="service_row">
+                Gestionamos toda la documentación para que tu negocio esté
+                <span class="abr-highlight">habilitado y listo para vender</span>.
+                Manuales, registros y acompañamiento completo para tramitar RNE y RNPA.
+            </P>
+
+            <div class="hero_divider"></div>
+
+            <div class="quick_tags">
+                <span class="abr-tag abr-tag--soft">#RNE</span>
+                <span class="abr-tag abr-tag--soft">#RNPA</span>
+                <span class="abr-tag abr-tag--soft">#Habilitación</span>
+            </div>
+            </div>
+
+            <div class="cardholder__card-image">
+            <img class="abr-zoomable" src="./img/RNAP-RNE.webp" alt="RNE / RNPA y Habilitaciones">
+            </div>
+        </div>
+        </article>
+
+        <!-- ✅ 4) BPM / POES / HACCP -->
+        <article class="cardholder__card">
+        <div class="cardholder__card--title">
+            <H2>BPM, POES y HACCP <i class="bi bi-shield-check"></i></H2>
+            <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="cardholder__card-body">
+            <div class="cardholder__card-text">
+            <P class="service_row">
+                Implementación de sistemas para ordenar tu producción y trabajar con estándares.
+                Ideal si querés crecer, mejorar controles y estar preparado para auditorías externas.
+            </P>
+
+            <div class="hero_divider"></div>
+
+            <div class="quick_tags">
+                <span class="abr-tag abr-tag--soft">#BPM</span>
+                <span class="abr-tag abr-tag--soft">#POES</span>
+                <span class="abr-tag abr-tag--soft">#HACCP</span>
+            </div>
+            </div>
+
+            <div class="cardholder__card-image">
+            <img class="abr-zoomable" src="./img/SISTEMAS.webp" alt="BPM, POES y HACCP">
+            </div>
+        </div>
+        </article>
+
+        <!-- ✅ 5) SIN TACC -->
+        <article class="cardholder__card">
+        <div class="cardholder__card--title">
+            <H2>Implementación “Sin TACC” <i class="bi bi-check2-circle"></i></H2>
+            <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="cardholder__card-body">
+            <div class="cardholder__card-text">
+            <P class="service_row">
+                Si querés ingresar al mercado apto celíacos, te acompaño con un proceso serio:
+                prevención de contaminación cruzada, control de materias primas y documentación técnica.
+            </P>
+
+            <div class="hero_divider"></div>
+
+            <div class="quick_tags">
+                <span class="abr-tag abr-tag--soft">#SinTACC</span>
+                <span class="abr-tag abr-tag--soft">#Alérgenos</span>
+                <span class="abr-tag abr-tag--soft">#Trazabilidad</span>
+            </div>
+            </div>
+
+            <div class="cardholder__card-image">
+            <img class="abr-zoomable" src="./img/SIN TACC.webp" alt="Implementación Sin TACC">
+            </div>
+        </div>
+        </article>
+
+        <!-- ✅ 6) IQF -->
+        <article class="cardholder__card">
+        <div class="cardholder__card--title">
+            <H2>IQF, Congelados y Calidad <i class="bi bi-snow"></i></H2>
+            <a href="./Pages/nuestros_servicios.html"><img class="img_row" src="./img/external.webp" alt="Link"></a>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="cardholder__card-body">
+            <div class="cardholder__card-text">
+            <P class="service_row">
+                Asesoramiento técnico en procesos de congelado para mejorar rendimiento y calidad final.
+                Control térmico, estabilidad del producto y estandarización lote a lote.
+            </P>
+
+            <div class="hero_divider"></div>
+
+            <div class="quick_tags">
+                <span class="abr-tag abr-tag--soft">#IQF</span>
+                <span class="abr-tag abr-tag--soft">#Congelados</span>
+                <span class="abr-tag abr-tag--soft">#ControlTérmico</span>
+            </div>
+            </div>
+
+            <div class="cardholder__card-image">
+            <img class="abr-zoomable" src="./img/IQF.webp" alt="IQF, Congelados y Calidad">
+            </div>
+        </div>
+        </article>
+
+    </section>
+
+    <div class="food_pack"></div>
     </Main>
 
     <footer>
         <div class="contenedor_footer container">
                 <p id="tac" >El uso de este sitio web implica la aceptación de los términos, condiciones y políticas de privacidad de Asesoria Bromatologica Rosario. Las imagenes son a modo ilustrativo. 
-                <br>© Copyright 2023 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
-                <br>Urquiza 3164 P1 D1 Rosario. - Rep. Argentina
+                <br>© Copyright 2026 - ABR Asesoria Alimentaria Rosario - Author: Ponzoni Lucas
+                <br>Callao 965. - Rep. Argentina
                 </p>
            <a class="icon-foot" href="mailto:pablomanuelscalise@gmail.com"><i class="bi bi-envelope-fill"></i></a>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/main.js"></script>
     <script src="./js/anime.js"></script>
     <script src="./js/scripts.js"></script>
