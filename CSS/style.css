@@ -1758,3 +1758,50 @@ footer .contenedor_footer .icon-foot {
     aspect-ratio: 1 / 1;
   }
 }
+
+/* ==========================================
+   ✅ WhatsApp Floating Button
+========================================== */
+.abr-wsp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+
+.abr-wsp-float img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0px 10px 16px rgba(0, 0, 0, 0.22));
+}
+
+.abr-wsp-float:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0px 22px 48px rgba(0, 0, 0, 0.26);
+}
+
+.abr-wsp-float:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .abr-wsp-float {
+    right: 14px;
+    bottom: 14px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .abr-wsp-float img {
+    width: 42px;
+    height: 42px;
+  }
+}
