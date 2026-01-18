@@ -69,6 +69,7 @@ body .food_pack {
     position: relative;
     background-position: top bottom;
     margin-top: -120px;
+    height: 105vh;
   }
 }
 body .slide-in-right {
