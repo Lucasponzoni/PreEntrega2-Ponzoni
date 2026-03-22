@@ -36,6 +36,35 @@ cerrar.addEventListener("click", () => {
   document.body.classList.remove("menu-open");
 });
 
+const setupImageSpinner = (img) => {
+  const wrapper = img.closest(".hero_mobile_pack, .cardholder__card-image");
+  if (!wrapper) return;
+
+  wrapper.classList.add("is-loading");
+
+  let spinner = wrapper.querySelector(".abr-image-spinner");
+  if (!spinner) {
+    spinner = document.createElement("span");
+    spinner.className = "spinner-border text-primary abr-image-spinner";
+    spinner.setAttribute("role", "status");
+    spinner.setAttribute("aria-hidden", "true");
+    wrapper.appendChild(spinner);
+  }
+
+  const markAsLoaded = () => {
+    wrapper.classList.remove("is-loading");
+    wrapper.classList.add("is-loaded");
+  };
+
+  if (img.complete) {
+    markAsLoaded();
+    return;
+  }
+
+  img.addEventListener("load", markAsLoaded, { once: true });
+  img.addEventListener("error", markAsLoaded, { once: true });
+};
+
 const openZoomPreview = (trigger) => {
   const imageWrapper = trigger.closest(".cardholder__card-image");
   const image = imageWrapper?.querySelector(".abr-zoomable");
@@ -67,6 +96,13 @@ const openZoomPreview = (trigger) => {
 document.addEventListener("DOMContentLoaded", () => {
   const imageWrappers = document.querySelectorAll(".cardholder__card-image");
   const zoomables = document.querySelectorAll(".abr-zoomable");
+  const loadingImages = document.querySelectorAll(".hero_mobile_pack img, .cardholder__card-image img");
+
+  loadingImages.forEach(setupImageSpinner);
+
+  imageWrappers.forEach((wrapper) => {
+    wrapper.addEventListener("click", () => openZoomPreview(wrapper));
+  });
 
   imageWrappers.forEach((wrapper) => {
     wrapper.addEventListener("click", () => openZoomPreview(wrapper));
@@ -76,6 +112,44 @@ document.addEventListener("DOMContentLoaded", () => {
     img.addEventListener("click", (event) => {
       event.stopPropagation();
       openZoomPreview(img);
+    });
+  });
+
+  const cards = document.querySelectorAll(".cardholder__card");
+
+  const revealCard = (card, index) => {
+    card.style.transitionDelay = `${index * 110}ms`;
+    card.classList.add("is-visible");
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    cards.forEach(revealCard);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const card = entry.target;
+        const index = Number(card.dataset.cardIndex || 0);
+        revealCard(card, index);
+        currentObserver.unobserve(card);
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -40px 0px",
+    }
+  );
+
+  cards.forEach((card, index) => {
+    card.dataset.cardIndex = index;
+    observer.observe(card);
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      openZoomPreview(card);
     });
   });
 

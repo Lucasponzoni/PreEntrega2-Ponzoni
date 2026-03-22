@@ -1,33 +1,98 @@
 footer {
-    text-align: left;
-    background-color: $maincolor;
-    color: #FFF;
-    font-size: 0.8rem;
-    padding: 1rem;
+  position: relative;
+  width: 100%;
+  margin-top: 2.5rem;
+  padding: 1.5rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
+  color: #FFF;
+  background: linear-gradient(135deg, #0051a0 0%, #0065C3 45%, #0b7adf 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 -18px 40px rgba(0, 54, 110, 0.14);
+
+  .contenedor_footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .footer_brand {
     display: flex;
-    position: absolute;
-    bottom: -100px;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .footer_badge {
+    display: inline-flex;
     align-items: center;
-    width: 100%;
-  
-    .contenedor_footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  
-      i {
-        padding-inline: 0.1rem;
-        color: #ffffff;
-        font-size: 2rem;
-  
-        &:hover {
-          color: $secondarycolor;
-          transition: 0.2s;
-        }
-      }
-  
-      .icon-foot {
-        margin-left: 1rem;
-      }
+    justify-content: center;
+    min-width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    background: rgba(252, 233, 107, 0.96);
+    color: #0065C3;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14);
+  }
+
+  .footer_brand h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .footer_brand p,
+  .footer_legal p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+    line-height: 1.6;
+  }
+
+  .footer_links {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .footer_link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 16px;
+    color: #FFF;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+    i {
+      color: $secondarycolor;
+      font-size: 1.2rem;
     }
-  }  
+
+    &:hover {
+      transform: translateY(-1px);
+      border-color: rgba(252, 233, 107, 0.55);
+      background: rgba(255, 255, 255, 0.13);
+    }
+  }
+
+  .footer_legal {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.9rem;
+  }
+
+  @include tablet {
+    margin-top: 1.75rem;
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+
+    .contenedor_footer {
+      grid-template-columns: 1fr;
+    }
+  }
+}
