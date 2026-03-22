@@ -104,6 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.addEventListener("click", () => openZoomPreview(wrapper));
   });
 
+  imageWrappers.forEach((wrapper) => {
+    wrapper.addEventListener("click", () => openZoomPreview(wrapper));
+  });
+
   zoomables.forEach((img) => {
     img.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -147,5 +151,39 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.target.closest("a")) return;
       openZoomPreview(card);
     });
+  });
+
+  const cards = document.querySelectorAll(".cardholder__card");
+
+  const revealCard = (card, index) => {
+    card.style.transitionDelay = `${index * 110}ms`;
+    card.classList.add("is-visible");
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    cards.forEach(revealCard);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const card = entry.target;
+        const index = Number(card.dataset.cardIndex || 0);
+        revealCard(card, index);
+        currentObserver.unobserve(card);
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -40px 0px",
+    }
+  );
+
+  cards.forEach((card, index) => {
+    card.dataset.cardIndex = index;
+    observer.observe(card);
   });
 });
