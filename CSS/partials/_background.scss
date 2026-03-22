@@ -13,24 +13,7 @@ body {
 }
 
   .food_pack {
-    background-image: url(../img/packaging.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 50vw;
-    right: 0;
-    bottom: -100px;
-    height: 120vh;
-    z-index: -1;
-
-    @include tablet{
-      background-size: contain;
-      width: 100%;
-      background-repeat: no-repeat;
-      position: relative;
-      background-position: top center;
-      margin-top: -120px;
-  } 
+    display: none;
   }
 
   .slide-in-right {

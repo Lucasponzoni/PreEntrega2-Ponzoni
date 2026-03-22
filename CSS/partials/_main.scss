@@ -146,7 +146,7 @@ main {
   }*/
 
   .pablo-saluda{
-    display: flex;
+    display: none;
     align-items: center;
     background: rgb(0,101,195);
     background: -moz-linear-gradient(183deg, #ffffff7a 31%, #5a99ff20 100%);
@@ -277,8 +277,17 @@ main {
       color: $secondarycolor;
     }
 
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: stretch;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+
     &__card {
-      width: 700px;
+      width: 100%;
       color: #FFF;
       font-size: 1rem;
       background-color: #0065c3be;
