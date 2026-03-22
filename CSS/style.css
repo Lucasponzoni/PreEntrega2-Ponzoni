@@ -1784,7 +1784,6 @@ footer .contenedor_footer .icon-foot {
 
 .abr-wsp-float:hover {
   transform: translateY(-3px) scale(1.04);
-  box-shadow: 0px 22px 48px rgba(0, 0, 0, 0.26);
 }
 
 .abr-wsp-float:active {
