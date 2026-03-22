@@ -1,3 +1,4 @@
+(() => {
 /* --- Abrir y cerrar menu hamburguesa --- */
 const nav = document.querySelector("#nav");
 const abrir = document.querySelector("#abrir");
@@ -104,10 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.addEventListener("click", () => openZoomPreview(wrapper));
   });
 
-  imageWrappers.forEach((wrapper) => {
-    wrapper.addEventListener("click", () => openZoomPreview(wrapper));
-  });
-
   zoomables.forEach((img) => {
     img.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -115,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const cards = document.querySelectorAll(".cardholder__card");
+  const serviceCards = document.querySelectorAll(".cardholder__card");
 
   const revealCard = (card, index) => {
     card.style.transitionDelay = `${index * 110}ms`;
@@ -123,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (!("IntersectionObserver" in window)) {
-    cards.forEach(revealCard);
+    serviceCards.forEach(revealCard);
     return;
   }
 
@@ -144,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  cards.forEach((card, index) => {
+  serviceCards.forEach((card, index) => {
     card.dataset.cardIndex = index;
     observer.observe(card);
     card.addEventListener("click", (event) => {
@@ -187,3 +184,5 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(card);
   });
 });
+
+})();

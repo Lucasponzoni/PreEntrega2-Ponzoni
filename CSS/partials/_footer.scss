@@ -22,17 +22,14 @@ footer {
   }
 
   .footer_badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 54px;
-    height: 54px;
+    width: 58px;
+    height: 58px;
+    padding: 0.55rem;
     border-radius: 18px;
-    background: rgba(252, 233, 107, 0.96);
-    color: #0065C3;
-    font-weight: 900;
-    letter-spacing: 0.08em;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14);
+    object-fit: contain;
   }
 
   .footer_brand h2 {
