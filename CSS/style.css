@@ -2021,7 +2021,7 @@ main .cardholder__card:hover {
 
 .abr-scroll-toggle {
   position: fixed;
-  top: 50%;
+  top: 40%;
   right: 18px;
   transform: translateY(-50%);
   z-index: 9998;
@@ -2206,7 +2206,7 @@ footer .footer_legal {
   align-items: center;
   gap: 0.55rem;
   padding: 0.4rem 0.8rem;
-  border-radius: 999px;
+  border-radius: 14px;
   background: rgba(0, 101, 195, 0.10);
   color: #0f4b88;
   font-weight: 700;
@@ -2497,7 +2497,7 @@ footer .footer_legal {
 }
 
 .abr-contact-form__full {
-  margin-top: 0.9rem;
+  margin-top: 0.9rem !important;
 }
 
 .abr-contact-form__footer {
@@ -2588,7 +2588,7 @@ footer .footer_legal {
   content: "";
   position: absolute;
   right: 24px;
-  bottom: -9px;
+  bottom: 90px;
   width: 18px;
   height: 18px;
   background: inherit;
@@ -2853,7 +2853,7 @@ footer .footer_legal {
 }
 
 .abr-wsp-bubble {
-  margin-bottom: 0.1rem;
+  margin-bottom: 70px;
   transform-origin: bottom right;
 }
 
