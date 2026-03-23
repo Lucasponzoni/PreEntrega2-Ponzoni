@@ -352,8 +352,19 @@
         `).join('');
         const slides = items.map((item, index) => `
           <div class="carousel-item ${index === initialIndex ? 'active' : ''}">
-            <div class="abr-fullscreen-carousel__frame">
-              <img src="${item.src}" class="d-block w-100" alt="${item.alt}">
+            <div class="abr-fullscreen-carousel__frame" data-abr-zoom-frame>
+              <div class="abr-fullscreen-carousel__toolbar" aria-label="Controles de zoom">
+                <button type="button" class="abr-fullscreen-carousel__control" data-abr-zoom-out aria-label="Alejar imagen" title="Alejar imagen">
+                  <i class="bi bi-dash-lg"></i>
+                </button>
+                <button type="button" class="abr-fullscreen-carousel__control" data-abr-zoom-in aria-label="Acercar imagen" title="Acercar imagen">
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+                <button type="button" class="abr-fullscreen-carousel__control abr-fullscreen-carousel__reset" data-abr-zoom-reset aria-label="Restaurar vista" title="Restaurar vista">
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+              </div>
+              <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image draggable="false">
             </div>
             <div class="abr-fullscreen-carousel__caption">
               <span class="abr-chip abr-chip--glass">${item.chip}</span>
@@ -395,7 +406,7 @@
                 const modalInstance = window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
                   interval: false,
                   ride: false,
-                  touch: true,
+                  touch: false,
                   pause: false,
                 });
 
@@ -419,6 +430,339 @@
                     }
                   });
                 });
+
+                const zoomStates = new WeakMap();
+
+                const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+                const getDistance = (firstPointer, secondPointer) => {
+                  const deltaX = secondPointer.clientX - firstPointer.clientX;
+                  const deltaY = secondPointer.clientY - firstPointer.clientY;
+                  return Math.hypot(deltaX, deltaY);
+                };
+
+                const getMidpoint = (firstPointer, secondPointer) => ({
+                  x: (firstPointer.clientX + secondPointer.clientX) / 2,
+                  y: (firstPointer.clientY + secondPointer.clientY) / 2,
+                });
+
+
+                const getTouchDistance = (firstTouch, secondTouch) => {
+                  const deltaX = secondTouch.clientX - firstTouch.clientX;
+                  const deltaY = secondTouch.clientY - firstTouch.clientY;
+                  return Math.hypot(deltaX, deltaY);
+                };
+
+                const getTouchMidpoint = (firstTouch, secondTouch) => ({
+                  x: (firstTouch.clientX + secondTouch.clientX) / 2,
+                  y: (firstTouch.clientY + secondTouch.clientY) / 2,
+                });
+
+                const syncControls = (frame, state) => {
+                  const resetButton = frame.querySelector('[data-abr-zoom-reset]');
+                  const zoomOutButton = frame.querySelector('[data-abr-zoom-out]');
+                  const zoomInButton = frame.querySelector('[data-abr-zoom-in]');
+                  const isDefault = state.scale === 1 && state.translateX === 0 && state.translateY === 0;
+
+                  if (resetButton) {
+                    resetButton.disabled = isDefault;
+                    resetButton.classList.toggle('is-active', !isDefault);
+                  }
+
+                  if (zoomOutButton) {
+                    zoomOutButton.disabled = state.scale <= 1;
+                  }
+
+                  if (zoomInButton) {
+                    zoomInButton.disabled = state.scale >= 4;
+                  }
+                };
+
+                const updateTransform = (frame, state) => {
+                  const image = frame.querySelector('[data-abr-zoom-image]');
+                  if (!image) return;
+                  image.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
+                  frame.classList.toggle('is-zoomed', state.scale > 1.001);
+                  syncControls(frame, state);
+                };
+
+                const resetFrame = (frame) => {
+                  const state = zoomStates.get(frame);
+                  if (!state) return;
+                  state.scale = 1;
+                  state.translateX = 0;
+                  state.translateY = 0;
+                  state.startScale = 1;
+                  state.startTranslateX = 0;
+                  state.startTranslateY = 0;
+                  state.startDragX = 0;
+                  state.startDragY = 0;
+                  state.initialPinchDistance = 0;
+                  state.initialMidpoint = null;
+                  state.pointers.clear();
+                  updateTransform(frame, state);
+                };
+
+                const initializeFrameInteractions = (frame) => {
+                  const image = frame.querySelector('[data-abr-zoom-image]');
+                  const resetButton = frame.querySelector('[data-abr-zoom-reset]');
+                  const zoomInButton = frame.querySelector('[data-abr-zoom-in]');
+                  const zoomOutButton = frame.querySelector('[data-abr-zoom-out]');
+                  if (!image) return;
+
+                  const state = {
+                    scale: 1,
+                    startScale: 1,
+                    translateX: 0,
+                    translateY: 0,
+                    startTranslateX: 0,
+                    startTranslateY: 0,
+                    startDragX: 0,
+                    startDragY: 0,
+                    initialPinchDistance: 0,
+                    initialMidpoint: null,
+                    pointers: new Map(),
+                  };
+
+                  zoomStates.set(frame, state);
+                  updateTransform(frame, state);
+
+                  resetButton?.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    resetFrame(frame);
+                  });
+
+                  zoomInButton?.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.scale = clamp(Number((currentState.scale + 0.4).toFixed(2)), 1, 4);
+                    updateTransform(frame, currentState);
+                  });
+
+                  zoomOutButton?.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.scale = clamp(Number((currentState.scale - 0.4).toFixed(2)), 1, 4);
+                    if (currentState.scale === 1) {
+                      currentState.translateX = 0;
+                      currentState.translateY = 0;
+                    }
+                    updateTransform(frame, currentState);
+                  });
+
+                  frame.addEventListener('wheel', (event) => {
+                    event.preventDefault();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    const delta = event.deltaY < 0 ? 0.35 : -0.35;
+                    const nextScale = clamp(Number((currentState.scale + delta).toFixed(2)), 1, 4);
+                    if (nextScale === currentState.scale) return;
+
+                    currentState.scale = nextScale;
+                    if (nextScale === 1) {
+                      currentState.translateX = 0;
+                      currentState.translateY = 0;
+                    }
+                    updateTransform(frame, currentState);
+                  }, { passive: false });
+
+                  image.addEventListener('dblclick', (event) => {
+                    event.preventDefault();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.scale = currentState.scale > 1 ? 1 : 2;
+                    currentState.translateX = 0;
+                    currentState.translateY = 0;
+                    currentState.startScale = currentState.scale;
+                    currentState.startTranslateX = 0;
+                    currentState.startTranslateY = 0;
+                    updateTransform(frame, currentState);
+                  });
+
+                  frame.addEventListener('pointerdown', (event) => {
+                    if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+                    event.preventDefault();
+                    frame.setPointerCapture?.(event.pointerId);
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.pointers.set(event.pointerId, {
+                      clientX: event.clientX,
+                      clientY: event.clientY,
+                    });
+
+                    if (currentState.pointers.size === 1) {
+                      currentState.startDragX = event.clientX - currentState.translateX;
+                      currentState.startDragY = event.clientY - currentState.translateY;
+                    }
+
+                    if (currentState.pointers.size === 2) {
+                      const [firstPointer, secondPointer] = Array.from(currentState.pointers.values());
+                      currentState.initialPinchDistance = getDistance(firstPointer, secondPointer);
+                      currentState.initialMidpoint = getMidpoint(firstPointer, secondPointer);
+                      currentState.startScale = currentState.scale;
+                      currentState.startTranslateX = currentState.translateX;
+                      currentState.startTranslateY = currentState.translateY;
+                    }
+                  });
+
+                  frame.addEventListener('pointermove', (event) => {
+                    event.preventDefault();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState || !currentState.pointers.has(event.pointerId)) return;
+
+                    currentState.pointers.set(event.pointerId, {
+                      clientX: event.clientX,
+                      clientY: event.clientY,
+                    });
+
+                    if (currentState.pointers.size === 2) {
+                      const [firstPointer, secondPointer] = Array.from(currentState.pointers.values());
+                      const nextDistance = getDistance(firstPointer, secondPointer);
+                      if (!currentState.initialPinchDistance) return;
+
+                      currentState.scale = clamp(Number((currentState.startScale * (nextDistance / currentState.initialPinchDistance)).toFixed(2)), 1, 4);
+
+                      const midpoint = getMidpoint(firstPointer, secondPointer);
+                      if (currentState.initialMidpoint) {
+                        currentState.translateX = currentState.startTranslateX + (midpoint.x - currentState.initialMidpoint.x);
+                        currentState.translateY = currentState.startTranslateY + (midpoint.y - currentState.initialMidpoint.y);
+                      }
+
+                      if (currentState.scale === 1) {
+                        currentState.translateX = 0;
+                        currentState.translateY = 0;
+                      }
+
+                      updateTransform(frame, currentState);
+                      return;
+                    }
+
+                    if (currentState.scale <= 1 || !currentState.pointers.has(event.pointerId)) return;
+
+                    currentState.translateX = event.clientX - currentState.startDragX;
+                    currentState.translateY = event.clientY - currentState.startDragY;
+                    updateTransform(frame, currentState);
+                  });
+
+                  const releasePointer = (pointerId) => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.pointers.delete(pointerId);
+
+                    if (currentState.pointers.size < 2) {
+                      currentState.initialPinchDistance = 0;
+                      currentState.initialMidpoint = null;
+                      currentState.startScale = currentState.scale;
+                      currentState.startTranslateX = currentState.translateX;
+                      currentState.startTranslateY = currentState.translateY;
+                    }
+
+                    if (currentState.pointers.size === 1) {
+                      const [remainingPointer] = Array.from(currentState.pointers.values());
+                      currentState.startDragX = remainingPointer.clientX - currentState.translateX;
+                      currentState.startDragY = remainingPointer.clientY - currentState.translateY;
+                    }
+                  };
+
+                  ['pointerup', 'pointercancel', 'pointerleave'].forEach((eventName) => {
+                    frame.addEventListener(eventName, (event) => {
+                      releasePointer(event.pointerId);
+                    });
+                  });
+
+                  frame.addEventListener('touchstart', (event) => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    if (event.touches.length === 2) {
+                      event.preventDefault();
+                      currentState.initialPinchDistance = getTouchDistance(event.touches[0], event.touches[1]);
+                      currentState.initialMidpoint = getTouchMidpoint(event.touches[0], event.touches[1]);
+                      currentState.startScale = currentState.scale;
+                      currentState.startTranslateX = currentState.translateX;
+                      currentState.startTranslateY = currentState.translateY;
+                      return;
+                    }
+
+                    if (event.touches.length === 1 && currentState.scale > 1) {
+                      event.preventDefault();
+                      currentState.startDragX = event.touches[0].clientX - currentState.translateX;
+                      currentState.startDragY = event.touches[0].clientY - currentState.translateY;
+                    }
+                  }, { passive: false });
+
+                  frame.addEventListener('touchmove', (event) => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    if (event.touches.length === 2) {
+                      event.preventDefault();
+                      const nextDistance = getTouchDistance(event.touches[0], event.touches[1]);
+                      if (!currentState.initialPinchDistance) return;
+
+                      currentState.scale = clamp(Number((currentState.startScale * (nextDistance / currentState.initialPinchDistance)).toFixed(2)), 1, 4);
+
+                      const midpoint = getTouchMidpoint(event.touches[0], event.touches[1]);
+                      if (currentState.initialMidpoint) {
+                        currentState.translateX = currentState.startTranslateX + (midpoint.x - currentState.initialMidpoint.x);
+                        currentState.translateY = currentState.startTranslateY + (midpoint.y - currentState.initialMidpoint.y);
+                      }
+
+                      if (currentState.scale === 1) {
+                        currentState.translateX = 0;
+                        currentState.translateY = 0;
+                      }
+
+                      updateTransform(frame, currentState);
+                      return;
+                    }
+
+                    if (event.touches.length === 1 && currentState.scale > 1) {
+                      event.preventDefault();
+                      currentState.translateX = event.touches[0].clientX - currentState.startDragX;
+                      currentState.translateY = event.touches[0].clientY - currentState.startDragY;
+                      updateTransform(frame, currentState);
+                    }
+                  }, { passive: false });
+
+                  frame.addEventListener('touchend', () => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    if (currentState.scale <= 1) {
+                      currentState.translateX = 0;
+                      currentState.translateY = 0;
+                    }
+
+                    currentState.initialPinchDistance = 0;
+                    currentState.initialMidpoint = null;
+                    currentState.startScale = currentState.scale;
+                    currentState.startTranslateX = currentState.translateX;
+                    currentState.startTranslateY = currentState.translateY;
+                  });
+                };
+
+                const resetZoom = () => {
+                  modalCarousel.querySelectorAll('[data-abr-zoom-frame]').forEach((frame) => resetFrame(frame));
+                };
+
+                modalCarousel.querySelectorAll('[data-abr-zoom-frame]').forEach((frame) => {
+                  initializeFrameInteractions(frame);
+                });
+
+                modalCarousel.addEventListener('slide.bs.carousel', resetZoom);
               }
             }
           },
