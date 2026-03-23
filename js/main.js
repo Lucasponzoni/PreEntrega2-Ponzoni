@@ -36,6 +36,7 @@
     setupGalleryInteractions();
     setupScrollReveal();
     setupBackofficeReveal();
+    setupBackofficeCarousels();
     setupBackofficeFullscreen();
     setupWhatsAppBubble();
   });
@@ -154,6 +155,53 @@
     });
   };
 
+
+
+  const setupBackofficeCarousels = () => {
+    const carousels = document.querySelectorAll('.abr-backoffice__carousel');
+
+    if (!carousels.length || !window.bootstrap?.Carousel) return;
+
+    carousels.forEach((carousel) => {
+      const instance = window.bootstrap.Carousel.getOrCreateInstance(carousel, {
+        interval: Number(carousel.getAttribute('data-bs-interval')) || 6500,
+        ride: carousel.getAttribute('data-bs-ride') || false,
+        touch: true,
+        pause: false,
+      });
+
+      carousel.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach((control) => {
+        control.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (control.classList.contains('carousel-control-prev')) {
+            instance.prev();
+            return;
+          }
+
+          instance.next();
+        });
+      });
+
+      carousel.querySelectorAll('.carousel-indicators [data-bs-slide-to]').forEach((indicator) => {
+        indicator.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
+          if (!Number.isNaN(slideIndex)) {
+            instance.to(slideIndex);
+          }
+        });
+      });
+
+      carousel.querySelectorAll('[data-abr-fullscreen]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+      });
+    });
+  };
 
   const setupBackofficeReveal = () => {
     const elements = document.querySelectorAll('.abr-reveal-on-load');
@@ -332,10 +380,32 @@
             if (window.bootstrap?.Carousel) {
               const modalCarousel = document.getElementById(modalId);
               if (modalCarousel) {
-                window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
+                const modalInstance = window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
                   interval: false,
                   ride: false,
                   touch: true,
+                  pause: false,
+                });
+
+                modalCarousel.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach((control) => {
+                  control.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    if (control.classList.contains('carousel-control-prev')) {
+                      modalInstance.prev();
+                      return;
+                    }
+                    modalInstance.next();
+                  });
+                });
+
+                modalCarousel.querySelectorAll('.carousel-indicators [data-bs-slide-to]').forEach((indicator) => {
+                  indicator.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
+                    if (!Number.isNaN(slideIndex)) {
+                      modalInstance.to(slideIndex);
+                    }
+                  });
                 });
               }
             }
