@@ -34,6 +34,7 @@
 
     setupScrollToggleButton();
     setupGalleryInteractions();
+    setupBackofficeReveal();
     setupBackofficeFullscreen();
     setupWhatsAppBubble();
   });
@@ -152,6 +153,28 @@
     });
   };
 
+
+  const setupBackofficeReveal = () => {
+    const elements = document.querySelectorAll('.abr-reveal-on-load');
+    if (!elements.length) return;
+
+    const show = () => {
+      elements.forEach((element, index) => {
+        const delay = Number(element.dataset.revealDelay || index * 140);
+        window.setTimeout(() => {
+          element.classList.add('is-visible');
+        }, delay);
+      });
+    };
+
+    if (document.readyState === 'complete') {
+      show();
+      return;
+    }
+
+    window.addEventListener('load', show, { once: true });
+  };
+
   const getArgentinaDate = () => {
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Argentina/Buenos_Aires',
@@ -204,30 +227,87 @@
   };
 
   const setupBackofficeFullscreen = () => {
-    const triggers = document.querySelectorAll('[data-abr-fullscreen]');
-    if (!triggers.length || typeof Swal === 'undefined') return;
+    const galleryTriggers = document.querySelectorAll('[data-abr-fullscreen-gallery]');
 
-    triggers.forEach((trigger) => {
+    if (!galleryTriggers.length || typeof Swal === 'undefined') return;
+
+    galleryTriggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
-        const imageUrl = trigger.getAttribute('data-image');
-        const title = trigger.getAttribute('data-title') || 'Vista ampliada';
-        const altText = trigger.getAttribute('data-alt') || title;
+        const selector = trigger.getAttribute('data-abr-fullscreen-gallery');
+        const carousel = selector ? document.querySelector(selector) : null;
+        const title = trigger.getAttribute('data-title') || 'Galería BackOffice';
 
-        if (!imageUrl) return;
+        if (!carousel) return;
+
+        const items = Array.from(carousel.querySelectorAll('.carousel-item')).map((item) => {
+          const image = item.querySelector('img');
+          const chip = item.querySelector('.abr-chip')?.textContent?.trim() || 'BackOffice ABR';
+          const description = item.querySelector('.abr-backoffice__caption p')?.textContent?.trim() || '';
+          return {
+            src: image?.getAttribute('src') || '',
+            alt: image?.getAttribute('alt') || title,
+            chip,
+            description,
+          };
+        }).filter((item) => item.src);
+
+        if (!items.length) return;
+
+        const activeIndex = Array.from(carousel.querySelectorAll('.carousel-item')).findIndex((item) => item.classList.contains('active'));
+        const initialIndex = activeIndex >= 0 ? activeIndex : 0;
+        const modalId = `abrFullscreenCarousel-${Date.now()}`;
+        const indicators = items.map((item, index) => `
+          <button type="button" data-bs-target="#${modalId}" data-bs-slide-to="${index}" class="${index === initialIndex ? 'active' : ''}" ${index === initialIndex ? 'aria-current="true"' : ''} aria-label="${item.chip}"></button>
+        `).join('');
+        const slides = items.map((item, index) => `
+          <div class="carousel-item ${index === initialIndex ? 'active' : ''}">
+            <div class="abr-fullscreen-carousel__frame">
+              <img src="${item.src}" class="d-block w-100" alt="${item.alt}">
+            </div>
+            <div class="abr-fullscreen-carousel__caption">
+              <span class="abr-chip abr-chip--glass">${item.chip}</span>
+              <p>${item.description}</p>
+            </div>
+          </div>
+        `).join('');
 
         Swal.fire({
           title,
-          imageUrl,
-          imageAlt: altText,
-          width: 'min(96vw, 1440px)',
+          width: 'min(96vw, 1480px)',
           padding: '1rem',
           showCloseButton: true,
           showConfirmButton: false,
+          html: `
+            <div id="${modalId}" class="carousel slide abr-fullscreen-carousel" data-bs-interval="false">
+              <div class="carousel-indicators">${indicators}</div>
+              <div class="carousel-inner">${slides}</div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#${modalId}" data-bs-slide="prev" aria-label="Imagen anterior">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#${modalId}" data-bs-slide="next" aria-label="Imagen siguiente">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+              </button>
+            </div>
+          `,
           customClass: {
-            popup: 'abr-swal-glass abr-swal-glass--wide',
+            popup: 'abr-swal-glass abr-swal-glass--wide abr-swal-glass--carousel',
             title: 'abr-swal-title',
-            image: 'abr-swal-image abr-swal-image--contain',
             closeButton: 'abr-swal-close',
+            htmlContainer: 'abr-swal-carousel-container',
+          },
+          didOpen: () => {
+            if (window.bootstrap?.Carousel) {
+              const modalCarousel = document.getElementById(modalId);
+              if (modalCarousel) {
+                window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
+                  interval: false,
+                  ride: false,
+                  touch: true,
+                });
+              }
+            }
           },
         });
       });
