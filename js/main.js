@@ -34,6 +34,8 @@
 
     setupScrollToggleButton();
     setupGalleryInteractions();
+    setupBackofficeFullscreen();
+    setupWhatsAppBubble();
   });
 
   const setupImageSpinner = (img) => {
@@ -147,6 +149,152 @@
         if (event.target.closest('a')) return;
         openZoomPreview(card);
       });
+    });
+  };
+
+  const getArgentinaDate = () => {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Argentina/Buenos_Aires',
+      hour12: false,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    }).formatToParts(new Date());
+
+    const lookup = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+
+    return new Date(
+      Number(lookup.year),
+      Number(lookup.month) - 1,
+      Number(lookup.day),
+      Number(lookup.hour),
+      Number(lookup.minute),
+      Number(lookup.second)
+    );
+  };
+
+  const getWhatsAppGreeting = () => {
+    const argentinaDate = getArgentinaDate();
+    const hour = argentinaDate.getHours();
+
+    if (hour >= 5 && hour < 12) {
+      return {
+        emoji: '☀️',
+        badge: 'Buenos días',
+        html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Si querés, escribime por WhatsApp y contame en qué etapa está tu proyecto. Trabajo con <strong>empresas, PyMEs y particulares</strong> que necesitan orden, criterio técnico y una solución clara.',
+      };
+    }
+
+    if (hour >= 12 && hour < 20) {
+      return {
+        emoji: '🧉',
+        badge: 'Buenas tardes',
+        html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Estoy por acá para ayudarte con habilitaciones, procesos, rotulado o mejora operativa. Escribime por WhatsApp y lo vemos juntos, tanto para <strong>empresas, PyMEs y particulares</strong>.',
+      };
+    }
+
+    return {
+      emoji: '🌙',
+      badge: 'Buenas noches',
+      html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Cuando quieras, escribime por WhatsApp y contame qué necesitás resolver. Acompaño a <strong>empresas, PyMEs y particulares</strong> con una mirada práctica, profesional y a medida.',
+    };
+  };
+
+  const setupBackofficeFullscreen = () => {
+    const triggers = document.querySelectorAll('[data-abr-fullscreen]');
+    if (!triggers.length || typeof Swal === 'undefined') return;
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const imageUrl = trigger.getAttribute('data-image');
+        const title = trigger.getAttribute('data-title') || 'Vista ampliada';
+        const altText = trigger.getAttribute('data-alt') || title;
+
+        if (!imageUrl) return;
+
+        Swal.fire({
+          title,
+          imageUrl,
+          imageAlt: altText,
+          width: 'min(96vw, 1440px)',
+          padding: '1rem',
+          showCloseButton: true,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'abr-swal-glass abr-swal-glass--wide',
+            title: 'abr-swal-title',
+            image: 'abr-swal-image abr-swal-image--contain',
+            closeButton: 'abr-swal-close',
+          },
+        });
+      });
+    });
+  };
+
+  const setupWhatsAppBubble = () => {
+    const stack = document.querySelector('[data-abr-wsp]');
+    const bubble = document.querySelector('[data-abr-wsp-bubble]');
+    const message = document.querySelector('[data-abr-wsp-message]');
+    const closeButton = document.querySelector('[data-abr-wsp-close]');
+    const badge = bubble?.querySelector('.abr-wsp-bubble__badge span:last-child');
+
+    if (!stack || !bubble || !message) return;
+
+    let hideTimeout;
+    let restartInterval;
+
+    const hideBubble = () => {
+      bubble.classList.add('is-hiding');
+      bubble.classList.remove('is-visible');
+      bubble.setAttribute('aria-hidden', 'true');
+    };
+
+    const showBubble = () => {
+      const greeting = getWhatsAppGreeting();
+
+      if (badge) {
+        badge.textContent = `${greeting.emoji} ${greeting.badge}`;
+      }
+
+      message.innerHTML = greeting.html;
+      bubble.classList.remove('is-hiding');
+      bubble.classList.add('is-visible');
+      bubble.setAttribute('aria-hidden', 'false');
+
+      window.clearTimeout(hideTimeout);
+      hideTimeout = window.setTimeout(hideBubble, 18000);
+    };
+
+    closeButton?.addEventListener('click', () => {
+      window.clearTimeout(hideTimeout);
+      hideBubble();
+    });
+
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      bubble.addEventListener('click', (event) => {
+        if (event.target.closest('[data-abr-wsp-close]')) return;
+        hideBubble();
+      });
+    }
+
+    showBubble();
+    restartInterval = window.setInterval(showBubble, 60000);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        window.clearTimeout(hideTimeout);
+        return;
+      }
+
+      showBubble();
+    });
+
+    window.addEventListener('beforeunload', () => {
+      window.clearTimeout(hideTimeout);
+      window.clearInterval(restartInterval);
     });
   };
 
