@@ -66,39 +66,65 @@
         </nav>
     </header>
 
-    <main class="form_main">
-        <div class="formulario container centered-content text-focus-in">
-            <div class="row">
-                <div class="columna__titulo col-lg-12">
-                    <h1 class="text-center">Contacto para asesoría bromatológica, habilitaciones y calidad alimentaria</h1>
-                    <h2>Consultanos por RNE, RNPA, DOMI sanitario, BPM, POES, HACCP, rotulado, Sin TACC, auditorías y mejora de procesos. Contanos qué elaborás, en qué etapa está tu proyecto y qué necesitás regularizar o potenciar para vender con seguridad.</h2>
+    <main class="form_main abr-contact-page">
+        <section class="abr-contact-hero container text-focus-in">
+            <div class="abr-contact-hero__copy">
+                <span class="abr-contact-hero__eyebrow"><i class="bi bi-chat-heart-fill"></i> Respuesta clara, humana y profesional</span>
+                <h1>Contacto para asesoría bromatológica, habilitaciones y calidad alimentaria</h1>
+                <p>Consultanos por RNE, RNPA, DOMI sanitario, BPM, POES, HACCP, rotulado, Sin TACC, auditorías y mejora de procesos. Contanos qué elaborás, en qué etapa está tu proyecto y qué necesitás ordenar para vender con más seguridad, más control y mejor presentación.</p>
+
+                <div class="abr-contact-hero__chips">
+                    <span class="abr-chip abr-chip--glass">RNE / RNPA</span>
+                    <span class="abr-chip abr-chip--glass">Auditorías</span>
+                    <span class="abr-chip abr-chip--glass">Rotulado</span>
+                    <span class="abr-chip abr-chip--glass">Producción</span>
                 </div>
             </div>
-    
-            <div class="row">
-                <div class="columna__1 col-lg-6">
-                    <form class="form text-center" autocomplete="on" action="https://formspree.io/f/xqkvbkpk" method="POST">
 
+            <div class="abr-contact-hero__actions">
+                <a class="abr-contact-cta abr-contact-cta--primary" href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+por+el+servicio+de+%2AAsesoria+Bromatologica+Rosario%2A%2C+me+contacto+desde+la+web." target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-whatsapp"></i>
+                    <span>Escribir por WhatsApp</span>
+                </a>
+                <a class="abr-contact-cta" href="mailto:pablomanuelscalise@gmail.com">
+                    <i class="bi bi-envelope-paper-heart"></i>
+                    <span>Enviar e-mail</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="abr-contact-layout container text-focus-in">
+            <div class="abr-contact-card abr-contact-card--form">
+                <div class="abr-contact-card__head">
+                    <span class="abr-contact-card__icon"><i class="bi bi-ui-checks-grid"></i></span>
+                    <div>
+                        <h2>Contanos sobre tu empresa o proyecto</h2>
+                        <p>Te respondemos con foco técnico, criterio comercial y una propuesta realista para tu caso.</p>
+                    </div>
+                </div>
+
+                <form class="form abr-contact-form" autocomplete="on" action="https://formspree.io/f/xqkvbkpk" method="POST">
+                    <div class="abr-contact-form__grid">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="nombre" name="nombre" autofocus maxlength="30" required placeholder="Nombre *">
                             <label for="nombre">Nombre<span class="required">*</span></label>
                         </div>
-                    
+
                         <div class="form-floating">
                             <input type="text" class="form-control" id="apellido" name="apellido" maxlength="30" required placeholder="Apellido *">
                             <label for="apellido">Apellido<span class="required">*</span></label>
                         </div>
-                    
+
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" name="email" maxlength="30" required placeholder="E-mail *">
+                            <input type="email" class="form-control" id="email" name="email" maxlength="60" required placeholder="E-mail *">
                             <label for="email">E-mail<span class="required">*</span></label>
                         </div>
-                    
+
                         <div class="form-floating">
                             <input type="tel" class="form-control" id="telefono" name="telefono" minlength="8" maxlength="15" required placeholder="Telefono *">
                             <label for="telefono">Telefono<span class="required">*</span></label>
                         </div>
-                    
+
                         <div class="form-floating">
                             <select class="form-control" id="provincia" name="provincia" required aria-placeholder="Provincia *">
                                 <option value="Buenos Aires">Buenos Aires</option>
@@ -125,67 +151,88 @@
                                 <option disabled>Tierra del Fuego -no disponible-</option>
                                 <option value="Tucumán">Tucumán</option>
                             </select>
-                            <label for="provincia">Provincia (Click para cambiar predeterminado)<span class="required">*</span></label>
+                            <label for="provincia">Provincia<span class="required">*</span></label>
                         </div>
-                    
+
                         <div class="form-floating">
                             <input type="text" class="form-control" id="ciudad" name="ciudad" maxlength="30" required placeholder="Ciudad *">
                             <label for="ciudad">Ciudad<span class="required">*</span></label>
                         </div>
-                    
-                        <div class="form-floating">
-                            <textarea class="form-control" id="comentarios" name="comentarios" maxlength="600" rows="4" cols="30" placeholder="Contanos sobre tu proyecto"></textarea>
-                            <label for="comentarios">Contanos sobre tu proyecto</label>
+                    </div>
+
+                    <div class="form-floating abr-contact-form__full">
+                        <textarea class="form-control" id="comentarios" name="comentarios" maxlength="600" rows="6" cols="30" placeholder="Contanos sobre tu proyecto"></textarea>
+                        <label for="comentarios">Contanos sobre tu proyecto</label>
+                    </div>
+
+                    <div class="abr-contact-form__footer">
+                        <p class="form-p">* Los campos son obligatorios. Si querés, podés incluir rubro, productos, etapa del proyecto y urgencia regulatoria.</p>
+                        <button id="submit" type="submit">Enviar consulta</button>
+                    </div>
+                </form>
+            </div>
+
+            <aside class="abr-contact-side">
+                <div class="abr-contact-card abr-contact-card--info">
+                    <div class="abr-contact-card__head">
+                        <span class="abr-contact-card__icon"><i class="bi bi-person-workspace"></i></span>
+                        <div>
+                            <h2>Canales directos</h2>
+                            <p>Elegí la vía más cómoda para hablar con Pablo y recibir una respuesta cercana y concreta.</p>
                         </div>
-                    
-                        <p class="form-p">* Los campos son obligatorios para enviar el formulario</p>
-                    
-                        <div class="form-floating">
-                            <input id="submit" type="submit" value="Enviar"><br>
-                            <label for="submit"></label>
-                        </div>
-                    
-                    </form>
+                    </div>
+
+                    <div class="abr-contact-info-list">
+                        <a class="abr-contact-info" href="tel:+5493415469309">
+                            <span class="abr-contact-info__icon"><i class="bi bi-telephone-fill"></i></span>
+                            <span>+54 341 5469 309</span>
+                        </a>
+                        <a class="abr-contact-info" href="mailto:pablomanuelscalise@gmail.com">
+                            <span class="abr-contact-info__icon"><i class="bi bi-envelope-fill"></i></span>
+                            <span>pablomanuelscalise@gmail.com</span>
+                        </a>
+                        <a class="abr-contact-info" href="https://www.google.com/maps?q=Callao+965,+Rosario,+Santa+Fe" target="_blank" rel="noopener noreferrer">
+                            <span class="abr-contact-info__icon"><i class="bi bi-geo-alt-fill"></i></span>
+                            <span>Callao 965 · Rosario, Santa Fe</span>
+                        </a>
+                    </div>
+
+                    <div class="abr-contact-mini-cards">
+                        <article>
+                            <strong>Respuesta estratégica</strong>
+                            <p>Te orientamos según tu rubro, etapa y objetivo comercial.</p>
+                        </article>
+                        <article>
+                            <strong>Mirada técnica + negocio</strong>
+                            <p>No solo cumplís normativa: ordenás tu empresa para crecer mejor.</p>
+                        </article>
+                    </div>
                 </div>
-    
-                <div class="columna__2 col-lg-6">
-                    <div class="icons-contactos">
 
-                        <div class="cajita-contactos">
-                            <i class="bi bi-telephone-fill"></i>
-                            <h3><a href="tel:+5493415469309">+54 341 5469 309</a></h3>
+                <div class="abr-contact-card abr-contact-card--map">
+                    <div class="abr-contact-card__head">
+                        <span class="abr-contact-card__icon"><i class="bi bi-map"></i></span>
+                        <div>
+                            <h2>Ubicación</h2>
+                            <p>Rosario, Santa Fe. Atención local y acompañamiento para proyectos de toda Argentina.</p>
                         </div>
-                        <div class="cajita-contactos">
-                        <i class="bi bi-building-fill" aria-hidden="true"></i>
-                        <h3>
-                            <a
-                            href="https://www.google.com/maps?q=Callao+965,+Rosario,+Santa+Fe"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >
-                            Callao 965, Rosario, Santa Fe
-                            </a>
-                        </h3>
-                        </div>
+                    </div>
 
-                        <div class="mapa-wrapper">
+                    <div class="mapa-wrapper abr-contact-map">
                         <iframe
                             class="map"
                             src="https://www.google.com/maps?q=Callao+965,+Rosario,+Santa+Fe&z=16&output=embed"
                             width="100%"
-                            height="300"
+                            height="320"
                             style="border: 0;"
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
                             title="Mapa - Callao 965, Rosario, Santa Fe"
                         ></iframe>
-                        </div>
-
                     </div>
-
                 </div>
-            </div>
-        </div>
+            </aside>
+        </section>
     </main>
 
     <!-- ✅ WhatsApp -->
