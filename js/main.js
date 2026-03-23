@@ -352,8 +352,11 @@
         `).join('');
         const slides = items.map((item, index) => `
           <div class="carousel-item ${index === initialIndex ? 'active' : ''}">
-            <div class="abr-fullscreen-carousel__frame">
-              <img src="${item.src}" class="d-block w-100" alt="${item.alt}">
+            <div class="abr-fullscreen-carousel__frame" data-abr-zoom-frame>
+              <button type="button" class="abr-fullscreen-carousel__zoom" data-abr-zoom-toggle aria-label="Acercar imagen" title="Acercar imagen">
+                <i class="bi bi-zoom-in"></i>
+              </button>
+              <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image>
             </div>
             <div class="abr-fullscreen-carousel__caption">
               <span class="abr-chip abr-chip--glass">${item.chip}</span>
@@ -417,6 +420,50 @@
                     if (!Number.isNaN(slideIndex)) {
                       modalInstance.to(slideIndex);
                     }
+                  });
+                });
+
+                const resetZoom = () => {
+                  modalCarousel.querySelectorAll('.abr-fullscreen-carousel__frame.is-zoomed').forEach((frame) => {
+                    frame.classList.remove('is-zoomed');
+                    const zoomButton = frame.querySelector('[data-abr-zoom-toggle]');
+                    if (zoomButton) {
+                      zoomButton.setAttribute('aria-label', 'Acercar imagen');
+                      zoomButton.setAttribute('title', 'Acercar imagen');
+                      zoomButton.innerHTML = '<i class="bi bi-zoom-in"></i>';
+                    }
+                  });
+                };
+
+                modalCarousel.addEventListener('slide.bs.carousel', resetZoom);
+
+                modalCarousel.querySelectorAll('[data-abr-zoom-toggle]').forEach((zoomButton) => {
+                  zoomButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const frame = zoomButton.closest('[data-abr-zoom-frame]');
+                    if (!frame) return;
+
+                    const shouldZoom = !frame.classList.contains('is-zoomed');
+                    resetZoom();
+
+                    if (shouldZoom) {
+                      frame.classList.add('is-zoomed');
+                      zoomButton.setAttribute('aria-label', 'Alejar imagen');
+                      zoomButton.setAttribute('title', 'Alejar imagen');
+                      zoomButton.innerHTML = '<i class="bi bi-zoom-out"></i>';
+                      frame.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                    }
+                  });
+                });
+
+                modalCarousel.querySelectorAll('[data-abr-zoom-image]').forEach((image) => {
+                  image.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const frame = image.closest('[data-abr-zoom-frame]');
+                    const zoomButton = frame?.querySelector('[data-abr-zoom-toggle]');
+                    zoomButton?.click();
                   });
                 });
               }

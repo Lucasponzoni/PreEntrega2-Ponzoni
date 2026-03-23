@@ -2967,3 +2967,14 @@ footer .footer_legal {
   margin-bottom: 1rem;
   margin-left: 15%;
 }
+/* === 2026-03 carousel fullscreen/mobile/zoom fixes === */
+.abr-backoffice__fullscreen{position:relative;z-index:9}
+.abr-backoffice__fullscreen--floating{position:absolute;top:1rem;right:1rem;margin-top:0;box-shadow:0 16px 32px rgba(6,37,72,.22)}
+.abr-swal-glass--carousel{width:min(96vw,1480px)!important;max-width:96vw!important;padding:.75rem!important;background:#fff!important;overflow:visible!important}
+.abr-swal-carousel-container{margin:0!important;padding:0!important;overflow:visible!important}
+.abr-fullscreen-carousel__frame{position:relative;overflow:auto;touch-action:pan-x pan-y}
+.abr-fullscreen-carousel__frame img{transition:transform .28s ease;transform-origin:center center;cursor:zoom-in}
+.abr-fullscreen-carousel__frame.is-zoomed{justify-content:flex-start;align-items:flex-start}
+.abr-fullscreen-carousel__frame.is-zoomed img{max-width:none;max-height:none;transform:scale(1.9);cursor:zoom-out}
+.abr-fullscreen-carousel__zoom{position:absolute;top:1rem;right:1rem;width:48px;height:48px;border:0;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#123d6c;background:rgba(255,255,255,.96);box-shadow:0 14px 28px rgba(8,37,77,.18);z-index:9}
+@media screen and (max-width:768px){.abr-fullscreen-carousel__frame{padding:.75rem}.abr-fullscreen-carousel__caption{position:static;margin:.75rem .75rem 0;padding:.85rem 1rem 1rem;border-radius:20px}.abr-fullscreen-carousel .carousel-control-prev,.abr-fullscreen-carousel .carousel-control-next{width:62px;height:72px}.abr-fullscreen-carousel__zoom{top:.75rem;right:.75rem;width:42px;height:42px}.abr-backoffice__fullscreen--floating{top:.75rem;right:.75rem;padding:.55rem .8rem;font-size:.9rem}}
