@@ -1219,6 +1219,13 @@ main {
   font-size: 1.2rem;
 }
 
+body.abr-modal-open .abr-scroll-toggle {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(calc(-50% + 12px));
+}
+
 @media screen and (max-width: 768px) {
   .hero_intro__actions {
     margin-top: 0 !important;
@@ -2501,47 +2508,13 @@ main {
   transform-origin: center center;
   user-select: none;
   -webkit-user-drag: none;
+  touch-action: none;
   will-change: transform;
 }
 
 .abr-fullscreen-carousel__frame.is-zoomed {
   justify-content: center;
   align-items: center;
-}
-
-.abr-fullscreen-carousel__toolbar {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: inline-flex;
-  gap: .5rem;
-  z-index: 9;
-}
-
-.abr-fullscreen-carousel__control {
-  min-width: 48px;
-  height: 48px;
-  padding: 0 .9rem;
-  border: 0;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .45rem;
-  color: #123d6c;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 14px 28px rgba(8, 37, 77, 0.18);
-  opacity: .92;
-  transition: opacity .2s ease, transform .2s ease;
-}
-
-.abr-fullscreen-carousel__control:disabled {
-  opacity: .45;
-  cursor: default;
-}
-
-.abr-fullscreen-carousel__reset.is-active {
-  opacity: 1;
 }
 
 .abr-fullscreen-carousel__caption {
@@ -2729,18 +2702,6 @@ main {
   .abr-fullscreen-carousel .carousel-control-next-icon {
     width: 46px;
     height: 46px;
-  }
-
-  .abr-fullscreen-carousel__toolbar {
-    top: .75rem;
-    left: .75rem;
-    gap: .4rem;
-  }
-
-  .abr-fullscreen-carousel__control {
-    min-width: 42px;
-    height: 42px;
-    padding: 0 .78rem;
   }
 
   .abr-backoffice__fullscreen--floating {

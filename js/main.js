@@ -319,6 +319,9 @@
 
   const setupBackofficeFullscreen = () => {
     const galleryTriggers = document.querySelectorAll('[data-abr-fullscreen-gallery]');
+    const toggleScrollButtonVisibility = (shouldHide) => {
+      document.body.classList.toggle('abr-modal-open', shouldHide);
+    };
 
     if (!galleryTriggers.length || typeof Swal === 'undefined') return;
 
@@ -353,17 +356,6 @@
         const slides = items.map((item, index) => `
           <div class="carousel-item ${index === initialIndex ? 'active' : ''}">
             <div class="abr-fullscreen-carousel__frame" data-abr-zoom-frame>
-              <div class="abr-fullscreen-carousel__toolbar" aria-label="Controles de zoom">
-                <button type="button" class="abr-fullscreen-carousel__control" data-abr-zoom-out aria-label="Alejar imagen" title="Alejar imagen">
-                  <i class="bi bi-dash-lg"></i>
-                </button>
-                <button type="button" class="abr-fullscreen-carousel__control" data-abr-zoom-in aria-label="Acercar imagen" title="Acercar imagen">
-                  <i class="bi bi-plus-lg"></i>
-                </button>
-                <button type="button" class="abr-fullscreen-carousel__control abr-fullscreen-carousel__reset" data-abr-zoom-reset aria-label="Restaurar vista" title="Restaurar vista">
-                  <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
-              </div>
               <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image draggable="false">
             </div>
             <div class="abr-fullscreen-carousel__caption">
@@ -458,37 +450,13 @@
                   y: (firstTouch.clientY + secondTouch.clientY) / 2,
                 });
 
-                const syncControls = (frame, state) => {
-                  const resetButton = frame.querySelector('[data-abr-zoom-reset]');
-                  const zoomOutButton = frame.querySelector('[data-abr-zoom-out]');
-                  const zoomInButton = frame.querySelector('[data-abr-zoom-in]');
-                  const isDefault = state.scale === 1 && state.translateX === 0 && state.translateY === 0;
-
-                  if (resetButton) {
-                    resetButton.disabled = isDefault;
-                    resetButton.classList.toggle('is-active', !isDefault);
-                  }
-
-                  if (zoomOutButton) {
-                    zoomOutButton.disabled = state.scale <= 1;
-                  }
-
-                  if (zoomInButton) {
-                    zoomInButton.disabled = state.scale >= 4;
-                  }
-                };
-
                 const updateTransform = (frame, state) => {
                   const image = frame.querySelector('[data-abr-zoom-image]');
                   if (!image) return;
 
                   const isZoomed = state.scale > 1.001;
-                  image.style.width = isZoomed ? `${state.scale * 100}%` : '100%';
-                  image.style.maxWidth = isZoomed ? 'none' : '100%';
-                  image.style.maxHeight = isZoomed ? 'none' : '100%';
-                  image.style.transform = `translate(${state.translateX}px, ${state.translateY}px)`;
+                  image.style.transform = `translate3d(${state.translateX}px, ${state.translateY}px, 0) scale(${state.scale})`;
                   frame.classList.toggle('is-zoomed', isZoomed);
-                  syncControls(frame, state);
                 };
 
                 const resetFrame = (frame) => {
@@ -510,9 +478,6 @@
 
                 const initializeFrameInteractions = (frame) => {
                   const image = frame.querySelector('[data-abr-zoom-image]');
-                  const resetButton = frame.querySelector('[data-abr-zoom-reset]');
-                  const zoomInButton = frame.querySelector('[data-abr-zoom-in]');
-                  const zoomOutButton = frame.querySelector('[data-abr-zoom-out]');
                   if (!image) return;
 
                   const state = {
@@ -531,36 +496,6 @@
 
                   zoomStates.set(frame, state);
                   updateTransform(frame, state);
-
-                  resetButton?.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    resetFrame(frame);
-                  });
-
-                  zoomInButton?.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    currentState.scale = clamp(Number((currentState.scale + 0.4).toFixed(2)), 1, 4);
-                    updateTransform(frame, currentState);
-                  });
-
-                  zoomOutButton?.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    currentState.scale = clamp(Number((currentState.scale - 0.4).toFixed(2)), 1, 4);
-                    if (currentState.scale === 1) {
-                      currentState.translateX = 0;
-                      currentState.translateY = 0;
-                    }
-                    updateTransform(frame, currentState);
-                  });
 
                   frame.addEventListener('wheel', (event) => {
                     event.preventDefault();
@@ -770,6 +705,12 @@
                 modalCarousel.addEventListener('slide.bs.carousel', resetZoom);
               }
             }
+          },
+          willOpen: () => {
+            toggleScrollButtonVisibility(true);
+          },
+          willClose: () => {
+            toggleScrollButtonVisibility(false);
           },
         });
       });
