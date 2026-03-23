@@ -34,6 +34,7 @@
 
     setupScrollToggleButton();
     setupGalleryInteractions();
+    setupScrollReveal();
     setupBackofficeReveal();
     setupBackofficeFullscreen();
     setupWhatsAppBubble();
@@ -175,6 +176,36 @@
     window.addEventListener('load', show, { once: true });
   };
 
+  const setupScrollReveal = () => {
+    const elements = document.querySelectorAll('.abr-reveal-on-scroll');
+    if (!elements.length) return;
+
+    const revealElement = (element) => {
+      element.classList.add('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(revealElement);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          revealElement(entry.target);
+          currentObserver.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+  };
+
   const getArgentinaDate = () => {
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Argentina/Buenos_Aires',
@@ -313,37 +344,6 @@
       });
     });
 
-    galleryTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const selector = trigger.getAttribute('data-abr-fullscreen-gallery');
-        const carousel = selector ? document.querySelector(selector) : null;
-        const title = trigger.getAttribute('data-title') || 'Galería BackOffice';
-
-        if (!carousel) return;
-
-        const activeImage = carousel.querySelector('.carousel-item.active img');
-        const fallbackImage = carousel.querySelector('.carousel-item img');
-        const currentImage = activeImage || fallbackImage;
-
-        if (!currentImage) return;
-
-        Swal.fire({
-          title,
-          imageUrl: currentImage.getAttribute('src'),
-          imageAlt: currentImage.getAttribute('alt') || title,
-          width: 'min(96vw, 1440px)',
-          padding: '1rem',
-          showCloseButton: true,
-          showConfirmButton: false,
-          customClass: {
-            popup: 'abr-swal-glass abr-swal-glass--wide',
-            title: 'abr-swal-title',
-            image: 'abr-swal-image abr-swal-image--contain',
-            closeButton: 'abr-swal-close',
-          },
-        });
-      });
-    });
   };
 
   const setupWhatsAppBubble = () => {
