@@ -1931,6 +1931,16 @@ main {
   color: #fff;
   font-weight: 700;
   background: linear-gradient(180deg, rgba(0,101,195,0.95) 0%, rgba(11,122,223,0.95) 100%);
+  position: relative;
+  z-index: 9;
+}
+
+.abr-backoffice__fullscreen--floating {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  margin-top: 0;
+  box-shadow: 0 16px 32px rgba(6, 37, 72, 0.22);
 }
 
 .abr-wsp-float,
@@ -2466,18 +2476,53 @@ main {
 }
 
 .abr-fullscreen-carousel__frame {
+  position: relative;
   min-height: 72vh;
   max-height: 72vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
   padding: 1rem;
   background: linear-gradient(180deg, #fff 0%, #f3f8ff 100%);
+  touch-action: pan-x pan-y;
 }
 
 .abr-fullscreen-carousel__frame img {
   max-height: 100%;
   object-fit: contain;
+  transition: transform 0.28s ease;
+  transform-origin: center center;
+  cursor: zoom-in;
+}
+
+.abr-fullscreen-carousel__frame.is-zoomed {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.abr-fullscreen-carousel__frame.is-zoomed img {
+  max-width: none;
+  max-height: none;
+  transform: scale(1.9);
+  cursor: zoom-out;
+}
+
+.abr-fullscreen-carousel__zoom {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #123d6c;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 14px 28px rgba(8, 37, 77, 0.18);
+  z-index: 9;
 }
 
 .abr-fullscreen-carousel__caption {
@@ -2505,12 +2550,16 @@ main {
 }
 
 .abr-swal-glass--carousel {
+  width: min(96vw, 1480px) !important;
+  max-width: 96vw !important;
+  padding: .75rem !important;
   background: #fff !important;
   overflow: visible !important;
 }
 
 .abr-swal-carousel-container {
   margin: 0 !important;
+  padding: 0 !important;
   overflow: visible !important;
 }
 
@@ -2623,13 +2672,13 @@ main {
   .abr-fullscreen-carousel__frame {
     min-height: 56vh;
     max-height: 56vh;
+    padding: .75rem;
   }
 
   .abr-fullscreen-carousel__caption {
-    left: .75rem;
-    right: .75rem;
-    bottom: .75rem;
-    padding: .85rem 1rem;
+    position: static;
+    margin: .75rem .75rem 0;
+    padding: .85rem 1rem 1rem;
     border-radius: 20px;
   }
 
@@ -2648,6 +2697,7 @@ main {
   .abr-fullscreen-carousel .carousel-control-prev,
   .abr-fullscreen-carousel .carousel-control-next {
     width: 62px;
+    height: 72px;
   }
 
   .abr-backoffice__carousel .carousel-control-prev,
@@ -2660,6 +2710,20 @@ main {
   .abr-fullscreen-carousel .carousel-control-next-icon {
     width: 46px;
     height: 46px;
+  }
+
+  .abr-fullscreen-carousel__zoom {
+    top: .75rem;
+    right: .75rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .abr-backoffice__fullscreen--floating {
+    top: .75rem;
+    right: .75rem;
+    padding: .55rem .8rem;
+    font-size: .9rem;
   }
 
   .abr-swal-close {
