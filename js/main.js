@@ -319,6 +319,9 @@
 
   const setupBackofficeFullscreen = () => {
     const galleryTriggers = document.querySelectorAll('[data-abr-fullscreen-gallery]');
+    const toggleScrollButtonVisibility = (shouldHide) => {
+      document.body.classList.toggle('abr-modal-open', shouldHide);
+    };
 
     if (!galleryTriggers.length || typeof Swal === 'undefined') return;
 
@@ -483,10 +486,7 @@
                   if (!image) return;
 
                   const isZoomed = state.scale > 1.001;
-                  image.style.width = isZoomed ? `${state.scale * 100}%` : '100%';
-                  image.style.maxWidth = isZoomed ? 'none' : '100%';
-                  image.style.maxHeight = isZoomed ? 'none' : '100%';
-                  image.style.transform = `translate(${state.translateX}px, ${state.translateY}px)`;
+                  image.style.transform = `translate3d(${state.translateX}px, ${state.translateY}px, 0) scale(${state.scale})`;
                   frame.classList.toggle('is-zoomed', isZoomed);
                   syncControls(frame, state);
                 };
@@ -545,6 +545,10 @@
                     if (!currentState) return;
 
                     currentState.scale = clamp(Number((currentState.scale + 0.4).toFixed(2)), 1, 4);
+                    if (currentState.scale === 1) {
+                      currentState.translateX = 0;
+                      currentState.translateY = 0;
+                    }
                     updateTransform(frame, currentState);
                   });
 
@@ -770,6 +774,12 @@
                 modalCarousel.addEventListener('slide.bs.carousel', resetZoom);
               }
             }
+          },
+          willOpen: () => {
+            toggleScrollButtonVisibility(true);
+          },
+          willClose: () => {
+            toggleScrollButtonVisibility(false);
           },
         });
       });

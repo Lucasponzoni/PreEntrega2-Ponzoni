@@ -1219,6 +1219,13 @@ main {
   font-size: 1.2rem;
 }
 
+body.abr-modal-open .abr-scroll-toggle {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(calc(-50% + 12px));
+}
+
 @media screen and (max-width: 768px) {
   .hero_intro__actions {
     margin-top: 0 !important;
@@ -2501,6 +2508,7 @@ main {
   transform-origin: center center;
   user-select: none;
   -webkit-user-drag: none;
+  touch-action: none;
   will-change: transform;
 }
 
