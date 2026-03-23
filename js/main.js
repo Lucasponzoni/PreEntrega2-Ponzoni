@@ -481,8 +481,13 @@
                 const updateTransform = (frame, state) => {
                   const image = frame.querySelector('[data-abr-zoom-image]');
                   if (!image) return;
-                  image.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
-                  frame.classList.toggle('is-zoomed', state.scale > 1.001);
+
+                  const isZoomed = state.scale > 1.001;
+                  image.style.width = isZoomed ? `${state.scale * 100}%` : '100%';
+                  image.style.maxWidth = isZoomed ? 'none' : '100%';
+                  image.style.maxHeight = isZoomed ? 'none' : '100%';
+                  image.style.transform = `translate(${state.translateX}px, ${state.translateY}px)`;
+                  frame.classList.toggle('is-zoomed', isZoomed);
                   syncControls(frame, state);
                 };
 
