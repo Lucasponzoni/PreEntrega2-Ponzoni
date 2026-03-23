@@ -34,6 +34,7 @@
 
     setupScrollToggleButton();
     setupGalleryInteractions();
+    setupBackofficeFullscreen();
     setupWhatsAppBubble();
   });
 
@@ -182,24 +183,55 @@
     if (hour >= 5 && hour < 12) {
       return {
         emoji: '☀️',
-        badge: 'Buen día',
-        html: 'Hola, <strong>buen día</strong> ☀️ Soy <strong>Pablo</strong>. Escribime por WhatsApp y te ayudo a ordenar tu proyecto con una mirada técnica y comercial para <strong>empresas, PyMEs y particulares</strong>.',
+        badge: 'Buenos días',
+        html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Si querés, escribime por WhatsApp y contame en qué etapa está tu proyecto. Trabajo con <strong>empresas, PyMEs y particulares</strong> que necesitan orden, criterio técnico y una solución clara.',
       };
     }
 
     if (hour >= 12 && hour < 20) {
       return {
-        emoji: '🤝',
+        emoji: '🧉',
         badge: 'Buenas tardes',
-        html: 'Hola, <strong>buenas tardes</strong> 🤝 Soy <strong>Pablo</strong>. Si querés avanzar con habilitaciones, calidad o mejora de procesos, escribime por WhatsApp y vemos la mejor solución para <strong>empresas, PyMEs y particulares</strong>.',
+        html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Estoy por acá para ayudarte con habilitaciones, procesos, rotulado o mejora operativa. Escribime por WhatsApp y lo vemos juntos, tanto para <strong>empresas, PyMEs y particulares</strong>.',
       };
     }
 
     return {
       emoji: '🌙',
       badge: 'Buenas noches',
-      html: 'Hola, <strong>buenas noches</strong> 🌙 Soy <strong>Pablo</strong>. Escribime por WhatsApp y coordinamos cómo ayudarte con una propuesta clara para <strong>empresas, PyMEs y particulares</strong>.',
+      html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Cuando quieras, escribime por WhatsApp y contame qué necesitás resolver. Acompaño a <strong>empresas, PyMEs y particulares</strong> con una mirada práctica, profesional y a medida.',
     };
+  };
+
+  const setupBackofficeFullscreen = () => {
+    const triggers = document.querySelectorAll('[data-abr-fullscreen]');
+    if (!triggers.length || typeof Swal === 'undefined') return;
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const imageUrl = trigger.getAttribute('data-image');
+        const title = trigger.getAttribute('data-title') || 'Vista ampliada';
+        const altText = trigger.getAttribute('data-alt') || title;
+
+        if (!imageUrl) return;
+
+        Swal.fire({
+          title,
+          imageUrl,
+          imageAlt: altText,
+          width: 'min(96vw, 1440px)',
+          padding: '1rem',
+          showCloseButton: true,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'abr-swal-glass abr-swal-glass--wide',
+            title: 'abr-swal-title',
+            image: 'abr-swal-image abr-swal-image--contain',
+            closeButton: 'abr-swal-close',
+          },
+        });
+      });
+    });
   };
 
   const setupWhatsAppBubble = () => {
@@ -233,7 +265,7 @@
       bubble.setAttribute('aria-hidden', 'false');
 
       window.clearTimeout(hideTimeout);
-      hideTimeout = window.setTimeout(hideBubble, 9000);
+      hideTimeout = window.setTimeout(hideBubble, 18000);
     };
 
     closeButton?.addEventListener('click', () => {
