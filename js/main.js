@@ -312,6 +312,38 @@
         });
       });
     });
+
+    galleryTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const selector = trigger.getAttribute('data-abr-fullscreen-gallery');
+        const carousel = selector ? document.querySelector(selector) : null;
+        const title = trigger.getAttribute('data-title') || 'Galería BackOffice';
+
+        if (!carousel) return;
+
+        const activeImage = carousel.querySelector('.carousel-item.active img');
+        const fallbackImage = carousel.querySelector('.carousel-item img');
+        const currentImage = activeImage || fallbackImage;
+
+        if (!currentImage) return;
+
+        Swal.fire({
+          title,
+          imageUrl: currentImage.getAttribute('src'),
+          imageAlt: currentImage.getAttribute('alt') || title,
+          width: 'min(96vw, 1440px)',
+          padding: '1rem',
+          showCloseButton: true,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'abr-swal-glass abr-swal-glass--wide',
+            title: 'abr-swal-title',
+            image: 'abr-swal-image abr-swal-image--contain',
+            closeButton: 'abr-swal-close',
+          },
+        });
+      });
+    });
   };
 
   const setupWhatsAppBubble = () => {

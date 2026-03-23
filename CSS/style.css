@@ -2585,16 +2585,14 @@ footer .footer_legal {
 }
 
 .abr-wsp-bubble::after {
-  content: "";
-  position: absolute;
-  right: 24px;
-  bottom: 90px;
-  width: 18px;
-  height: 18px;
-  background: inherit;
-  border-right: 1px solid rgba(255,255,255,0.82);
-  border-bottom: 1px solid rgba(255,255,255,0.82);
-  transform: rotate(45deg);
+    content: "";
+    position: absolute;
+    right: 24px;
+    bottom: 90px;
+    width: 18px;
+    height: 18px;
+    background-color: #e6f0f9;
+    transform: rotate(45deg);
 }
 
 .abr-wsp-bubble.is-visible {
