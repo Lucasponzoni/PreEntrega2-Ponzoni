@@ -2032,6 +2032,10 @@ main {
   transform: translateY(0) scale(1);
 }
 
+.abr-reveal-on-scroll {
+  transition-delay: 0ms !important;
+}
+
 .abr-backoffice__featured-head,
 .abr-backoffice__media-head,
 .abr-services-hero,
@@ -2248,6 +2252,12 @@ main {
   gap: 1rem;
 }
 .abr-services-hero__chips { grid-template-columns: repeat(4, max-content); margin-top: 1rem; }
+.abr-services-hero__chips .abr-chip--glass,
+.abr-contact-hero__chips .abr-chip--glass {
+  width: fit-content;
+  max-width: 100%;
+  justify-self: start;
+}
 .abr-services-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -2283,6 +2293,19 @@ main {
   grid-template-columns: 1.1fr .9fr;
   align-items: center;
 }
+.abr-services-showcase__visual,
+.abr-services-showcase__visual--carousel {
+  min-width: 0;
+}
+
+.abr-services-showcase__visual--carousel .abr-backoffice__carousel {
+  height: 100%;
+}
+
+.abr-services-showcase__visual--carousel .abr-backoffice__frame {
+  min-height: 360px;
+}
+
 .abr-services-showcase__visual img {
   width: 100%;
   border-radius: 24px;
@@ -2384,6 +2407,10 @@ main {
 .abr-fullscreen-carousel .carousel-control-next {
   width: 88px;
   opacity: 1;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 4;
 }
 
 .abr-fullscreen-carousel .carousel-indicators [data-bs-target] {
@@ -2421,10 +2448,32 @@ main {
 
 .abr-swal-glass--carousel {
   background: #fff !important;
+  overflow: visible !important;
 }
 
 .abr-swal-carousel-container {
   margin: 0 !important;
+  overflow: visible !important;
+}
+
+.abr-swal-close {
+  top: 16px !important;
+  right: 16px !important;
+  width: 46px !important;
+  height: 46px !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+  color: #123d6c !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid rgba(198, 214, 232, 0.96) !important;
+  box-shadow: 0 12px 24px rgba(8, 37, 77, 0.16) !important;
+  opacity: 1 !important;
+  z-index: 6 !important;
+}
+
+.abr-swal-close:hover {
+  color: #0b5ed7 !important;
+  background: #fff !important;
 }
 
 .abr-contact-hero {
@@ -2512,5 +2561,35 @@ main {
   .abr-fullscreen-carousel__frame {
     min-height: 56vh;
     max-height: 56vh;
+  }
+
+  .abr-services-hero__chips,
+  .abr-contact-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+  }
+
+  .abr-services-hero__chips .abr-chip--glass,
+  .abr-contact-hero__chips .abr-chip--glass {
+    width: fit-content;
+  }
+
+  .abr-fullscreen-carousel .carousel-control-prev,
+  .abr-fullscreen-carousel .carousel-control-next {
+    width: 62px;
+  }
+
+  .abr-fullscreen-carousel .carousel-control-prev-icon,
+  .abr-fullscreen-carousel .carousel-control-next-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .abr-swal-close {
+    top: 10px !important;
+    right: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 }
