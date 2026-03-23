@@ -475,7 +475,7 @@
     }
 
     showBubble();
-    restartInterval = window.setInterval(showBubble, 60000);
+    restartInterval = window.setInterval(showBubble, 300000);
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
