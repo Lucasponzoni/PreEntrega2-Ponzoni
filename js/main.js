@@ -398,7 +398,7 @@
                 const modalInstance = window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
                   interval: false,
                   ride: false,
-                  touch: true,
+                  touch: false,
                   pause: false,
                 });
 
@@ -519,6 +519,7 @@
                   frame.addEventListener('pointerdown', (event) => {
                     if (event.pointerType === 'mouse' && event.button !== 0) return;
 
+                    event.preventDefault();
                     frame.setPointerCapture?.(event.pointerId);
                     const currentState = zoomStates.get(frame);
                     if (!currentState) return;
@@ -544,6 +545,7 @@
                   });
 
                   frame.addEventListener('pointermove', (event) => {
+                    event.preventDefault();
                     const currentState = zoomStates.get(frame);
                     if (!currentState || !currentState.pointers.has(event.pointerId)) return;
 
