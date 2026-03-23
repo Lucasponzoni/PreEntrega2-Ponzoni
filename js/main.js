@@ -353,9 +353,17 @@
         const slides = items.map((item, index) => `
           <div class="carousel-item ${index === initialIndex ? 'active' : ''}">
             <div class="abr-fullscreen-carousel__frame" data-abr-zoom-frame>
-              <button type="button" class="abr-fullscreen-carousel__reset" data-abr-zoom-reset aria-label="Restaurar vista" title="Restaurar vista">
-                <i class="bi bi-arrow-counterclockwise"></i>
-              </button>
+              <div class="abr-fullscreen-carousel__toolbar" aria-label="Controles de zoom">
+                <button type="button" class="abr-fullscreen-carousel__control" data-abr-zoom-out aria-label="Alejar imagen" title="Alejar imagen">
+                  <i class="bi bi-dash-lg"></i>
+                </button>
+                <button type="button" class="abr-fullscreen-carousel__control" data-abr-zoom-in aria-label="Acercar imagen" title="Acercar imagen">
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+                <button type="button" class="abr-fullscreen-carousel__control abr-fullscreen-carousel__reset" data-abr-zoom-reset aria-label="Restaurar vista" title="Restaurar vista">
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+              </div>
               <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image draggable="false">
             </div>
             <div class="abr-fullscreen-carousel__caption">
@@ -450,12 +458,24 @@
                   y: (firstTouch.clientY + secondTouch.clientY) / 2,
                 });
 
-                const syncResetButton = (frame, state) => {
+                const syncControls = (frame, state) => {
                   const resetButton = frame.querySelector('[data-abr-zoom-reset]');
-                  if (!resetButton) return;
+                  const zoomOutButton = frame.querySelector('[data-abr-zoom-out]');
+                  const zoomInButton = frame.querySelector('[data-abr-zoom-in]');
                   const isDefault = state.scale === 1 && state.translateX === 0 && state.translateY === 0;
-                  resetButton.disabled = isDefault;
-                  resetButton.classList.toggle('is-active', !isDefault);
+
+                  if (resetButton) {
+                    resetButton.disabled = isDefault;
+                    resetButton.classList.toggle('is-active', !isDefault);
+                  }
+
+                  if (zoomOutButton) {
+                    zoomOutButton.disabled = state.scale <= 1;
+                  }
+
+                  if (zoomInButton) {
+                    zoomInButton.disabled = state.scale >= 4;
+                  }
                 };
 
                 const updateTransform = (frame, state) => {
@@ -463,7 +483,7 @@
                   if (!image) return;
                   image.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
                   frame.classList.toggle('is-zoomed', state.scale > 1.001);
-                  syncResetButton(frame, state);
+                  syncControls(frame, state);
                 };
 
                 const resetFrame = (frame) => {
@@ -486,6 +506,8 @@
                 const initializeFrameInteractions = (frame) => {
                   const image = frame.querySelector('[data-abr-zoom-image]');
                   const resetButton = frame.querySelector('[data-abr-zoom-reset]');
+                  const zoomInButton = frame.querySelector('[data-abr-zoom-in]');
+                  const zoomOutButton = frame.querySelector('[data-abr-zoom-out]');
                   if (!image) return;
 
                   const state = {
@@ -509,6 +531,30 @@
                     event.preventDefault();
                     event.stopPropagation();
                     resetFrame(frame);
+                  });
+
+                  zoomInButton?.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.scale = clamp(Number((currentState.scale + 0.4).toFixed(2)), 1, 4);
+                    updateTransform(frame, currentState);
+                  });
+
+                  zoomOutButton?.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.scale = clamp(Number((currentState.scale - 0.4).toFixed(2)), 1, 4);
+                    if (currentState.scale === 1) {
+                      currentState.translateX = 0;
+                      currentState.translateY = 0;
+                    }
+                    updateTransform(frame, currentState);
                   });
 
                   frame.addEventListener('wheel', (event) => {

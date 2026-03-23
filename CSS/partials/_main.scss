@@ -2509,10 +2509,16 @@ main {
   align-items: center;
 }
 
-.abr-fullscreen-carousel__reset {
+.abr-fullscreen-carousel__toolbar {
   position: absolute;
   top: 1rem;
   left: 1rem;
+  display: inline-flex;
+  gap: .5rem;
+  z-index: 9;
+}
+
+.abr-fullscreen-carousel__control {
   min-width: 48px;
   height: 48px;
   padding: 0 .9rem;
@@ -2525,17 +2531,17 @@ main {
   color: #123d6c;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 14px 28px rgba(8, 37, 77, 0.18);
-  z-index: 9;
-  opacity: .58;
+  opacity: .92;
   transition: opacity .2s ease, transform .2s ease;
+}
+
+.abr-fullscreen-carousel__control:disabled {
+  opacity: .45;
+  cursor: default;
 }
 
 .abr-fullscreen-carousel__reset.is-active {
   opacity: 1;
-}
-
-.abr-fullscreen-carousel__reset:disabled {
-  cursor: default;
 }
 
 .abr-fullscreen-carousel__caption {
@@ -2725,9 +2731,13 @@ main {
     height: 46px;
   }
 
-  .abr-fullscreen-carousel__reset {
+  .abr-fullscreen-carousel__toolbar {
     top: .75rem;
     left: .75rem;
+    gap: .4rem;
+  }
+
+  .abr-fullscreen-carousel__control {
     min-width: 42px;
     height: 42px;
     padding: 0 .78rem;
