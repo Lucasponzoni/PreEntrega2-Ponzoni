@@ -356,7 +356,7 @@
               <button type="button" class="abr-fullscreen-carousel__reset" data-abr-zoom-reset aria-label="Restaurar vista" title="Restaurar vista">
                 <i class="bi bi-arrow-counterclockwise"></i>
               </button>
-              <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image>
+              <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image draggable="false">
             </div>
             <div class="abr-fullscreen-carousel__caption">
               <span class="abr-chip abr-chip--glass">${item.chip}</span>
@@ -438,6 +438,18 @@
                   y: (firstPointer.clientY + secondPointer.clientY) / 2,
                 });
 
+
+                const getTouchDistance = (firstTouch, secondTouch) => {
+                  const deltaX = secondTouch.clientX - firstTouch.clientX;
+                  const deltaY = secondTouch.clientY - firstTouch.clientY;
+                  return Math.hypot(deltaX, deltaY);
+                };
+
+                const getTouchMidpoint = (firstTouch, secondTouch) => ({
+                  x: (firstTouch.clientX + secondTouch.clientX) / 2,
+                  y: (firstTouch.clientY + secondTouch.clientY) / 2,
+                });
+
                 const syncResetButton = (frame, state) => {
                   const resetButton = frame.querySelector('[data-abr-zoom-reset]');
                   if (!resetButton) return;
@@ -504,7 +516,7 @@
                     const currentState = zoomStates.get(frame);
                     if (!currentState) return;
 
-                    const delta = event.deltaY < 0 ? 0.22 : -0.22;
+                    const delta = event.deltaY < 0 ? 0.35 : -0.35;
                     const nextScale = clamp(Number((currentState.scale + delta).toFixed(2)), 1, 4);
                     if (nextScale === currentState.scale) return;
 
@@ -515,6 +527,20 @@
                     }
                     updateTransform(frame, currentState);
                   }, { passive: false });
+
+                  image.addEventListener('dblclick', (event) => {
+                    event.preventDefault();
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    currentState.scale = currentState.scale > 1 ? 1 : 2;
+                    currentState.translateX = 0;
+                    currentState.translateY = 0;
+                    currentState.startScale = currentState.scale;
+                    currentState.startTranslateX = 0;
+                    currentState.startTranslateY = 0;
+                    updateTransform(frame, currentState);
+                  });
 
                   frame.addEventListener('pointerdown', (event) => {
                     if (event.pointerType === 'mouse' && event.button !== 0) return;
@@ -608,6 +634,77 @@
                     frame.addEventListener(eventName, (event) => {
                       releasePointer(event.pointerId);
                     });
+                  });
+
+                  frame.addEventListener('touchstart', (event) => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    if (event.touches.length === 2) {
+                      event.preventDefault();
+                      currentState.initialPinchDistance = getTouchDistance(event.touches[0], event.touches[1]);
+                      currentState.initialMidpoint = getTouchMidpoint(event.touches[0], event.touches[1]);
+                      currentState.startScale = currentState.scale;
+                      currentState.startTranslateX = currentState.translateX;
+                      currentState.startTranslateY = currentState.translateY;
+                      return;
+                    }
+
+                    if (event.touches.length === 1 && currentState.scale > 1) {
+                      event.preventDefault();
+                      currentState.startDragX = event.touches[0].clientX - currentState.translateX;
+                      currentState.startDragY = event.touches[0].clientY - currentState.translateY;
+                    }
+                  }, { passive: false });
+
+                  frame.addEventListener('touchmove', (event) => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    if (event.touches.length === 2) {
+                      event.preventDefault();
+                      const nextDistance = getTouchDistance(event.touches[0], event.touches[1]);
+                      if (!currentState.initialPinchDistance) return;
+
+                      currentState.scale = clamp(Number((currentState.startScale * (nextDistance / currentState.initialPinchDistance)).toFixed(2)), 1, 4);
+
+                      const midpoint = getTouchMidpoint(event.touches[0], event.touches[1]);
+                      if (currentState.initialMidpoint) {
+                        currentState.translateX = currentState.startTranslateX + (midpoint.x - currentState.initialMidpoint.x);
+                        currentState.translateY = currentState.startTranslateY + (midpoint.y - currentState.initialMidpoint.y);
+                      }
+
+                      if (currentState.scale === 1) {
+                        currentState.translateX = 0;
+                        currentState.translateY = 0;
+                      }
+
+                      updateTransform(frame, currentState);
+                      return;
+                    }
+
+                    if (event.touches.length === 1 && currentState.scale > 1) {
+                      event.preventDefault();
+                      currentState.translateX = event.touches[0].clientX - currentState.startDragX;
+                      currentState.translateY = event.touches[0].clientY - currentState.startDragY;
+                      updateTransform(frame, currentState);
+                    }
+                  }, { passive: false });
+
+                  frame.addEventListener('touchend', () => {
+                    const currentState = zoomStates.get(frame);
+                    if (!currentState) return;
+
+                    if (currentState.scale <= 1) {
+                      currentState.translateX = 0;
+                      currentState.translateY = 0;
+                    }
+
+                    currentState.initialPinchDistance = 0;
+                    currentState.initialMidpoint = null;
+                    currentState.startScale = currentState.scale;
+                    currentState.startTranslateX = currentState.translateX;
+                    currentState.startTranslateY = currentState.translateY;
                   });
                 };
 
