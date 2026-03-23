@@ -2396,7 +2396,6 @@ footer .footer_legal {
   grid-template-columns: 1.3fr 0.7fr;
   gap: 1rem;
   align-items: end;
-  margin-bottom: 1.25rem;
 }
 
 .abr-contact-hero h1 {
