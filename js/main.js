@@ -36,12 +36,13 @@
     setupGalleryInteractions();
     setupScrollReveal();
     setupBackofficeReveal();
+    setupBackofficeCarousels();
     setupBackofficeFullscreen();
     setupWhatsAppBubble();
   });
 
   const setupImageSpinner = (img) => {
-    const wrapper = img.closest('.hero_mobile_pack, .cardholder__card-image');
+    const wrapper = img.closest('.hero_mobile_pack, .cardholder__card-image, .abr-backoffice__frame');
     if (!wrapper) return;
 
     wrapper.classList.add('is-loading');
@@ -67,6 +68,15 @@
 
     img.addEventListener('load', markAsLoaded, { once: true });
     img.addEventListener('error', markAsLoaded, { once: true });
+  };
+
+  const dismissWhatsAppBubble = () => {
+    const bubble = document.querySelector('[data-abr-wsp-bubble]');
+    if (!bubble) return;
+
+    bubble.classList.add('is-hiding');
+    bubble.classList.remove('is-visible');
+    bubble.setAttribute('aria-hidden', 'true');
   };
 
   const openZoomPreview = (trigger) => {
@@ -99,7 +109,7 @@
   const setupGalleryInteractions = () => {
     const imageWrappers = document.querySelectorAll('.cardholder__card-image');
     const zoomables = document.querySelectorAll('.abr-zoomable');
-    const loadingImages = document.querySelectorAll('.hero_mobile_pack img, .cardholder__card-image img');
+    const loadingImages = document.querySelectorAll('.hero_mobile_pack img, .cardholder__card-image img, .abr-backoffice__frame img');
     const cards = document.querySelectorAll('.cardholder__card');
 
     loadingImages.forEach(setupImageSpinner);
@@ -154,6 +164,56 @@
     });
   };
 
+
+
+  const setupBackofficeCarousels = () => {
+    const carousels = document.querySelectorAll('.abr-backoffice__carousel');
+
+    if (!carousels.length || !window.bootstrap?.Carousel) return;
+
+    carousels.forEach((carousel) => {
+      const instance = window.bootstrap.Carousel.getOrCreateInstance(carousel, {
+        interval: Number(carousel.getAttribute('data-bs-interval')) || 6500,
+        ride: carousel.getAttribute('data-bs-ride') || false,
+        touch: true,
+        pause: false,
+      });
+
+      carousel.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach((control) => {
+        control.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          dismissWhatsAppBubble();
+
+          if (control.classList.contains('carousel-control-prev')) {
+            instance.prev();
+            return;
+          }
+
+          instance.next();
+        });
+      });
+
+      carousel.querySelectorAll('.carousel-indicators [data-bs-slide-to]').forEach((indicator) => {
+        indicator.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          dismissWhatsAppBubble();
+          const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
+          if (!Number.isNaN(slideIndex)) {
+            instance.to(slideIndex);
+          }
+        });
+      });
+
+      carousel.querySelectorAll('[data-abr-fullscreen]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.stopPropagation();
+          dismissWhatsAppBubble();
+        });
+      });
+    });
+  };
 
   const setupBackofficeReveal = () => {
     const elements = document.querySelectorAll('.abr-reveal-on-load');
@@ -332,10 +392,32 @@
             if (window.bootstrap?.Carousel) {
               const modalCarousel = document.getElementById(modalId);
               if (modalCarousel) {
-                window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
+                const modalInstance = window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
                   interval: false,
                   ride: false,
                   touch: true,
+                  pause: false,
+                });
+
+                modalCarousel.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach((control) => {
+                  control.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    if (control.classList.contains('carousel-control-prev')) {
+                      modalInstance.prev();
+                      return;
+                    }
+                    modalInstance.next();
+                  });
+                });
+
+                modalCarousel.querySelectorAll('.carousel-indicators [data-bs-slide-to]').forEach((indicator) => {
+                  indicator.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
+                    if (!Number.isNaN(slideIndex)) {
+                      modalInstance.to(slideIndex);
+                    }
+                  });
                 });
               }
             }

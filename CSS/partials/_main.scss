@@ -522,7 +522,7 @@ main {
   @include tablet {
     .background_img_mobile {
       background-color: #ff000000;
-      background-image: url("../img/pablo_pcalise_conocenos_mobile.png");
+      background-image: url("../img/pablo_pcalise_conocenos_mobile.webp");
       background-size: contain;
       background-repeat: no-repeat;
       overflow: visible;
@@ -1497,12 +1497,22 @@ main {
 .abr-backoffice__carousel .carousel-control-prev,
 .abr-backoffice__carousel .carousel-control-next {
   width: 10%;
+  z-index: 6;
 }
 
 .abr-backoffice__carousel .carousel-indicators [data-bs-target] {
   width: 10px;
   height: 10px;
   border-radius: 999px;
+  pointer-events: auto;
+}
+
+.abr-backoffice__carousel .carousel-indicators {
+  z-index: 7;
+}
+
+.abr-backoffice__carousel .carousel-item {
+  position: relative;
 }
 
 .abr-contact-page {
@@ -1688,6 +1698,7 @@ main {
   flex-direction: column;
   align-items: flex-end;
   gap: 0.75rem;
+  pointer-events: none;
 }
 
 .abr-wsp-bubble {
@@ -1920,6 +1931,27 @@ main {
   color: #fff;
   font-weight: 700;
   background: linear-gradient(180deg, rgba(0,101,195,0.95) 0%, rgba(11,122,223,0.95) 100%);
+}
+
+.abr-wsp-float,
+.abr-wsp-bubble__close {
+  pointer-events: auto;
+}
+
+.abr-backoffice__frame {
+  position: relative;
+
+  &.is-loading {
+    min-height: 430px;
+  }
+
+  &.is-loaded .abr-image-spinner {
+    display: none;
+  }
+
+  &.is-loading img {
+    opacity: 0;
+  }
 }
 
 .abr-swal-glass--wide {
@@ -2390,6 +2422,12 @@ main {
 .abr-backoffice__carousel .carousel-control-prev,
 .abr-backoffice__carousel .carousel-control-next {
   width: 82px;
+  height: 88px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  padding: 0;
+  z-index: 8;
 }
 
 .abr-backoffice__carousel .carousel-control-prev-icon,
@@ -2410,7 +2448,7 @@ main {
   top: 50%;
   bottom: auto;
   transform: translateY(-50%);
-  z-index: 4;
+  z-index: 8;
 }
 
 .abr-fullscreen-carousel .carousel-indicators [data-bs-target] {
@@ -2419,6 +2457,12 @@ main {
   border-radius: 999px;
   border: 0;
   background-color: rgba(0, 101, 195, 0.24);
+  pointer-events: auto;
+}
+
+.abr-fullscreen-carousel .carousel-indicators {
+  z-index: 9;
+  margin-bottom: 1rem;
 }
 
 .abr-fullscreen-carousel__frame {
@@ -2437,13 +2481,27 @@ main {
 }
 
 .abr-fullscreen-carousel__caption {
-  padding: 1rem 1.2rem .4rem;
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 7;
+  padding: 1rem 1.2rem;
   text-align: left;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(7, 30, 58, 0.12) 0%, rgba(7, 30, 58, 0.82) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 42px rgba(4, 17, 34, 0.22);
 }
 
 .abr-fullscreen-carousel__caption p {
   margin: .65rem 0 0;
-  color: #264766;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.abr-fullscreen-carousel__caption .abr-chip--glass {
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .abr-swal-glass--carousel {
@@ -2554,6 +2612,10 @@ main {
     padding: .85rem .85rem .1rem;
   }
 
+  .abr-backoffice__frame.is-loading {
+    min-height: 300px;
+  }
+
   .abr-backoffice__caption {
     margin: 0 .85rem .85rem;
   }
@@ -2561,6 +2623,14 @@ main {
   .abr-fullscreen-carousel__frame {
     min-height: 56vh;
     max-height: 56vh;
+  }
+
+  .abr-fullscreen-carousel__caption {
+    left: .75rem;
+    right: .75rem;
+    bottom: .75rem;
+    padding: .85rem 1rem;
+    border-radius: 20px;
   }
 
   .abr-services-hero__chips,
@@ -2580,6 +2650,12 @@ main {
     width: 62px;
   }
 
+  .abr-backoffice__carousel .carousel-control-prev,
+  .abr-backoffice__carousel .carousel-control-next {
+    width: 62px;
+    height: 72px;
+  }
+
   .abr-fullscreen-carousel .carousel-control-prev-icon,
   .abr-fullscreen-carousel .carousel-control-next-icon {
     width: 46px;
@@ -2591,5 +2667,15 @@ main {
     right: 10px !important;
     width: 40px !important;
     height: 40px !important;
+  }
+
+  .abr-contact-page,
+  .abr-services-page {
+    padding-top: 1.25rem;
+  }
+
+  .abr-contact-hero,
+  .abr-services-hero {
+    margin-top: .85rem;
   }
 }
