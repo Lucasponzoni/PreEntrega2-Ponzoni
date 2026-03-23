@@ -1738,12 +1738,14 @@ main .cardholder__card:hover {
 
 
 .hero_mobile_pack,
-.cardholder__card-image {
+.cardholder__card-image,
+.abr-backoffice__frame {
   position: relative;
 }
 
 .hero_mobile_pack.is-loading,
-.cardholder__card-image.is-loading {
+.cardholder__card-image.is-loading,
+.abr-backoffice__frame.is-loading {
   min-height: 220px;
 }
 
@@ -1756,12 +1758,14 @@ main .cardholder__card:hover {
 }
 
 .hero_mobile_pack.is-loaded .abr-image-spinner,
-.cardholder__card-image.is-loaded .abr-image-spinner {
+.cardholder__card-image.is-loaded .abr-image-spinner,
+.abr-backoffice__frame.is-loaded .abr-image-spinner {
   display: none;
 }
 
 .hero_mobile_pack.is-loading img,
-.cardholder__card-image.is-loading img {
+.cardholder__card-image.is-loading img,
+.abr-backoffice__frame.is-loading img {
   opacity: 0;
 }
 
@@ -2555,6 +2559,7 @@ footer .footer_legal {
   flex-direction: column;
   align-items: flex-end;
   gap: 0.75rem;
+  pointer-events: none;
 }
 
 .abr-wsp-bubble {
@@ -2783,6 +2788,27 @@ footer .footer_legal {
   color: #fff;
   font-weight: 700;
   background: linear-gradient(180deg, rgba(0,101,195,0.95) 0%, rgba(11,122,223,0.95) 100%);
+}
+
+.abr-wsp-float,
+.abr-wsp-bubble__close {
+  pointer-events: auto;
+}
+
+.abr-backoffice__frame {
+  position: relative;
+}
+
+.abr-backoffice__frame.is-loading {
+  min-height: 430px;
+}
+
+.abr-backoffice__frame.is-loaded .abr-image-spinner {
+  display: none;
+}
+
+.abr-backoffice__frame.is-loading img {
+  opacity: 0;
 }
 
 .abr-swal-glass--wide {

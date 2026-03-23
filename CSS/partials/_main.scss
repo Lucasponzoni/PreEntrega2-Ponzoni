@@ -1698,6 +1698,7 @@ main {
   flex-direction: column;
   align-items: flex-end;
   gap: 0.75rem;
+  pointer-events: none;
 }
 
 .abr-wsp-bubble {
@@ -1930,6 +1931,27 @@ main {
   color: #fff;
   font-weight: 700;
   background: linear-gradient(180deg, rgba(0,101,195,0.95) 0%, rgba(11,122,223,0.95) 100%);
+}
+
+.abr-wsp-float,
+.abr-wsp-bubble__close {
+  pointer-events: auto;
+}
+
+.abr-backoffice__frame {
+  position: relative;
+
+  &.is-loading {
+    min-height: 430px;
+  }
+
+  &.is-loaded .abr-image-spinner {
+    display: none;
+  }
+
+  &.is-loading img {
+    opacity: 0;
+  }
 }
 
 .abr-swal-glass--wide {
@@ -2400,6 +2422,12 @@ main {
 .abr-backoffice__carousel .carousel-control-prev,
 .abr-backoffice__carousel .carousel-control-next {
   width: 82px;
+  height: 88px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  padding: 0;
+  z-index: 8;
 }
 
 .abr-backoffice__carousel .carousel-control-prev-icon,
@@ -2584,6 +2612,10 @@ main {
     padding: .85rem .85rem .1rem;
   }
 
+  .abr-backoffice__frame.is-loading {
+    min-height: 300px;
+  }
+
   .abr-backoffice__caption {
     margin: 0 .85rem .85rem;
   }
@@ -2616,6 +2648,12 @@ main {
   .abr-fullscreen-carousel .carousel-control-prev,
   .abr-fullscreen-carousel .carousel-control-next {
     width: 62px;
+  }
+
+  .abr-backoffice__carousel .carousel-control-prev,
+  .abr-backoffice__carousel .carousel-control-next {
+    width: 62px;
+    height: 72px;
   }
 
   .abr-fullscreen-carousel .carousel-control-prev-icon,

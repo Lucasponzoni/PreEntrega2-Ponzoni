@@ -42,7 +42,7 @@
   });
 
   const setupImageSpinner = (img) => {
-    const wrapper = img.closest('.hero_mobile_pack, .cardholder__card-image');
+    const wrapper = img.closest('.hero_mobile_pack, .cardholder__card-image, .abr-backoffice__frame');
     if (!wrapper) return;
 
     wrapper.classList.add('is-loading');
@@ -68,6 +68,15 @@
 
     img.addEventListener('load', markAsLoaded, { once: true });
     img.addEventListener('error', markAsLoaded, { once: true });
+  };
+
+  const dismissWhatsAppBubble = () => {
+    const bubble = document.querySelector('[data-abr-wsp-bubble]');
+    if (!bubble) return;
+
+    bubble.classList.add('is-hiding');
+    bubble.classList.remove('is-visible');
+    bubble.setAttribute('aria-hidden', 'true');
   };
 
   const openZoomPreview = (trigger) => {
@@ -100,7 +109,7 @@
   const setupGalleryInteractions = () => {
     const imageWrappers = document.querySelectorAll('.cardholder__card-image');
     const zoomables = document.querySelectorAll('.abr-zoomable');
-    const loadingImages = document.querySelectorAll('.hero_mobile_pack img, .cardholder__card-image img');
+    const loadingImages = document.querySelectorAll('.hero_mobile_pack img, .cardholder__card-image img, .abr-backoffice__frame img');
     const cards = document.querySelectorAll('.cardholder__card');
 
     loadingImages.forEach(setupImageSpinner);
@@ -174,6 +183,7 @@
         control.addEventListener('click', (event) => {
           event.preventDefault();
           event.stopPropagation();
+          dismissWhatsAppBubble();
 
           if (control.classList.contains('carousel-control-prev')) {
             instance.prev();
@@ -188,6 +198,7 @@
         indicator.addEventListener('click', (event) => {
           event.preventDefault();
           event.stopPropagation();
+          dismissWhatsAppBubble();
           const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
           if (!Number.isNaN(slideIndex)) {
             instance.to(slideIndex);
@@ -198,6 +209,7 @@
       carousel.querySelectorAll('[data-abr-fullscreen]').forEach((trigger) => {
         trigger.addEventListener('click', (event) => {
           event.stopPropagation();
+          dismissWhatsAppBubble();
         });
       });
     });
