@@ -34,6 +34,7 @@
 
     setupScrollToggleButton();
     setupGalleryInteractions();
+    setupBackofficeReveal();
     setupBackofficeFullscreen();
     setupWhatsAppBubble();
   });
@@ -152,6 +153,28 @@
     });
   };
 
+
+  const setupBackofficeReveal = () => {
+    const elements = document.querySelectorAll('.abr-reveal-on-load');
+    if (!elements.length) return;
+
+    const show = () => {
+      elements.forEach((element, index) => {
+        const delay = Number(element.dataset.revealDelay || index * 140);
+        window.setTimeout(() => {
+          element.classList.add('is-visible');
+        }, delay);
+      });
+    };
+
+    if (document.readyState === 'complete') {
+      show();
+      return;
+    }
+
+    window.addEventListener('load', show, { once: true });
+  };
+
   const getArgentinaDate = () => {
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Argentina/Buenos_Aires',
@@ -205,7 +228,9 @@
 
   const setupBackofficeFullscreen = () => {
     const triggers = document.querySelectorAll('[data-abr-fullscreen]');
-    if (!triggers.length || typeof Swal === 'undefined') return;
+    const galleryTriggers = document.querySelectorAll('[data-abr-fullscreen-gallery]');
+
+    if ((!triggers.length && !galleryTriggers.length) || typeof Swal === 'undefined') return;
 
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
@@ -219,6 +244,38 @@
           title,
           imageUrl,
           imageAlt: altText,
+          width: 'min(96vw, 1440px)',
+          padding: '1rem',
+          showCloseButton: true,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'abr-swal-glass abr-swal-glass--wide',
+            title: 'abr-swal-title',
+            image: 'abr-swal-image abr-swal-image--contain',
+            closeButton: 'abr-swal-close',
+          },
+        });
+      });
+    });
+
+    galleryTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const selector = trigger.getAttribute('data-abr-fullscreen-gallery');
+        const carousel = selector ? document.querySelector(selector) : null;
+        const title = trigger.getAttribute('data-title') || 'Galería BackOffice';
+
+        if (!carousel) return;
+
+        const activeImage = carousel.querySelector('.carousel-item.active img');
+        const fallbackImage = carousel.querySelector('.carousel-item img');
+        const currentImage = activeImage || fallbackImage;
+
+        if (!currentImage) return;
+
+        Swal.fire({
+          title,
+          imageUrl: currentImage.getAttribute('src'),
+          imageAlt: currentImage.getAttribute('alt') || title,
           width: 'min(96vw, 1440px)',
           padding: '1rem',
           showCloseButton: true,
