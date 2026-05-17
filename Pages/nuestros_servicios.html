@@ -7,7 +7,7 @@
     <meta name="language" content="es">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="keywords" content="servicios asesoría bromatológica, rne rnpa rosario, domi sanitario, bpm poes haccp, auditorías alimentarias, rotulado nutricional, habilitaciones alimentarias, backoffice alimentario, trazabilidad qr, stock y recetas">
-    <meta name="author" content="Lucas Ponzoni">
+    <meta name="author" content="Pablo Manuel Scalise">
     <meta name="description" content="Servicios de asesoría bromatológica para industrias, PyMEs y comercios: RNE, RNPA, DOMI sanitario, BPM, POES, HACCP, auditorías, rotulado, habilitaciones, mejora de procesos y BackOffice para gestión y trazabilidad.">
     <link rel="shortcut icon" href="../img/abr_favicon_qube.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="../img/abr_favicon_qube.png">
@@ -42,18 +42,27 @@
       "serviceType": "Asesoría bromatológica",
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://asesoriabromatologicaros.com.ar/#negocio",
         "name": "Asesoría Bromatológica Rosario (ABR)"
       },
-      "areaServed": "Argentina",
+      "areaServed": [
+        {"@type": "City", "name": "Rosario"},
+        {"@type": "AdministrativeArea", "name": "Santa Fe"},
+        {"@type": "Country", "name": "Argentina"}
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Servicios ABR",
+        "name": "Servicios de Asesoría Bromatológica ABR",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "RNE y RNPA"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DOMI sanitario"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BPM, POES y HACCP"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rotulado nutricional"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BackOffice para empresas alimentarias"}}
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Habilitación RNE y RNPA", "description": "Registro Nacional de Establecimientos y Productos Alimenticios: documentación técnica, tramitación y seguimiento completo"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DOMI Sanitario", "description": "Registro y formulación técnica para productos domisanitarios, saneantes e higiene ante ANMAT"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BPM, POES y HACCP", "description": "Implementación de Buenas Prácticas de Manufactura, procedimientos de saneamiento y análisis de riesgos"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rotulado nutricional y etiquetado legal", "description": "Confección de rótulos completos: tabla nutricional, alérgenos, octógonos, ingredientes y declaraciones permitidas"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Auditorías alimentarias", "description": "Diagnóstico técnico de higiene, procesos, trazabilidad y plan de mejoras"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Implementación Sin TACC", "description": "Certificación y control para productos aptos celíacos: prevención de contaminación cruzada y documentación técnica"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IQF y congelados", "description": "Asesoramiento técnico en procesos de congelado, control térmico y estandarización de lotes"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BackOffice para empresas alimentarias", "description": "Plataforma de gestión de stock, recetas técnicas, trazabilidad QR, registros regulatorios e integración de IA"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Capacitaciones en manipulación de alimentos", "description": "Formación in-company para equipos de trabajo con carnet de manipulador de alimentos incluido"}}
         ]
       }
     }
@@ -61,11 +70,23 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://asesoriabromatologicaros.com.ar/"},
+        {"@type": "ListItem", "position": 2, "name": "Nuestros Servicios", "item": "https://asesoriabromatologicaros.com.ar/Pages/nuestros_servicios.html"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Nuestros Servicios",
+      "name": "Servicios de Asesoría Bromatológica — RNE, RNPA, DOMI, HACCP y Rotulado",
       "url": "https://asesoriabromatologicaros.com.ar/Pages/nuestros_servicios.html",
+      "dateModified": "2026-05-17",
       "isPartOf": {
         "@type": "WebSite",
+        "@id": "https://asesoriabromatologicaros.com.ar/#sitio",
         "name": "Asesoría Bromatológica Rosario (ABR)",
         "url": "https://asesoriabromatologicaros.com.ar/"
       },
@@ -77,7 +98,7 @@
 <body>
 
     <header>
-        <a href="../index.html" id="logo-link"><img class="logo" src="../img/abr_main.svg" alt="Logo"></a>
+        <a href="../index.html" id="logo-link"><img class="logo" src="../img/abr_main.svg" alt="Asesoría Bromatológica Rosario - Logo"></a>
         <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
         <nav class="nav" id="nav">
             

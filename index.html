@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="language" content="es" />
-  <meta name="author" content="Lucas Ponzoni" />
+  <meta name="author" content="Pablo Manuel Scalise" />
   <meta name="theme-color" content="#0065C3" />
 
   <!-- ✅ SEO Principal -->
@@ -61,6 +61,10 @@
   <meta name="twitter:image" content="https://asesoriabromatologicaros.com.ar/img/og-cover.webp" />
 
   <!-- ✅ Performance: Preconnect + Fonts -->
+  <!-- ✅ Performance: Preload LCP images -->
+  <link rel="preload" as="image" href="./img/Foodie_Pack_Mobile.webp" />
+  <link rel="preload" as="image" href="./img/Salame.webp" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -80,28 +84,64 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://asesoriabromatologicaros.com.ar/#negocio",
     "name": "Asesoría Bromatológica Rosario (ABR)",
     "url": "https://asesoriabromatologicaros.com.ar/",
+    "logo": "https://asesoriabromatologicaros.com.ar/img/abr_main.svg",
     "image": "https://asesoriabromatologicaros.com.ar/img/og-cover.webp",
     "description": "Asesoría bromatológica profesional en Rosario y Argentina. Habilitaciones RNE/RNPA, DOMI sanitario, BPM, POES, HACCP, auditorías, rotulado legal, Sin TACC y BackOffice para industrias, PyMEs y comercios.",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Callao 965",
       "addressLocality": "Rosario",
       "addressRegion": "Santa Fe",
+      "postalCode": "2000",
       "addressCountry": "AR"
     },
     "telephone": "+54 341 546 9309",
     "email": "pablomanuelscalise@gmail.com",
-    "areaServed": ["Rosario", "Santa Fe", "Argentina"],
+    "priceRange": "$$",
+    "hasMap": "https://www.google.com/maps?q=Callao+965,+Rosario,+Santa+Fe",
+    "areaServed": [
+      {"@type": "City", "name": "Rosario"},
+      {"@type": "AdministrativeArea", "name": "Santa Fe"},
+      {"@type": "Country", "name": "Argentina"}
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "2",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "makesOffer": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BackOffice para empresas alimentarias"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Trazabilidad QR, stock y recetas técnicas"}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Habilitación RNE y RNPA", "description": "Gestión y tramitación de Registro Nacional de Establecimientos y Productos Alimenticios"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DOMI Sanitario", "description": "Registro técnico para productos domisanitarios ante ANMAT"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BPM, POES y HACCP", "description": "Implementación de sistemas de calidad e inocuidad alimentaria"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rotulado nutricional", "description": "Confección de rótulos legales con tabla nutricional, alérgenos y declaraciones permitidas"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "BackOffice para empresas alimentarias", "description": "Plataforma de gestión de stock, recetas, trazabilidad QR y registros regulatorios"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Auditorías alimentarias", "description": "Diagnóstico y auditoría técnica de procesos, higiene y trazabilidad"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Implementación Sin TACC", "description": "Certificación y control para productos aptos celíacos"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Capacitaciones en manipulación de alimentos", "description": "Formación para equipos de trabajo con carnet de manipulador incluido"}}
     ],
     "sameAs": [
       "https://www.instagram.com/asesoriabromatologicarosario/",
       "https://ar.linkedin.com/in/pablo-manuel-scalise-9bba7b55"
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://asesoriabromatologicaros.com.ar/#sitio",
+    "name": "Asesoría Bromatológica Rosario (ABR)",
+    "url": "https://asesoriabromatologicaros.com.ar/",
+    "inLanguage": "es-AR",
+    "publisher": {
+      "@id": "https://asesoriabromatologicaros.com.ar/#negocio"
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -114,7 +154,7 @@
         "name": "¿Qué servicios de asesoría bromatológica ofrece ABR?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ABR ofrece asesoría bromatológica para RNE, RNPA, DOMI sanitario, BPM, POES, HACCP, auditorías, rotulado legal, Sin TACC, capacitaciones y mejora de procesos alimentarios."
+          "text": "ABR ofrece asesoría bromatológica para RNE, RNPA, DOMI sanitario, BPM, POES, HACCP, auditorías, rotulado legal, Sin TACC, capacitaciones y mejora de procesos alimentarios en Rosario y toda Argentina."
         }
       },
       {
@@ -132,6 +172,38 @@
           "@type": "Answer",
           "text": "Sí. ABR acompaña la habilitación alimentaria, documentación técnica, registros RNE/RNPA, rotulado nutricional y adecuación legal para comercializar con seguridad."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es el RNE y para qué lo necesito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El RNE (Registro Nacional de Establecimientos) es la habilitación obligatoria para todo establecimiento elaborador de alimentos en Argentina. ABR gestiona toda la documentación y acompaña el proceso completo de tramitación ante SENASA o la autoridad competente provincial."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es el DOMI sanitario y quién lo necesita?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El DOMI sanitario es el registro obligatorio ante ANMAT para productos domisanitarios: desinfectantes, detergentes, saneantes y productos de higiene. ABR brinda acompañamiento técnico completo para formulación, documentación y registro."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tiempo lleva tramitar el RNPA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El tiempo de tramitación del RNPA (Registro Nacional de Productos Alimenticios) varía según la jurisdicción y el tipo de producto. ABR agiliza el proceso con documentación técnica completa desde el primer trámite para evitar observaciones y demoras innecesarias."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye la implementación de BPM, POES y HACCP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ABR implementa Buenas Prácticas de Manufactura (BPM), Procedimientos Operativos Estandarizados de Saneamiento (POES) y el sistema HACCP con manuales técnicos, registros y capacitación del personal. El resultado es una empresa preparada para inspecciones, habilitaciones y auditorías externas."
+        }
       }
     ]
   }
@@ -141,7 +213,7 @@
 <body>
     
     <header>
-        <a href="#" id="logo-link"><img class="logo" src="./img/abr_main.svg" alt="Logo"></a>
+        <a href="#" id="logo-link"><img class="logo" src="./img/abr_main.svg" alt="Asesoría Bromatológica Rosario - Logo"></a>
         <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
         <nav class="nav" id="nav">
             
@@ -670,6 +742,90 @@
     </section>
 
     <div class="food_pack"></div>
+
+    <section class="container text-focus-in-2" id="preguntas-frecuentes" aria-labelledby="faq-heading" style="padding: 3rem 0;">
+      <h2 id="faq-heading" style="margin-bottom: 1.5rem;">Preguntas Frecuentes</h2>
+      <div class="accordion" id="faqAccordion">
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c1" aria-expanded="false" aria-controls="faq-c1">
+              ¿Qué servicios de asesoría bromatológica ofrece ABR?
+            </button>
+          </h3>
+          <div id="faq-c1" class="accordion-collapse collapse" aria-labelledby="faq-h1" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">ABR ofrece asesoría bromatológica para RNE, RNPA, DOMI sanitario, BPM, POES, HACCP, auditorías, rotulado legal, Sin TACC, capacitaciones y mejora de procesos alimentarios en Rosario y toda Argentina.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c2" aria-expanded="false" aria-controls="faq-c2">
+              ¿ABR trabaja solo en Rosario?
+            </button>
+          </h3>
+          <div id="faq-c2" class="accordion-collapse collapse" aria-labelledby="faq-h2" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">No. ABR brinda asesoría bromatológica en Rosario, Santa Fe y también acompaña industrias, PyMEs y comercios de toda Argentina.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c3" aria-expanded="false" aria-controls="faq-c3">
+              ¿Pueden ayudarme a habilitar y rotular mis productos?
+            </button>
+          </h3>
+          <div id="faq-c3" class="accordion-collapse collapse" aria-labelledby="faq-h3" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Sí. ABR acompaña la habilitación alimentaria, documentación técnica, registros RNE/RNPA, rotulado nutricional y adecuación legal para comercializar con seguridad.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h4">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c4" aria-expanded="false" aria-controls="faq-c4">
+              ¿Qué es el RNE y para qué lo necesito?
+            </button>
+          </h3>
+          <div id="faq-c4" class="accordion-collapse collapse" aria-labelledby="faq-h4" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">El RNE (Registro Nacional de Establecimientos) es la habilitación obligatoria para todo establecimiento elaborador de alimentos en Argentina. ABR gestiona toda la documentación y acompaña el proceso completo de tramitación ante SENASA o la autoridad competente provincial.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h5">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c5" aria-expanded="false" aria-controls="faq-c5">
+              ¿Qué es el DOMI sanitario y quién lo necesita?
+            </button>
+          </h3>
+          <div id="faq-c5" class="accordion-collapse collapse" aria-labelledby="faq-h5" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">El DOMI sanitario es el registro obligatorio ante ANMAT para productos domisanitarios: desinfectantes, detergentes, saneantes y productos de higiene. ABR brinda acompañamiento técnico completo para formulación, documentación y registro.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h6">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c6" aria-expanded="false" aria-controls="faq-c6">
+              ¿Cuánto tiempo lleva tramitar el RNPA?
+            </button>
+          </h3>
+          <div id="faq-c6" class="accordion-collapse collapse" aria-labelledby="faq-h6" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">El tiempo de tramitación del RNPA (Registro Nacional de Productos Alimenticios) varía según la jurisdicción y el tipo de producto. ABR agiliza el proceso con documentación técnica completa desde el primer trámite para evitar observaciones y demoras innecesarias.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faq-h7">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-c7" aria-expanded="false" aria-controls="faq-c7">
+              ¿Qué incluye la implementación de BPM, POES y HACCP?
+            </button>
+          </h3>
+          <div id="faq-c7" class="accordion-collapse collapse" aria-labelledby="faq-h7" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">ABR implementa Buenas Prácticas de Manufactura (BPM), Procedimientos Operativos Estandarizados de Saneamiento (POES) y el sistema HACCP con manuales técnicos, registros y capacitación del personal. El resultado es una empresa preparada para inspecciones, habilitaciones y auditorías externas.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
     </Main>
 
     <!-- ✅ WhatsApp -->
