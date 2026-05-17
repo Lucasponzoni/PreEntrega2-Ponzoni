@@ -1,3 +1,7 @@
+/* ABR — main.js
+   Mobile menu · year stamp · scroll reveal · scroll button
+   · WhatsApp bubble greeting · Backoffice carousel + fullscreen
+   ========================================================= */
 (() => {
   const nav = document.querySelector('#nav');
   const abrir = document.querySelector('#abrir');
@@ -5,7 +9,6 @@
 
   const toggleMenu = (isOpen) => {
     if (!nav) return;
-
     nav.classList.toggle('visible', isOpen);
     document.body.classList.toggle('menu-open', isOpen);
   };
@@ -14,353 +17,177 @@
   cerrar?.addEventListener('click', () => toggleMenu(false));
 
   document.addEventListener('DOMContentLoaded', () => {
-    const abrirMenuBtn = document.querySelector('#abrir');
-    const abrirMenuIcon = abrirMenuBtn?.querySelector('i');
-
-    const startAnimation = () => {
-      if (!abrirMenuBtn || !abrirMenuIcon) return;
-
-      abrirMenuIcon.classList.remove('bounce');
-      void abrirMenuBtn.offsetWidth;
-      abrirMenuIcon.classList.add('bounce');
-    };
-
-    abrirMenuBtn?.addEventListener('click', startAnimation);
-    abrirMenuIcon?.addEventListener('animationend', startAnimation);
-
     document.querySelectorAll('.js-current-year').forEach((node) => {
       node.textContent = String(new Date().getFullYear());
     });
 
+    setupRevealOnScroll();
+    setupCardReveal();
     setupScrollToggleButton();
-    setupGalleryInteractions();
-    setupScrollReveal();
-    setupBackofficeReveal();
     setupBackofficeCarousels();
     setupBackofficeFullscreen();
     setupWhatsAppBubble();
+    closeMobileMenuOnNav();
   });
 
-  const setupImageSpinner = (img) => {
-    const wrapper = img.closest('.hero_mobile_pack, .cardholder__card-image, .abr-backoffice__frame');
-    if (!wrapper) return;
-
-    wrapper.classList.add('is-loading');
-
-    let spinner = wrapper.querySelector('.abr-image-spinner');
-    if (!spinner) {
-      spinner = document.createElement('span');
-      spinner.className = 'spinner-border text-primary abr-image-spinner';
-      spinner.setAttribute('role', 'status');
-      spinner.setAttribute('aria-hidden', 'true');
-      wrapper.appendChild(spinner);
-    }
-
-    const markAsLoaded = () => {
-      wrapper.classList.remove('is-loading');
-      wrapper.classList.add('is-loaded');
-    };
-
-    if (img.complete) {
-      markAsLoaded();
-      return;
-    }
-
-    img.addEventListener('load', markAsLoaded, { once: true });
-    img.addEventListener('error', markAsLoaded, { once: true });
-  };
-
-  const dismissWhatsAppBubble = () => {
-    const bubble = document.querySelector('[data-abr-wsp-bubble]');
-    if (!bubble) return;
-
-    bubble.classList.add('is-hiding');
-    bubble.classList.remove('is-visible');
-    bubble.setAttribute('aria-hidden', 'true');
-  };
-
-  const openZoomPreview = (trigger) => {
-    const imageWrapper = trigger.closest('.cardholder__card-image');
-    const image = imageWrapper?.querySelector('.abr-zoomable');
-    const card = trigger.closest('.cardholder__card');
-    const title = card?.querySelector('.cardholder__card--title h2')?.innerText || 'Vista previa';
-    const imageUrl = image?.getAttribute('src');
-    const altText = image?.getAttribute('alt') || title;
-
-    if (!imageUrl || typeof Swal === 'undefined') return;
-
-    Swal.fire({
-      title,
-      imageUrl,
-      imageAlt: altText,
-      showCloseButton: true,
-      showConfirmButton: false,
-      allowOutsideClick: true,
-      backdrop: 'rgba(10, 20, 35, 0.55)',
-      customClass: {
-        popup: 'abr-swal-glass',
-        title: 'abr-swal-title',
-        image: 'abr-swal-image',
-        closeButton: 'abr-swal-close',
-      },
-    });
-  };
-
-  const setupGalleryInteractions = () => {
-    const imageWrappers = document.querySelectorAll('.cardholder__card-image');
-    const zoomables = document.querySelectorAll('.abr-zoomable');
-    const loadingImages = document.querySelectorAll('.hero_mobile_pack img, .cardholder__card-image img, .abr-backoffice__frame img');
-    const cards = document.querySelectorAll('.cardholder__card');
-
-    loadingImages.forEach(setupImageSpinner);
-
-    imageWrappers.forEach((wrapper) => {
-      wrapper.addEventListener('click', () => openZoomPreview(wrapper));
-    });
-
-    zoomables.forEach((img) => {
-      img.addEventListener('click', (event) => {
-        event.stopPropagation();
-        openZoomPreview(img);
+  /* ---------- Mobile menu auto-close ---------- */
+  function closeMobileMenuOnNav() {
+    document.querySelectorAll('.nav-list a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (link.classList.contains('dropdown-toggle')) return;
+        toggleMenu(false);
       });
     });
+  }
 
-    if (!cards.length) return;
-
-    const revealCard = (card, index = 0) => {
-      card.style.transitionDelay = `${index * 110}ms`;
-      card.classList.add('is-visible');
-    };
+  /* ---------- Reveal on scroll (replaces text-focus-in) ---------- */
+  function setupRevealOnScroll() {
+    const selector = '.abr-reveal, .text-focus-in, .text-focus-in-2, .abr-reveal-on-scroll, .abr-reveal-on-load';
+    const elements = document.querySelectorAll(selector);
+    if (!elements.length) return;
 
     if (!('IntersectionObserver' in window)) {
-      cards.forEach((card, index) => revealCard(card, index));
+      elements.forEach((el) => el.classList.add('is-visible'));
       return;
     }
 
     const observer = new IntersectionObserver(
-      (entries, currentObserver) => {
-        entries.forEach((entry) => {
+      (entries, obs) => {
+        entries.forEach((entry, idx) => {
           if (!entry.isIntersecting) return;
-
-          const card = entry.target;
-          const index = Number(card.dataset.cardIndex || 0);
-          revealCard(card, index);
-          currentObserver.unobserve(card);
+          const el = entry.target;
+          const delay = Number(el.dataset.revealDelay || 0);
+          setTimeout(() => el.classList.add('is-visible'), delay);
+          obs.unobserve(el);
         });
       },
-      {
-        threshold: 0.16,
-        rootMargin: '0px 0px -40px 0px',
-      }
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
 
-    cards.forEach((card, index) => {
-      card.dataset.cardIndex = index;
+    elements.forEach((el) => observer.observe(el));
+  }
+
+  /* ---------- Card stagger reveal (cardholder cards) ---------- */
+  function setupCardReveal() {
+    const cards = document.querySelectorAll('.cardholder__card');
+    if (!cards.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach((c) => c.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const card = entry.target;
+          const idx = Number(card.dataset.cardIndex || 0);
+          card.style.transitionDelay = `${idx * 90}ms`;
+          card.classList.add('is-visible');
+          obs.unobserve(card);
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    cards.forEach((card, idx) => {
+      card.dataset.cardIndex = idx;
       observer.observe(card);
-      card.addEventListener('click', (event) => {
-        if (event.target.closest('a')) return;
-        openZoomPreview(card);
-      });
     });
-  };
+  }
 
+  /* ---------- Scroll button (up/down) ---------- */
+  function setupScrollToggleButton() {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'abr-scroll-toggle';
+    btn.setAttribute('aria-label', 'Ir hacia abajo');
+    btn.innerHTML = '<i class="bi bi-arrow-down"></i>';
 
+    const update = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const vh = window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      const remaining = total - (scrollTop + vh);
+      const goUp = remaining < 120 || scrollTop > vh * 0.45;
+      const showBtn = scrollTop > 200;
 
-  const setupBackofficeCarousels = () => {
+      btn.classList.toggle('is-visible', showBtn);
+      btn.classList.toggle('is-up', goUp);
+      btn.innerHTML = goUp ? '<i class="bi bi-arrow-up"></i>' : '<i class="bi bi-arrow-down"></i>';
+      btn.setAttribute('aria-label', goUp ? 'Ir hacia arriba' : 'Ir hacia abajo');
+    };
+
+    btn.addEventListener('click', () => {
+      const goUp = btn.classList.contains('is-up');
+      window.scrollTo({ top: goUp ? 0 : document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+
+    document.body.appendChild(btn);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+
+  /* ---------- Backoffice carousels ---------- */
+  function setupBackofficeCarousels() {
     const carousels = document.querySelectorAll('.abr-backoffice__carousel');
-
     if (!carousels.length || !window.bootstrap?.Carousel) return;
 
     carousels.forEach((carousel) => {
-      const instance = window.bootstrap.Carousel.getOrCreateInstance(carousel, {
+      window.bootstrap.Carousel.getOrCreateInstance(carousel, {
         interval: Number(carousel.getAttribute('data-bs-interval')) || 6500,
         ride: carousel.getAttribute('data-bs-ride') || false,
         touch: true,
         pause: false,
       });
-
-      carousel.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach((control) => {
-        control.addEventListener('click', (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          dismissWhatsAppBubble();
-
-          if (control.classList.contains('carousel-control-prev')) {
-            instance.prev();
-            return;
-          }
-
-          instance.next();
-        });
-      });
-
-      carousel.querySelectorAll('.carousel-indicators [data-bs-slide-to]').forEach((indicator) => {
-        indicator.addEventListener('click', (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          dismissWhatsAppBubble();
-          const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
-          if (!Number.isNaN(slideIndex)) {
-            instance.to(slideIndex);
-          }
-        });
-      });
-
-      carousel.querySelectorAll('[data-abr-fullscreen]').forEach((trigger) => {
-        trigger.addEventListener('click', (event) => {
-          event.stopPropagation();
-          dismissWhatsAppBubble();
-        });
-      });
     });
-  };
+  }
 
-  const setupBackofficeReveal = () => {
-    const elements = document.querySelectorAll('.abr-reveal-on-load');
-    if (!elements.length) return;
+  /* ---------- Backoffice fullscreen gallery via SweetAlert ---------- */
+  function setupBackofficeFullscreen() {
+    const triggers = document.querySelectorAll('[data-abr-fullscreen-gallery]');
+    if (!triggers.length || typeof Swal === 'undefined') return;
 
-    const show = () => {
-      elements.forEach((element, index) => {
-        const delay = Number(element.dataset.revealDelay || index * 140);
-        window.setTimeout(() => {
-          element.classList.add('is-visible');
-        }, delay);
-      });
-    };
-
-    if (document.readyState === 'complete') {
-      show();
-      return;
-    }
-
-    window.addEventListener('load', show, { once: true });
-  };
-
-  const setupScrollReveal = () => {
-    const elements = document.querySelectorAll('.abr-reveal-on-scroll');
-    if (!elements.length) return;
-
-    const revealElement = (element) => {
-      element.classList.add('is-visible');
-    };
-
-    if (!('IntersectionObserver' in window)) {
-      elements.forEach(revealElement);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          revealElement(entry.target);
-          currentObserver.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: '0px 0px -40px 0px',
-      }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-  };
-
-  const getArgentinaDate = () => {
-    const parts = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'America/Argentina/Buenos_Aires',
-      hour12: false,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    }).formatToParts(new Date());
-
-    const lookup = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
-
-    return new Date(
-      Number(lookup.year),
-      Number(lookup.month) - 1,
-      Number(lookup.day),
-      Number(lookup.hour),
-      Number(lookup.minute),
-      Number(lookup.second)
-    );
-  };
-
-  const getWhatsAppGreeting = () => {
-    const argentinaDate = getArgentinaDate();
-    const hour = argentinaDate.getHours();
-
-    if (hour >= 5 && hour < 12) {
-      return {
-        emoji: '☀️',
-        badge: 'Buenos días',
-        html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Si querés, escribime por WhatsApp y contame en qué etapa está tu proyecto. Trabajo con <strong>empresas, PyMEs y particulares</strong> que necesitan orden, criterio técnico y una solución clara.',
-      };
-    }
-
-    if (hour >= 12 && hour < 20) {
-      return {
-        emoji: '🧉',
-        badge: 'Buenas tardes',
-        html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Estoy por acá para ayudarte con habilitaciones, procesos, rotulado o mejora operativa. Escribime por WhatsApp y lo vemos juntos, tanto para <strong>empresas, PyMEs y particulares</strong>.',
-      };
-    }
-
-    return {
-      emoji: '🌙',
-      badge: 'Buenas noches',
-      html: 'Hola, soy <strong>Pablo</strong> 👋🏻 Cuando quieras, escribime por WhatsApp y contame qué necesitás resolver. Acompaño a <strong>empresas, PyMEs y particulares</strong> con una mirada práctica, profesional y a medida.',
-    };
-  };
-
-  const setupBackofficeFullscreen = () => {
-    const galleryTriggers = document.querySelectorAll('[data-abr-fullscreen-gallery]');
-    const toggleScrollButtonVisibility = (shouldHide) => {
-      document.body.classList.toggle('abr-modal-open', shouldHide);
-    };
-
-    if (!galleryTriggers.length || typeof Swal === 'undefined') return;
-
-    galleryTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
         const selector = trigger.getAttribute('data-abr-fullscreen-gallery');
         const carousel = selector ? document.querySelector(selector) : null;
         const title = trigger.getAttribute('data-title') || 'Galería BackOffice';
-
         if (!carousel) return;
 
         const items = Array.from(carousel.querySelectorAll('.carousel-item')).map((item) => {
-          const image = item.querySelector('img');
+          const img = item.querySelector('img');
           const chip = item.querySelector('.abr-chip')?.textContent?.trim() || 'BackOffice ABR';
           const description = item.querySelector('.abr-backoffice__caption p')?.textContent?.trim() || '';
           return {
-            src: image?.getAttribute('src') || '',
-            alt: image?.getAttribute('alt') || title,
+            src: img?.getAttribute('src') || '',
+            alt: img?.getAttribute('alt') || title,
             chip,
             description,
           };
-        }).filter((item) => item.src);
+        }).filter((i) => i.src);
 
         if (!items.length) return;
 
-        const activeIndex = Array.from(carousel.querySelectorAll('.carousel-item')).findIndex((item) => item.classList.contains('active'));
-        const initialIndex = activeIndex >= 0 ? activeIndex : 0;
-        const modalId = `abrFullscreenCarousel-${Date.now()}`;
-        const indicators = items.map((item, index) => `
-          <button type="button" data-bs-target="#${modalId}" data-bs-slide-to="${index}" class="${index === initialIndex ? 'active' : ''}" ${index === initialIndex ? 'aria-current="true"' : ''} aria-label="${item.chip}"></button>
-        `).join('');
-        const slides = items.map((item, index) => `
-          <div class="carousel-item ${index === initialIndex ? 'active' : ''}">
-            <div class="abr-fullscreen-carousel__frame" data-abr-zoom-frame>
-              <img src="${item.src}" class="d-block w-100" alt="${item.alt}" data-abr-zoom-image draggable="false">
+        const activeIdx = Array.from(carousel.querySelectorAll('.carousel-item')).findIndex((i) => i.classList.contains('active'));
+        const initial = activeIdx >= 0 ? activeIdx : 0;
+        const id = `abrFs-${Date.now()}`;
+
+        const indicators = items.map((it, i) =>
+          `<button type="button" data-bs-target="#${id}" data-bs-slide-to="${i}" class="${i === initial ? 'active' : ''}" aria-label="${it.chip}"></button>`
+        ).join('');
+
+        const slides = items.map((it, i) => `
+          <div class="carousel-item ${i === initial ? 'active' : ''}">
+            <div class="abr-fullscreen-carousel__frame">
+              <img src="${it.src}" class="d-block w-100" alt="${it.alt}">
             </div>
             <div class="abr-fullscreen-carousel__caption">
-              <span class="abr-chip abr-chip--glass">${item.chip}</span>
-              <p>${item.description}</p>
+              <span class="abr-chip abr-chip--glass">${it.chip}</span>
+              <p>${it.description}</p>
             </div>
           </div>
         `).join('');
@@ -372,450 +199,97 @@
           showCloseButton: true,
           showConfirmButton: false,
           html: `
-            <div id="${modalId}" class="carousel slide abr-fullscreen-carousel" data-bs-interval="false">
+            <div id="${id}" class="carousel slide" data-bs-interval="false">
               <div class="carousel-indicators">${indicators}</div>
               <div class="carousel-inner">${slides}</div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#${modalId}" data-bs-slide="prev" aria-label="Imagen anterior">
+              <button class="carousel-control-prev" type="button" data-bs-target="#${id}" data-bs-slide="prev" aria-label="Anterior">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#${modalId}" data-bs-slide="next" aria-label="Imagen siguiente">
+              <button class="carousel-control-next" type="button" data-bs-target="#${id}" data-bs-slide="next" aria-label="Siguiente">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
               </button>
             </div>
           `,
           customClass: {
-            popup: 'abr-swal-glass abr-swal-glass--wide abr-swal-glass--carousel',
+            popup: 'abr-swal-glass abr-swal-glass--wide',
             title: 'abr-swal-title',
             closeButton: 'abr-swal-close',
-            htmlContainer: 'abr-swal-carousel-container',
           },
           didOpen: () => {
             if (window.bootstrap?.Carousel) {
-              const modalCarousel = document.getElementById(modalId);
-              if (modalCarousel) {
-                const modalInstance = window.bootstrap.Carousel.getOrCreateInstance(modalCarousel, {
-                  interval: false,
-                  ride: false,
-                  touch: false,
-                  pause: false,
-                });
-
-                modalCarousel.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach((control) => {
-                  control.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    if (control.classList.contains('carousel-control-prev')) {
-                      modalInstance.prev();
-                      return;
-                    }
-                    modalInstance.next();
-                  });
-                });
-
-                modalCarousel.querySelectorAll('.carousel-indicators [data-bs-slide-to]').forEach((indicator) => {
-                  indicator.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const slideIndex = Number(indicator.getAttribute('data-bs-slide-to'));
-                    if (!Number.isNaN(slideIndex)) {
-                      modalInstance.to(slideIndex);
-                    }
-                  });
-                });
-
-                const zoomStates = new WeakMap();
-
-                const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-
-                const getDistance = (firstPointer, secondPointer) => {
-                  const deltaX = secondPointer.clientX - firstPointer.clientX;
-                  const deltaY = secondPointer.clientY - firstPointer.clientY;
-                  return Math.hypot(deltaX, deltaY);
-                };
-
-                const getMidpoint = (firstPointer, secondPointer) => ({
-                  x: (firstPointer.clientX + secondPointer.clientX) / 2,
-                  y: (firstPointer.clientY + secondPointer.clientY) / 2,
-                });
-
-
-                const getTouchDistance = (firstTouch, secondTouch) => {
-                  const deltaX = secondTouch.clientX - firstTouch.clientX;
-                  const deltaY = secondTouch.clientY - firstTouch.clientY;
-                  return Math.hypot(deltaX, deltaY);
-                };
-
-                const getTouchMidpoint = (firstTouch, secondTouch) => ({
-                  x: (firstTouch.clientX + secondTouch.clientX) / 2,
-                  y: (firstTouch.clientY + secondTouch.clientY) / 2,
-                });
-
-                const updateTransform = (frame, state) => {
-                  const image = frame.querySelector('[data-abr-zoom-image]');
-                  if (!image) return;
-
-                  const isZoomed = state.scale > 1.001;
-                  image.style.transform = `translate3d(${state.translateX}px, ${state.translateY}px, 0) scale(${state.scale})`;
-                  frame.classList.toggle('is-zoomed', isZoomed);
-                };
-
-                const resetFrame = (frame) => {
-                  const state = zoomStates.get(frame);
-                  if (!state) return;
-                  state.scale = 1;
-                  state.translateX = 0;
-                  state.translateY = 0;
-                  state.startScale = 1;
-                  state.startTranslateX = 0;
-                  state.startTranslateY = 0;
-                  state.startDragX = 0;
-                  state.startDragY = 0;
-                  state.initialPinchDistance = 0;
-                  state.initialMidpoint = null;
-                  state.pointers.clear();
-                  updateTransform(frame, state);
-                };
-
-                const initializeFrameInteractions = (frame) => {
-                  const image = frame.querySelector('[data-abr-zoom-image]');
-                  if (!image) return;
-
-                  const state = {
-                    scale: 1,
-                    startScale: 1,
-                    translateX: 0,
-                    translateY: 0,
-                    startTranslateX: 0,
-                    startTranslateY: 0,
-                    startDragX: 0,
-                    startDragY: 0,
-                    initialPinchDistance: 0,
-                    initialMidpoint: null,
-                    pointers: new Map(),
-                  };
-
-                  zoomStates.set(frame, state);
-                  updateTransform(frame, state);
-
-                  frame.addEventListener('wheel', (event) => {
-                    event.preventDefault();
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    const delta = event.deltaY < 0 ? 0.35 : -0.35;
-                    const nextScale = clamp(Number((currentState.scale + delta).toFixed(2)), 1, 4);
-                    if (nextScale === currentState.scale) return;
-
-                    currentState.scale = nextScale;
-                    if (nextScale === 1) {
-                      currentState.translateX = 0;
-                      currentState.translateY = 0;
-                    }
-                    updateTransform(frame, currentState);
-                  }, { passive: false });
-
-                  image.addEventListener('dblclick', (event) => {
-                    event.preventDefault();
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    currentState.scale = currentState.scale > 1 ? 1 : 2;
-                    currentState.translateX = 0;
-                    currentState.translateY = 0;
-                    currentState.startScale = currentState.scale;
-                    currentState.startTranslateX = 0;
-                    currentState.startTranslateY = 0;
-                    updateTransform(frame, currentState);
-                  });
-
-                  frame.addEventListener('pointerdown', (event) => {
-                    if (event.pointerType === 'mouse' && event.button !== 0) return;
-
-                    event.preventDefault();
-                    frame.setPointerCapture?.(event.pointerId);
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    currentState.pointers.set(event.pointerId, {
-                      clientX: event.clientX,
-                      clientY: event.clientY,
-                    });
-
-                    if (currentState.pointers.size === 1) {
-                      currentState.startDragX = event.clientX - currentState.translateX;
-                      currentState.startDragY = event.clientY - currentState.translateY;
-                    }
-
-                    if (currentState.pointers.size === 2) {
-                      const [firstPointer, secondPointer] = Array.from(currentState.pointers.values());
-                      currentState.initialPinchDistance = getDistance(firstPointer, secondPointer);
-                      currentState.initialMidpoint = getMidpoint(firstPointer, secondPointer);
-                      currentState.startScale = currentState.scale;
-                      currentState.startTranslateX = currentState.translateX;
-                      currentState.startTranslateY = currentState.translateY;
-                    }
-                  });
-
-                  frame.addEventListener('pointermove', (event) => {
-                    event.preventDefault();
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState || !currentState.pointers.has(event.pointerId)) return;
-
-                    currentState.pointers.set(event.pointerId, {
-                      clientX: event.clientX,
-                      clientY: event.clientY,
-                    });
-
-                    if (currentState.pointers.size === 2) {
-                      const [firstPointer, secondPointer] = Array.from(currentState.pointers.values());
-                      const nextDistance = getDistance(firstPointer, secondPointer);
-                      if (!currentState.initialPinchDistance) return;
-
-                      currentState.scale = clamp(Number((currentState.startScale * (nextDistance / currentState.initialPinchDistance)).toFixed(2)), 1, 4);
-
-                      const midpoint = getMidpoint(firstPointer, secondPointer);
-                      if (currentState.initialMidpoint) {
-                        currentState.translateX = currentState.startTranslateX + (midpoint.x - currentState.initialMidpoint.x);
-                        currentState.translateY = currentState.startTranslateY + (midpoint.y - currentState.initialMidpoint.y);
-                      }
-
-                      if (currentState.scale === 1) {
-                        currentState.translateX = 0;
-                        currentState.translateY = 0;
-                      }
-
-                      updateTransform(frame, currentState);
-                      return;
-                    }
-
-                    if (currentState.scale <= 1 || !currentState.pointers.has(event.pointerId)) return;
-
-                    currentState.translateX = event.clientX - currentState.startDragX;
-                    currentState.translateY = event.clientY - currentState.startDragY;
-                    updateTransform(frame, currentState);
-                  });
-
-                  const releasePointer = (pointerId) => {
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    currentState.pointers.delete(pointerId);
-
-                    if (currentState.pointers.size < 2) {
-                      currentState.initialPinchDistance = 0;
-                      currentState.initialMidpoint = null;
-                      currentState.startScale = currentState.scale;
-                      currentState.startTranslateX = currentState.translateX;
-                      currentState.startTranslateY = currentState.translateY;
-                    }
-
-                    if (currentState.pointers.size === 1) {
-                      const [remainingPointer] = Array.from(currentState.pointers.values());
-                      currentState.startDragX = remainingPointer.clientX - currentState.translateX;
-                      currentState.startDragY = remainingPointer.clientY - currentState.translateY;
-                    }
-                  };
-
-                  ['pointerup', 'pointercancel', 'pointerleave'].forEach((eventName) => {
-                    frame.addEventListener(eventName, (event) => {
-                      releasePointer(event.pointerId);
-                    });
-                  });
-
-                  frame.addEventListener('touchstart', (event) => {
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    if (event.touches.length === 2) {
-                      event.preventDefault();
-                      currentState.initialPinchDistance = getTouchDistance(event.touches[0], event.touches[1]);
-                      currentState.initialMidpoint = getTouchMidpoint(event.touches[0], event.touches[1]);
-                      currentState.startScale = currentState.scale;
-                      currentState.startTranslateX = currentState.translateX;
-                      currentState.startTranslateY = currentState.translateY;
-                      return;
-                    }
-
-                    if (event.touches.length === 1 && currentState.scale > 1) {
-                      event.preventDefault();
-                      currentState.startDragX = event.touches[0].clientX - currentState.translateX;
-                      currentState.startDragY = event.touches[0].clientY - currentState.translateY;
-                    }
-                  }, { passive: false });
-
-                  frame.addEventListener('touchmove', (event) => {
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    if (event.touches.length === 2) {
-                      event.preventDefault();
-                      const nextDistance = getTouchDistance(event.touches[0], event.touches[1]);
-                      if (!currentState.initialPinchDistance) return;
-
-                      currentState.scale = clamp(Number((currentState.startScale * (nextDistance / currentState.initialPinchDistance)).toFixed(2)), 1, 4);
-
-                      const midpoint = getTouchMidpoint(event.touches[0], event.touches[1]);
-                      if (currentState.initialMidpoint) {
-                        currentState.translateX = currentState.startTranslateX + (midpoint.x - currentState.initialMidpoint.x);
-                        currentState.translateY = currentState.startTranslateY + (midpoint.y - currentState.initialMidpoint.y);
-                      }
-
-                      if (currentState.scale === 1) {
-                        currentState.translateX = 0;
-                        currentState.translateY = 0;
-                      }
-
-                      updateTransform(frame, currentState);
-                      return;
-                    }
-
-                    if (event.touches.length === 1 && currentState.scale > 1) {
-                      event.preventDefault();
-                      currentState.translateX = event.touches[0].clientX - currentState.startDragX;
-                      currentState.translateY = event.touches[0].clientY - currentState.startDragY;
-                      updateTransform(frame, currentState);
-                    }
-                  }, { passive: false });
-
-                  frame.addEventListener('touchend', () => {
-                    const currentState = zoomStates.get(frame);
-                    if (!currentState) return;
-
-                    if (currentState.scale <= 1) {
-                      currentState.translateX = 0;
-                      currentState.translateY = 0;
-                    }
-
-                    currentState.initialPinchDistance = 0;
-                    currentState.initialMidpoint = null;
-                    currentState.startScale = currentState.scale;
-                    currentState.startTranslateX = currentState.translateX;
-                    currentState.startTranslateY = currentState.translateY;
-                  });
-                };
-
-                const resetZoom = () => {
-                  modalCarousel.querySelectorAll('[data-abr-zoom-frame]').forEach((frame) => resetFrame(frame));
-                };
-
-                modalCarousel.querySelectorAll('[data-abr-zoom-frame]').forEach((frame) => {
-                  initializeFrameInteractions(frame);
-                });
-
-                modalCarousel.addEventListener('slide.bs.carousel', resetZoom);
-              }
+              const c = document.getElementById(id);
+              if (c) window.bootstrap.Carousel.getOrCreateInstance(c, { interval: false, ride: false });
             }
           },
-          willOpen: () => {
-            toggleScrollButtonVisibility(true);
-          },
-          willClose: () => {
-            toggleScrollButtonVisibility(false);
-          },
+          willOpen: () => document.body.classList.add('abr-modal-open'),
+          willClose: () => document.body.classList.remove('abr-modal-open'),
         });
       });
     });
+  }
 
-  };
+  /* ---------- WhatsApp bubble greeting (ABR brand) ---------- */
+  function getArgentinaDate() {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Argentina/Buenos_Aires',
+      hour12: false, hour: '2-digit',
+    }).formatToParts(new Date());
+    const hour = Number(parts.find((p) => p.type === 'hour')?.value || '12');
+    return hour;
+  }
 
-  const setupWhatsAppBubble = () => {
-    const stack = document.querySelector('[data-abr-wsp]');
+  function getGreeting() {
+    const hour = getArgentinaDate();
+    if (hour >= 5 && hour < 12) {
+      return {
+        emoji: '☀️',
+        badge: 'Buenos días',
+        html: 'Hola, somos <strong>ABR</strong> 👋🏻 Escribinos y contanos tu proyecto. Trabajamos con <strong>industrias, PyMEs y emprendimientos</strong>: te respondemos con criterio técnico y una propuesta clara.',
+      };
+    }
+    if (hour >= 12 && hour < 20) {
+      return {
+        emoji: '🧉',
+        badge: 'Buenas tardes',
+        html: 'Hola, somos <strong>ABR</strong> 👋🏻 Estamos por acá para habilitaciones, rotulado o mejora operativa. Escribinos por WhatsApp y lo vemos juntos, para <strong>empresas, PyMEs y emprendimientos</strong>.',
+      };
+    }
+    return {
+      emoji: '🌙',
+      badge: 'Buenas noches',
+      html: 'Hola, somos <strong>ABR</strong> 👋🏻 Cuando quieras, escribinos por WhatsApp y contanos qué necesitás resolver. Acompañamos con mirada práctica y a medida.',
+    };
+  }
+
+  function setupWhatsAppBubble() {
     const bubble = document.querySelector('[data-abr-wsp-bubble]');
-    const message = document.querySelector('[data-abr-wsp-message]');
-    const closeButton = document.querySelector('[data-abr-wsp-close]');
+    const messageEl = document.querySelector('[data-abr-wsp-message]');
+    const closeBtn = document.querySelector('[data-abr-wsp-close]');
     const badge = bubble?.querySelector('.abr-wsp-bubble__badge span:last-child');
-
-    if (!stack || !bubble || !message) return;
+    if (!bubble || !messageEl) return;
 
     let hideTimeout;
-    let restartInterval;
 
-    const hideBubble = () => {
-      bubble.classList.add('is-hiding');
+    const hide = () => {
       bubble.classList.remove('is-visible');
+      bubble.classList.add('is-hiding');
       bubble.setAttribute('aria-hidden', 'true');
     };
 
-    const showBubble = () => {
-      const greeting = getWhatsAppGreeting();
-
-      if (badge) {
-        badge.textContent = `${greeting.emoji} ${greeting.badge}`;
-      }
-
-      message.innerHTML = greeting.html;
+    const show = () => {
+      const g = getGreeting();
+      if (badge) badge.textContent = `${g.emoji} ${g.badge}`;
+      messageEl.innerHTML = g.html;
       bubble.classList.remove('is-hiding');
       bubble.classList.add('is-visible');
       bubble.setAttribute('aria-hidden', 'false');
-
-      window.clearTimeout(hideTimeout);
-      hideTimeout = window.setTimeout(hideBubble, 18000);
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(hide, 16000);
     };
 
-    closeButton?.addEventListener('click', () => {
-      window.clearTimeout(hideTimeout);
-      hideBubble();
-    });
+    closeBtn?.addEventListener('click', () => { clearTimeout(hideTimeout); hide(); });
 
-    if (window.matchMedia('(max-width: 768px)').matches) {
-      bubble.addEventListener('click', (event) => {
-        if (event.target.closest('[data-abr-wsp-close]')) return;
-        hideBubble();
-      });
-    }
-
-    showBubble();
-    restartInterval = window.setInterval(showBubble, 300000);
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        window.clearTimeout(hideTimeout);
-        return;
-      }
-
-      showBubble();
-    });
-
-    window.addEventListener('beforeunload', () => {
-      window.clearTimeout(hideTimeout);
-      window.clearInterval(restartInterval);
-    });
-  };
-
-  const setupScrollToggleButton = () => {
-    const scrollButton = document.createElement('button');
-    scrollButton.type = 'button';
-    scrollButton.className = 'abr-scroll-toggle';
-    scrollButton.setAttribute('aria-label', 'Ir hacia abajo');
-    scrollButton.setAttribute('title', 'Ir hacia abajo');
-    scrollButton.innerHTML = '<i class="bi bi-arrow-down"></i>';
-
-    const updateScrollButton = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const viewportHeight = window.innerHeight;
-      const fullHeight = document.documentElement.scrollHeight;
-      const remaining = fullHeight - (scrollTop + viewportHeight);
-      const shouldGoUp = remaining < 120 || scrollTop > viewportHeight * 0.45;
-
-      scrollButton.classList.toggle('is-up', shouldGoUp);
-      scrollButton.setAttribute('aria-label', shouldGoUp ? 'Ir hacia arriba' : 'Ir hacia abajo');
-      scrollButton.setAttribute('title', shouldGoUp ? 'Ir hacia arriba' : 'Ir hacia abajo');
-      scrollButton.innerHTML = shouldGoUp
-        ? '<i class="bi bi-arrow-up"></i>'
-        : '<i class="bi bi-arrow-down"></i>';
-    };
-
-    scrollButton.addEventListener('click', () => {
-      const goUp = scrollButton.classList.contains('is-up');
-      window.scrollTo({
-        top: goUp ? 0 : document.documentElement.scrollHeight,
-        behavior: 'smooth',
-      });
-    });
-
-    document.body.appendChild(scrollButton);
-    updateScrollButton();
-    window.addEventListener('scroll', updateScrollButton, { passive: true });
-    window.addEventListener('resize', updateScrollButton);
-  };
+    setTimeout(show, 2200);
+    setInterval(show, 300000);
+  }
 })();

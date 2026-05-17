@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0065C3">
     <meta name="language" content="es">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="author" content="Pablo Manuel Scalise">
+    <meta name="author" content="ABR — Asesoría Bromatológica Rosario">
     <meta name="keywords" content="HACCP, BPM, POES, buenas prácticas manufactura, análisis peligros puntos críticos, procedimientos saneamiento, sistema calidad alimentaria, inocuidad alimentaria, implementar HACCP pyme, HACCP rosario, BPM empresa alimentaria argentina">
     <meta name="description" content="ABR implementa BPM, POES y HACCP en industrias, PyMEs y comercios: manuales técnicos, registros, capacitación del personal y acompañamiento completo para cumplir normativas y superar auditorías en Argentina.">
     <link rel="shortcut icon" href="../img/abr_favicon_qube.png" type="image/x-icon">
@@ -171,7 +171,7 @@
     </header>
 
     <main class="form_main centered-content abr-services-page">
-        <section class="container text-focus-in" style="padding: 3rem 0 2rem;">
+        <section class="container abr-reveal abr-service-page-wrap">
 
             <div style="margin-bottom: 0.5rem;">
                 <span class="abr-chip">Sistemas de Calidad Alimentaria</span>
@@ -269,15 +269,20 @@
                 </div>
             </div>
 
-            <div class="p-4 rounded-3 text-center mb-4" style="background: #f0f6ff; border: 1px solid #c2d9f5;">
+            <div class="p-4 rounded-3 text-center mb-4 abr-service-cta" style="background: #f0f6ff; border: 1px solid #c2d9f5;">
                 <p class="mb-2 fw-bold">¿Tu empresa necesita implementar BPM, POES o HACCP?</p>
                 <p class="mb-3 small"> Evaluamos tu situación actual y te decimos qué necesitás exactamente.</p>
-                <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+sobre+HACCP+y+BPM%2C+me+contacto+desde+la+web." target="_blank" rel="noopener noreferrer" class="btn btn-success me-2">
-                    <i class="bi bi-whatsapp me-1"></i> Consultar por WhatsApp
-                </a>
-                <a href="./contactanos.html" class="btn btn-outline-primary">
-                    Formulario de contacto
-                </a>
+                <div class="abr-service-cta__actions">
+                    <a href="https://api.whatsapp.com/send?phone=+543415469309&text=Hola%2C+quisiera+consultar+sobre+HACCP+y+BPM%2C+me+contacto+desde+la+web." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+                        <i class="bi bi-whatsapp me-1"></i>
+                        <span class="abr-label-desktop">Consultar por WhatsApp</span>
+                        <span class="abr-label-mobile">WhatsApp</span>
+                    </a>
+                    <a href="./contactanos.html" class="btn btn-outline-primary">
+                        <span class="abr-label-desktop">Formulario de contacto</span>
+                        <span class="abr-label-mobile">Formulario</span>
+                    </a>
+                </div>
             </div>
 
             <h2 style="margin-bottom: 1.5rem;" id="preguntas-frecuentes-haccp">Preguntas Frecuentes sobre HACCP, BPM y POES</h2>
@@ -351,8 +356,15 @@
 
             </div>
 
-            <div class="mt-4 pt-3 border-top">
-                <p class="small text-muted">Ver también: <a href="./nuestros_servicios.html">Todos los servicios de ABR</a> · <a href="./rne-rnpa.html">Tramitar RNE y RNPA</a> · <a href="./domi-sanitario.html">DOMI Sanitario</a> · <a href="./contactanos.html">Contacto</a></p>
+            <div class="abr-internal-links">
+                <span class="abr-internal-links__title">Ver también</span>
+                <div class="abr-internal-links__grid">
+                    <a href="./nuestros_servicios.html"><i class="bi bi-grid"></i> Todos los servicios</a>
+                    <a href="./rne-rnpa.html"><i class="bi bi-file-earmark-check"></i> RNE y RNPA</a>
+                    <a href="./auditorias.html"><i class="bi bi-search"></i> Auditorías</a>
+                    <a href="./capacitaciones.html"><i class="bi bi-people"></i> Capacitaciones</a>
+                    <a href="./contactanos.html"><i class="bi bi-envelope"></i> Contacto</a>
+                </div>
             </div>
 
         </section>
@@ -383,11 +395,8 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/anime.js"></script>
-    <script src="../js/scripts.js"></script>
 
 </body>
 </html>
