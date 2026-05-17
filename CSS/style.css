@@ -940,9 +940,31 @@ header {
 .abr-backoffice__carousel .carousel-control-next:hover { background: var(--abr-blue); transform: scale(1.05); }
 
 @media (max-width: 600px) {
+  /* Forzar que los indicadores de carrusel no sean absolutos en mobile */
+  .carousel-indicators {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    inset: auto !important;
+    margin: 20px auto 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
   .abr-backoffice__carousel .carousel-control-prev { left: 8px; }
   .abr-backoffice__carousel .carousel-control-next { right: 8px; }
   .abr-backoffice__frame { aspect-ratio: 16/11; }
+  
+  /* Ajustes Swal Alert en Mobile */
+  .abr-swal-title {
+    font-size: 1.25rem !important;
+    padding-top: 10px !important;
+    padding-bottom: 0 !important;
+  }
+  .abr-swal-glass {
+    padding: 0 0 12px !important;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1801,6 +1823,7 @@ body.abr-modal-open .abr-scroll-toggle { display: none; }
   }
   .abr-services-hero--redesign .abr-about-eyebrow,
   .abr-services-section-head .abr-about-eyebrow {
+    margin-top: 12px;
     min-height: 36px;
     padding: 8px 14px;
     font-size: .74rem;
