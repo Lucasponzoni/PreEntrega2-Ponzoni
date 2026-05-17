@@ -1547,7 +1547,7 @@ body.abr-modal-open .abr-scroll-toggle { display: none; }
 
 /* ---- Services page redesign ---- */
 .abr-services-hero--redesign {
-  padding: clamp(52px, 8vw, 104px) 0 28px;
+  padding: clamp(80px, 9vw, 120px) 0 28px;
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
   align-items: stretch;
 }
@@ -1645,7 +1645,7 @@ body.abr-modal-open .abr-scroll-toggle { display: none; }
 }
 
 .abr-services-catalog {
-  padding: 30px 0 42px;
+  padding: 80px 0 42px;
 }
 .abr-services-section-head {
   display: flex;
@@ -1793,7 +1793,7 @@ body.abr-modal-open .abr-scroll-toggle { display: none; }
 
 @media (max-width: 600px) {
   .abr-services-hero--redesign {
-    padding: 36px 16px 18px;
+    padding: 80px 16px 18px;
   }
   .abr-services-hero--redesign h1 {
     max-width: 12ch;
