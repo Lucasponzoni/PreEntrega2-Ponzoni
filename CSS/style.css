@@ -892,19 +892,19 @@ header {
 
 /* Indicators reset: small horizontal dots */
 .abr-backoffice__carousel .carousel-indicators {
-  position: absolute;
-  bottom: 28px;
-  left: 0;
-  right: 0;
-  margin: 0;
-  display: flex;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 20px 0 0 !important;
+  display: flex !important;
   justify-content: center;
   gap: 8px;
   list-style: none;
   padding: 0;
-  z-index: 5;
 }
 .abr-backoffice__carousel .carousel-indicators [data-bs-target] {
+  flex: none !important;
   width: 8px !important;
   height: 8px !important;
   border-radius: 50% !important;
@@ -2700,6 +2700,60 @@ body.abr-modal-open .abr-scroll-toggle { display: none; }
 .abr-fullscreen-carousel__frame.is-zoomed img { cursor: grabbing; }
 .abr-fullscreen-carousel__caption { padding: 14px 4px 0; }
 .abr-fullscreen-carousel__caption p { color: var(--abr-text-soft); font-size: .9rem; }
+
+/* Fullscreen modal carousel: reset Bootstrap default indicator bars (white lines) */
+.abr-swal-glass .carousel { position: relative; padding-bottom: 0; }
+.abr-swal-glass .swal2-html-container { margin: 0 !important; padding: 0 !important; }
+@media (max-width: 600px) {
+  .abr-swal-glass .carousel-indicators { margin: 10px 0 8px !important; }
+  .abr-fullscreen-carousel__caption { padding: 10px 4px 0; }
+  .abr-fullscreen-carousel__caption p { font-size: .85rem; margin-bottom: 0; }
+}
+.abr-swal-glass .carousel-indicators {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  inset: auto !important;
+  margin: 20px 0 0 !important;
+  display: flex !important;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+.abr-swal-glass .carousel-indicators [data-bs-target] {
+  flex: none !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: rgba(20,24,32,.25) !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-indent: 0 !important;
+  opacity: 1 !important;
+  transition: background .25s var(--abr-easing), width .25s var(--abr-easing);
+}
+.abr-swal-glass .carousel-indicators .active {
+  background: var(--abr-blue) !important;
+  width: 24px !important;
+  border-radius: 999px !important;
+}
+.abr-swal-glass .carousel-control-prev,
+.abr-swal-glass .carousel-control-next {
+  width: 44px;
+  height: 44px;
+  background: rgba(12,15,20,.7);
+  border-radius: 50%;
+  top: calc(50% - 40px);
+  bottom: auto;
+  opacity: .95;
+}
+.abr-swal-glass .carousel-control-prev { left: 8px; }
+.abr-swal-glass .carousel-control-next { right: 8px; }
+.abr-swal-glass .carousel-control-prev:hover,
+.abr-swal-glass .carousel-control-next:hover { background: var(--abr-blue); }
 
 /* =========================================================
    MISC

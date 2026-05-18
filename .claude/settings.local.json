@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Skill(seo-audit)"
+      "Skill(seo-audit)",
+      "Skill(caveman:caveman-stats)"
     ]
   }
 }
