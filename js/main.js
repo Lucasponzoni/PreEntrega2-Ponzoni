@@ -292,4 +292,27 @@
     setTimeout(show, 2200);
     setInterval(show, 300000);
   }
+
+  /* ---------- Google Ads conversion tracking (WhatsApp clicks) ---------- */
+  const GADS_SEND_TO = 'AW-18186670188/XLKtCMvSirQcEOygiuBD';
+
+  window.gtag_report_conversion = function (url) {
+    const callback = function () {
+      if (typeof url !== 'undefined') window.location = url;
+    };
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: GADS_SEND_TO,
+        event_callback: callback,
+      });
+    }
+    return false;
+  };
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="api.whatsapp.com"], a[href*="wa.me"]');
+    if (!link) return;
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', { send_to: GADS_SEND_TO });
+  }, true);
 })();
